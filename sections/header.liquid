@@ -124,7 +124,7 @@
 
         <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">SETS (19)</a></li>
         <li><a href="{{ routes.root_url }}#oem-showcase" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
-        <li><a href="/pages/about" style="color: var(--color-steel-silver);">ABOUT</a></li>
+        <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">ABOUT</a></li>
         <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">CONTACT</a></li>
         <li><a href="/pages/faq" style="color: var(--color-steel-silver);">FAQ</a></li>
       </ul>
@@ -177,7 +177,7 @@
       <li><a href="{{ routes.all_products_collection_url }}" class="mobile-nav-link">CATALOG (50+ TOOLS)</a></li>
       <li><a href="{{ routes.root_url }}#surgical-sets" class="mobile-nav-link">SURGICAL SETS (19)</a></li>
       <li><a href="/pages/wholesale-custom-orders" class="mobile-nav-link" style="color: var(--color-gold-base);">CUSTOM OEM / RFQ</a></li>
-      <li><a href="/pages/about" class="mobile-nav-link">ABOUT XENTIA</a></li>
+      <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" class="mobile-nav-link">ABOUT XENTIA</a></li>
       <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="mobile-nav-link">CONTACT FACTORY</a></li>
       <li><a href="{{ routes.account_url }}" class="mobile-nav-link">CUSTOMER ACCOUNT</a></li>
       <li><a href="/pages/faq" class="mobile-nav-link">PROCUREMENT FAQ</a></li>

@@ -8,7 +8,7 @@
           <img src="{{ 'logo-for-website.png' | asset_url }}" alt="Xentia Industries" width="160" height="68" style="height: 42px; width: auto; margin-bottom: var(--space-4);">
         </a>
         <p style="font-size: var(--text-xs); color: var(--color-steel-medium); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);">
-          Premier manufacturer and international exporter of professional surgical, dental, orthopedic, and veterinary instruments forged from German DIN 1.4021 Stainless Steel.
+          Premier manufacturer and international exporter of professional surgical, dental, orthopedic, ENT, Beauty and Plastic & Cosmtic Surgery instruments forged from German DIN 1.4021 Stainless Steel.
         </p>
         <p style="font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: var(--space-4);">
           <strong>{{ settings.factory_address | default: 'Shahab Pura Road / Ugoki Road, Small Industries Estate, Sialkot 51310, Punjab, Pakistan' }}</strong>
@@ -29,7 +29,7 @@
           <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
           <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Complete Surgical Sets (19 Sets)</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
-          <li><a href="/pages/about" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
+          <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
           <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
           <li><a href="{{ routes.account_url }}" style="color: var(--color-steel-silver);">Customer Account Portal</a></li>
         </ul>

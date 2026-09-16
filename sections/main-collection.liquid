@@ -1,49 +1,231 @@
-<section class="section collection-page-section">
-  <div class="container">
-    <div class="section-header text-center">
-      <span class="badge-pill">SIALKOT FACTORY CATALOG</span>
-      <h1 class="section-title">{{ collection.title | default: 'All Precision Surgical Instruments' }}</h1>
-      <p class="section-subtitle">
-        {{ collection.description | default: 'Precision medical instruments forged from German DIN 1.4021 stainless steel and Japanese cobalt alloys. Clinical evaluation samples ready for direct dispatch.' }}
-      </p>
-    </div>
+{%- comment -%}
+  Xentia Industries - Master Products & Category Collections
+  Dual Mode Architecture:
+  1. Master Catalog Showcase (collection.handle == 'all' or blank):
+     Displays 17 clinical disciplines in dedicated sections, each with:
+     - Category header with sub-disciplines and "VIEW MORE →" button
+     - 5 horizontal product cards in a single row
+     - Dynamic placeholders for unpopulated slots that disappear as products are published in Shopify Admin
+  2. Dedicated Discipline View (collection.handle != 'all'):
+     Displays all products for that specific category in full responsive grid with pagination
+{%- endcomment -%}
 
-    <!-- Collection Filter Tabs -->
-    <div class="catalog-filter-bar">
-      <div class="filter-tabs-wrapper">
-        <a href="{{ routes.all_products_collection_url }}" class="tab-pill {% if collection.handle == 'all' or collection.handle == blank %}tab-pill-active{% endif %}">ALL INSTRUMENTS</a>
-        <a href="{{ routes.all_products_collection_url }}?specialty=rhinoplasty" class="tab-pill">PLASTIC &amp; RHINOPLASTY</a>
-        <a href="{{ routes.all_products_collection_url }}?specialty=hair-restoration" class="tab-pill">HAIR RESTORATION</a>
-        <a href="{{ routes.all_products_collection_url }}?specialty=dental" class="tab-pill">DENTAL SURGERY</a>
-        <a href="{{ routes.all_products_collection_url }}?specialty=orthopedic" class="tab-pill">ORTHOPEDIC</a>
+{%- assign is_all_catalog = false -%}
+{%- if collection.handle == 'all' or collection.handle == blank or template.name == 'list-collections' -%}
+  {%- assign is_all_catalog = true -%}
+{%- endif -%}
+
+{%- if is_all_catalog -%}
+  <!-- ========================================================================
+       MODE 1: MASTER CATALOG CATEGORY SHOWCASE (5 CARDS PER ROW + VIEW MORE)
+       ======================================================================== -->
+  <section class="section collection-page-section master-catalog-showcase" id="master-catalog-section">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center" style="max-width: 860px; margin: 0 auto var(--space-8) auto;">
+        <span class="badge-pill">SIALKOT FACTORY CATALOG &amp; DISCIPLINES</span>
+        <h1 class="section-title" style="margin-top: var(--space-3); margin-bottom: var(--space-3);">
+          PRECISION SURGICAL <span class="section-title-highlight">CATALOG</span>
+        </h1>
+        <p class="section-subtitle">
+          Explore our certified surgical instrumentation organized by clinical disciplines. Forged from German DIN 1.4021 Stainless Steel and Japanese Cobalt alloys under strict ISO 13485:2016 quality systems.
+        </p>
       </div>
-    </div>
 
-    <!-- Products Grid -->
-    <div class="product-grid" style="margin-top: var(--space-8);">
-      {%- paginate collection.products by 48 -%}
-        {%- for product in collection.products -%}
-          {% render 'product-card', product: product %}
-        {%- else -%}
-          <div class="catalog-empty text-center" style="grid-column: 1 / -1; padding: var(--space-16) 0;">
-            <p style="color: var(--color-steel-silver); font-size: var(--text-lg);">No surgical instruments found in this collection.</p>
-            <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary btn-sm" style="margin-top: var(--space-4);">VIEW ALL INSTRUMENTS</a>
-          </div>
-        {%- endfor -%}
+      <!-- Quick Discipline Jump Navigation Bar -->
+      <div class="catalog-jump-bar-container" style="margin-bottom: var(--space-10);">
+        <div class="catalog-jump-bar">
+          <a href="#cat-plastic-cosmetic" class="jump-pill">Plastic &amp; Cosmetic</a>
+          <a href="#cat-rhinoplasty-ent" class="jump-pill">Rhinoplasty &amp; ENT</a>
+          <a href="#cat-general-surgery" class="jump-pill">General Surgery</a>
+          <a href="#cat-orthopedic" class="jump-pill">Orthopedic</a>
+          <a href="#cat-spine-surgery" class="jump-pill">Spine Surgery</a>
+          <a href="#cat-neurosurgical" class="jump-pill">Neurosurgery</a>
+          <a href="#cat-maxillofacial" class="jump-pill">Maxillofacial &amp; Oral</a>
+          <a href="#cat-ophthalmic" class="jump-pill">Ophthalmic</a>
+          <a href="#cat-dental" class="jump-pill">Dental Surgery</a>
+          <a href="#cat-hair-restoration" class="jump-pill">Hair Restoration &amp; FUE</a>
+          <a href="#cat-arthroscopy" class="jump-pill">Arthroscopy</a>
+          <a href="#cat-gynecology" class="jump-pill">Gynecology &amp; OB</a>
+          <a href="#cat-urology" class="jump-pill">Urology</a>
+          <a href="#cat-veterinary" class="jump-pill">Veterinary</a>
+          <a href="#cat-laparoscopic" class="jump-pill">Laparoscopic</a>
+          <a href="#cat-cardiovascular" class="jump-pill">Cardiovascular</a>
+          <a href="#cat-dermatology" class="jump-pill">Dermatology</a>
+          <a href="#cat-electrosurgical" class="jump-pill">Electrosurgical &amp; Trays</a>
+        </div>
+      </div>
 
-        {%- if paginate.pages > 1 -%}
-          <div class="pagination-wrap" style="grid-column: 1 / -1; text-align: center; margin-top: var(--space-10);">
-            {{ paginate | default_pagination }}
-          </div>
-        {%- endif -%}
-      {%- endpaginate -%}
+      <!-- Delimited Category Definitions -->
+      {% assign categories_data = "cat-plastic-cosmetic|plastic-cosmetic-surgery-instruments|Plastic & Cosmetic Surgery|Facelift Scissors, Breast Retractors, Liposuction Cannulas, Blepharoplasty Forceps, Calipers|plastic-cosmetic-surgery,plastic-surgery,cosmetic-surgery:::cat-rhinoplasty-ent|rhinoplasty-ent-instruments|Rhinoplasty & ENT Instruments|Aufricht Retractors, Cottle Speculums, Bone Rasps, Nasal Osteotomes, Septum Forceps|rhinoplasty,ent-instruments,ent:::cat-general-surgery|general-surgery-instruments|General & Reconstructive Surgery|Scalpels, Mayo & Metzenbaum Scissors, TC Needle Holders, Hemostatic Clamps|general-surgery:::cat-orthopedic|orthopedic-instruments|Orthopedic Instruments|Bone Holding Clamps, Liston Cutters, Hohmann Retractors, Bone Gouges, Mallets|orthopedics,orthopedic:::cat-spine-surgery|spine-surgery-instruments|Spine Surgery Instruments|Kerrison Cervical/Lumbar Rongeurs, Caspar Distractors, Lamina Spreaders|spine-surgery,spine:::cat-neurosurgical|neurosurgical-instruments|Neurosurgical Instruments|Micro Scissors, Brain Spatulas, Bayonet Forceps, Skull Punches, Micro Dissectors|neurosurgery:::cat-maxillofacial|maxillofacial-oral-surgery-instruments|Maxillofacial & Oral Surgery|Dingman Mouth Gags, Bone Spreaders, Wire Cutters, Plate Bending Pliers|maxillofacial:::cat-ophthalmic|ophthalmic-instruments|Ophthalmic Instruments|Eye Speculums, Micro Capsulorhexis Forceps, Corneal Scissors, Needle Micro Holders|ophthalmic,ophthalmology:::cat-dental|dental-instruments|Dental & Oral Maxillofacial|Extraction Forceps, Root Elevators, Scalers, Periodontal Probes, Amalgam Pluggers|dental:::cat-hair-restoration|hair-restoration-instruments|Hair Restoration & FUE|Motorized & Manual FUE Punches, Micro Grafting Forceps, Implanter Pens|hair-restoration,fue:::cat-arthroscopy|arthroscopy-instruments|Arthroscopy & Sports Medicine|Arthroscopic Punches, Graspers, Hook Probes, Meniscectomy Scissors, Shaver Blades|arthroscopy:::cat-gynecology|gynecology-obstetrics-instruments|Gynecology & Obstetrics|Graves Speculums, Uterine Dilators, Biopsy Punches, Hysterectomy Clamps|gynecology,ob-gyn:::cat-urology|urology-instruments|Urology Instruments|Resectoscope Sheaths, Urethral Sounds, Catheter Guides, Stone Retrieval Forceps|urology:::cat-veterinary|veterinary-instruments|Veterinary Surgical Instruments|Veterinary Forceps, Bone Reduction Clamps, Spay Packs, Orthopedic Pins|veterinary:::cat-laparoscopic|laparoscopic-instruments|Laparoscopic Instruments|5mm/10mm Trocar Sets, Bipolar Laparoscopic Graspers, Endo-Scissors, Clip Appliers|laparoscopy,laparoscopic:::cat-cardiovascular|cardiovascular-thoracic-instruments|Cardiovascular & Thoracic|Sternal Retractors, Vascular DeBakey Clamps, Potts Scissors, Valve Hooks|cardiovascular,thoracic:::cat-dermatology|dermatology-instruments|Dermatology Instruments|Dermal Curettes, Biopsy Punches, Comedone Extractors, Cryo-Probes|dermatology:::cat-electrosurgical|electrosurgical-surgical-accessories|Electrosurgical & Accessories|Non-Stick Bipolar Forceps, Monopolar Electrodes, DIN Sterilization Wire Trays|electrosurgical,accessories" | split: ":::" %}
+
+      <!-- Categories Loop -->
+      <div class="categories-showcase-flow">
+        {% for cat_item in categories_data %}
+          {% assign cat_parts = cat_item | split: "|" %}
+          {% assign anchor_id = cat_parts[0] %}
+          {% assign cat_handle = cat_parts[1] %}
+          {% assign cat_name = cat_parts[2] %}
+          {% assign cat_sub = cat_parts[3] %}
+          {% assign alt_handles = cat_parts[4] | split: "," %}
+
+          {% comment %} Find collection in Shopify store {% endcomment %}
+          {% assign active_collection = collections[cat_handle] %}
+          {% if active_collection == blank or active_collection.products.size == 0 %}
+            {% for alt in alt_handles %}
+              {% if collections[alt] != blank and collections[alt].products.size > 0 %}
+                {% assign active_collection = collections[alt] %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+
+          {% assign live_count = 0 %}
+          {% if active_collection != blank and active_collection.products.size > 0 %}
+            {% assign live_count = active_collection.products.size %}
+          {% endif %}
+
+          <!-- Individual Category Section -->
+          <section id="{{ anchor_id }}" class="category-section-block" style="margin-bottom: var(--space-12);">
+            
+            <!-- Category Header Bar with VIEW MORE Button -->
+            <div class="category-header-bar">
+              <div class="category-header-info">
+                <div class="category-meta-badge">
+                  <span class="category-badge-dot"></span>
+                  <span class="category-badge-text">CLINICAL DISCIPLINE</span>
+                  {% if live_count > 0 %}
+                    <span class="category-badge-count">{{ live_count }} In-Stock Products</span>
+                  {% else %}
+                    <span class="category-badge-count pending">OEM Production on Demand</span>
+                  {% endif %}
+                </div>
+                <h2 class="category-title">{{ cat_name }}</h2>
+                <p class="category-subtext">{{ cat_sub }}</p>
+              </div>
+
+              <div class="category-header-actions">
+                <a href="{{ active_collection.url | default: '/collections/' | append: cat_handle }}" class="btn btn-secondary btn-view-more" aria-label="View all {{ cat_name }} instruments">
+                  <span>VIEW MORE</span>
+                  <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <!-- Horizontal 5-Card Product Row -->
+            <div class="category-products-row-container">
+              <div class="category-products-row">
+                {% assign rendered_cards = 0 %}
+
+                {% comment %} Render live Shopify products up to 5 {% endcomment %}
+                {% if live_count > 0 %}
+                  {% for product in active_collection.products limit: 5 %}
+                    {% render 'product-card', product: product %}
+                    {% assign rendered_cards = rendered_cards | plus: 1 %}
+                  {% endfor %}
+                {% endif %}
+
+                {% comment %} Dynamic remaining slots: automatically filled by placeholders; auto-disappear when live products added {% endcomment %}
+                {% assign needed_placeholders = 5 | minus: rendered_cards %}
+                {% if needed_placeholders > 0 %}
+                  {% for slot_idx in (1..needed_placeholders) %}
+                    {% render 'product-card-placeholder', category_name: cat_name, category_handle: cat_handle, index: slot_idx %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+
+          </section>
+        {% endfor %}
+      </div>
+
     </div>
-  </div>
-</section>
+  </section>
+
+{%- else -%}
+  <!-- ========================================================================
+       MODE 2: SPECIFIC CATEGORY COLLECTION PAGE (FULL CATALOG GRID)
+       ======================================================================== -->
+  <section class="section collection-page-section specific-category-page">
+    <div class="container">
+      
+      <!-- Breadcrumbs -->
+      <nav class="breadcrumb-trail" aria-label="Breadcrumb Navigation" style="margin-bottom: var(--space-6);">
+        <ol style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0; margin: 0; color: var(--color-steel-muted);">
+          <li><a href="{{ routes.root_url }}" style="color: var(--color-steel-silver);">Home</a></li>
+          <li>&rsaquo;</li>
+          <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">All Products</a></li>
+          <li>&rsaquo;</li>
+          <li style="color: var(--color-gold-base);">{{ collection.title }}</li>
+        </ol>
+      </nav>
+
+      <!-- Category Header -->
+      <div class="section-header text-center" style="max-width: 860px; margin: 0 auto var(--space-8) auto;">
+        <span class="badge-pill">SIALKOT FACTORY COLLECTION</span>
+        <h1 class="section-title" style="margin-top: var(--space-3); margin-bottom: var(--space-3);">
+          {{ collection.title }}
+        </h1>
+        <p class="section-subtitle">
+          {{ collection.description | default: 'Precision medical instruments forged from German DIN 1.4021 stainless steel and Japanese cobalt alloys. Full clinical evaluation series.' }}
+        </p>
+        <div style="margin-top: var(--space-4);">
+          <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary btn-sm">
+            &larr; BACK TO ALL CATEGORIES
+          </a>
+        </div>
+      </div>
+
+      <!-- Full Products Grid with Pagination -->
+      <div class="product-grid" style="margin-top: var(--space-8);">
+        {%- paginate collection.products by 48 -%}
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- else -%}
+            <!-- Empty Category View with 5 Placeholders and B2B RFQ CTA -->
+            <div class="empty-category-showcase" style="grid-column: 1 / -1; width: 100%;">
+              <div class="catalog-empty text-center" style="padding: var(--space-8) var(--space-4); margin-bottom: var(--space-8); background: rgba(255,255,255,0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: var(--radius-md);">
+                <span class="badge-pill" style="margin-bottom: var(--space-2);">CUSTOM PRODUCTION READY</span>
+                <p style="color: var(--color-steel-white); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2);">
+                  Active catalog listings for {{ collection.title }} are currently being published from the Sialkot factory floor.
+                </p>
+                <p style="color: var(--color-steel-medium); font-size: var(--text-sm); max-width: 620px; margin: 0 auto var(--space-4) auto;">
+                  We forge complete custom sets and precision OEM instruments to your exact dimensional blueprints and DIN 1.4021 metallurgical specifications.
+                </p>
+                <a href="/pages/wholesale-custom-orders?specialty={{ collection.handle }}" class="btn btn-primary btn-sm">
+                  REQUEST CUSTOM OEM PRODUCTION RUN
+                </a>
+              </div>
+
+              <!-- 5 Placeholders for Empty Category -->
+              <div class="category-products-row-container">
+                <div class="category-products-row">
+                  {% for i in (1..5) %}
+                    {% render 'product-card-placeholder', category_name: collection.title, category_handle: collection.handle, index: i %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+
+          {%- if paginate.pages > 1 -%}
+            <div class="pagination-wrap" style="grid-column: 1 / -1; text-align: center; margin-top: var(--space-10);">
+              {{ paginate | default_pagination }}
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+
+    </div>
+  </section>
+{%- endif -%}
 
 {% schema %}
 {
-  "name": "Collection Grid",
+  "name": "Collection Grid & Showcase",
   "settings": []
 }
 {% endschema %}

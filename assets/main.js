@@ -10,7 +10,7 @@
 import { CONFIG } from './config.js';
 import { shopifyClient } from './api.js';
 import { cartController } from './cart.js';
-import { renderProductCard, renderSkeletonProductCard } from './product-card.js';
+import { renderProductCard, renderSkeletonProductCard, renderPlaceholderProductCard } from './product-card.js';
 import { productModal } from './product-modal.js';
 import { CollectionFilterController } from './collection-filter.js';
 import { getQuoteUrl, navigateToQuote } from './quote-hook.js';
@@ -250,24 +250,110 @@ function applyFiltersAndRender() {
   }
 
   // 4. Render
+  // MODE 1: MASTER CATEGORY SHOWCASE (When All Instruments selected and no search query)
+  if (AppState.activeCollection === 'all' && !AppState.searchQuery) {
+    const categories = CONFIG.categories || [];
+    let showcaseHTML = '<div class="categories-showcase-flow" style="grid-column: 1 / -1; width: 100%;">';
+
+    categories.forEach(cat => {
+      // Find matching products
+      let matching = AppState.allProducts.filter(p => {
+        const handleMatch = p.collections && p.collections.some(c => c.handle === cat.handle || c.handle.includes(cat.handle.split('-')[0]));
+        const typeMatch = p.productType && p.productType.toLowerCase().includes(cat.name.toLowerCase().split(' ')[0]);
+        return handleMatch || typeMatch;
+      });
+
+      if (AppState.availability === 'in-stock') {
+        matching = matching.filter(p => Boolean(p.availableForSale));
+      } else if (AppState.availability === 'custom') {
+        matching = matching.filter(p => !p.availableForSale);
+      }
+
+      const liveCount = matching.length;
+      const renderedLive = matching.slice(0, 5);
+      const neededPlaceholders = 5 - renderedLive.length;
+
+      showcaseHTML += `
+        <section class="category-section-block" style="margin-bottom: var(--space-10);">
+          <div class="category-header-bar">
+            <div class="category-header-info">
+              <div class="category-meta-badge">
+                <span class="category-badge-dot"></span>
+                <span class="category-badge-text">CLINICAL DISCIPLINE</span>
+                ${liveCount > 0 ? `<span class="category-badge-count">${liveCount} In-Stock Products</span>` : '<span class="category-badge-count pending">OEM Production on Demand</span>'}
+              </div>
+              <h2 class="category-title">${cat.name}</h2>
+              <p class="category-subtext">Certified surgical instrumentation forged from German DIN 1.4021 stainless steel.</p>
+            </div>
+            <div class="category-header-actions">
+              <button type="button" class="btn btn-secondary btn-view-more" onclick="window.filterBySpecialty('${cat.handle}')" aria-label="View all ${cat.name} instruments">
+                <span>VIEW MORE</span>
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="category-products-row-container">
+            <div class="category-products-row">
+              ${renderedLive.map(p => renderProductCard(p)).join('')}
+              ${Array.from({ length: neededPlaceholders }).map((_, i) => renderPlaceholderProductCard(cat.name, cat.handle, i + 1)).join('')}
+            </div>
+          </div>
+        </section>
+      `;
+    });
+
+    showcaseHTML += '</div>';
+    grid.innerHTML = showcaseHTML;
+    return;
+  }
+
+  // MODE 2: SPECIFIC CATEGORY OR SEARCH RESULTS GRID
   if (list.length === 0) {
+    const activeCat = (CONFIG.categories || []).find(c => c.handle === AppState.activeCollection);
+    const catName = activeCat ? activeCat.name : 'Selected Discipline';
+
     grid.innerHTML = `
-      <div class="card card-metallic text-center" style="grid-column: 1 / -1; padding: var(--space-12) var(--space-4);">
-        <p style="font-size: var(--text-lg); color: var(--color-steel-pure); font-weight: var(--weight-bold); margin-bottom: var(--space-2);">
-          No Surgical Instruments Found
-        </p>
-        <p style="font-size: var(--text-sm); color: var(--color-steel-muted); max-width: 480px; margin: 0 auto var(--space-6) auto;">
-          No instruments matched your current filters or search query "${AppState.searchQuery}". Try selecting another discipline or resetting filters.
-        </p>
-        <button class="btn btn-primary btn-sm" onclick="window.resetCatalogFilters()">
-          RESET ALL FILTERS
-        </button>
+      <div class="empty-category-showcase" style="grid-column: 1 / -1; width: 100%;">
+        <div class="catalog-empty text-center" style="padding: var(--space-8) var(--space-4); margin-bottom: var(--space-8); background: rgba(255,255,255,0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: var(--radius-md);">
+          <span class="badge-pill" style="margin-bottom: var(--space-2);">CUSTOM PRODUCTION READY</span>
+          <p style="color: var(--color-steel-white); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2);">
+            Active catalog listings for ${catName} are currently being published from the Sialkot factory floor.
+          </p>
+          <p style="color: var(--color-steel-medium); font-size: var(--text-sm); max-width: 620px; margin: 0 auto var(--space-4) auto;">
+            We forge complete custom sets and precision OEM instruments to your exact dimensional blueprints and DIN 1.4021 metallurgical specifications.
+          </p>
+          <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+            <a href="wholesale-custom-orders.html?specialty=${AppState.activeCollection}" class="btn btn-primary btn-sm">
+              REQUEST CUSTOM OEM PRODUCTION RUN
+            </a>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="window.filterBySpecialty('all')">
+              &larr; BACK TO ALL CATEGORIES
+            </button>
+          </div>
+        </div>
+
+        <div class="category-products-row-container">
+          <div class="category-products-row">
+            ${Array.from({ length: 5 }).map((_, i) => renderPlaceholderProductCard(catName, AppState.activeCollection, i + 1)).join('')}
+          </div>
+        </div>
       </div>
     `;
     return;
   }
 
-  grid.innerHTML = list.map(p => renderProductCard(p)).join('');
+  grid.innerHTML = `
+    <div style="grid-column: 1 / -1; margin-bottom: var(--space-4); display: flex; justify-content: space-between; align-items: center;">
+      <button type="button" class="btn btn-secondary btn-sm" onclick="window.filterBySpecialty('all')">
+        &larr; BACK TO ALL CATEGORIES
+      </button>
+      <span style="font-size: var(--text-xs); color: var(--color-steel-muted);">${list.length} Instruments Found</span>
+    </div>
+    ${list.map(p => renderProductCard(p)).join('')}
+  `;
 }
 
 /**

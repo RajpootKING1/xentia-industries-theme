@@ -4,6 +4,10 @@
   <section class="contact-page-wrapper">
     {% section 'contact-section' %}
   </section>
+{%- elsif page_handle_down contains 'about' or page_title_down contains 'about' or page.template_suffix contains 'about' or template.suffix contains 'about' -%}
+  <section class="about-page-wrapper">
+    {% render 'about-content' %}
+  </section>
 {%- else -%}
   {% section 'main-page' %}
 {%- endif -%}

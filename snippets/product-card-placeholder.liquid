@@ -1,0 +1,51 @@
+{%- comment -%}
+  Renders a luxury placeholder card for clinical disciplines with pending/zero catalog uploads.
+  Accepts:
+  - category_name: {String} Name of category
+  - category_handle: {String} Handle of category
+  - index: {Number} Slot number (1-5)
+{%- endcomment -%}
+
+<article class="product-card product-card-placeholder-state" data-category="{{ category_handle }}">
+  <div class="product-card-image-wrap placeholder-image-wrap">
+    <div class="placeholder-blueprint-graphic" aria-hidden="true">
+      <svg width="56" height="56" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="blueprint-svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.828 2.828M3 3l6.586 6.586m0 0L3 16.586m6.586-6.586L12 12"/>
+      </svg>
+      <span class="blueprint-subtext">FACTORY OEM BLUEPRINT</span>
+    </div>
+
+    <div class="product-card-badges">
+      <span class="stock-badge stock-no-product">NO PRODUCTS</span>
+    </div>
+  </div>
+
+  <div class="product-card-body">
+    <div class="product-card-meta">
+      <span class="product-card-type">{{ category_name | default: 'Surgical Discipline' }}</span>
+      <span class="product-card-tc-badge">DIN 1.4021</span>
+    </div>
+
+    <h3 class="product-card-title">
+      <a href="/pages/wholesale-custom-orders?specialty={{ category_handle }}">
+        {{ category_name | default: 'Surgical' }} Tooling
+      </a>
+    </h3>
+
+    <div class="product-card-pricing">
+      <span class="product-card-price" style="font-size: var(--text-sm); color: var(--color-steel-silver);">Production On Demand</span>
+      <span class="product-card-unit">/ Custom Batch</span>
+    </div>
+
+    <div class="product-card-actions">
+      <a href="/pages/wholesale-custom-orders?specialty={{ category_handle }}" class="btn btn-secondary btn-sm" style="flex: 1;">
+        CUSTOM RFQ
+      </a>
+      <a href="https://wa.me/923497400818?text={{ 'Hello Xentia Industries, I would like to inquire about OEM manufacturing for ' | append: category_name | append: ' instruments.' | url_encode }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" aria-label="Inquire via WhatsApp" style="padding: 0 10px;">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.076-2.029-.475-1.503-.62-2.457-2.15-2.532-2.25-.075-.101-.605-.806-.605-1.537 0-.73.383-1.09.519-1.238.136-.149.297-.186.396-.186.099 0 .198.001.284.006.091.004.213-.035.333.254.125.298.423 1.03.46 1.105.037.075.061.163.012.262-.049.099-.074.161-.148.247-.074.086-.157.193-.224.259-.075.074-.153.155-.066.304.087.149.387.638.83 1.033.571.51 1.052.668 1.201.742.149.075.236.062.323-.037.087-.099.371-.433.47-.582.099-.149.198-.124.334-.074.136.05.866.408 1.015.483.149.074.248.112.284.173.037.062.037.359-.107.764z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>

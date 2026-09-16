@@ -170,3 +170,78 @@ export function renderSkeletonProductCard() {
     </div>
   `;
 }
+
+/**
+ * Render a placeholder product card for empty or partially filled category rows
+ * @param {string} categoryName - Name of category
+ * @param {string} categoryHandle - Handle of category
+ * @param {number} index - Slot number (1-5)
+ * @returns {string} HTML markup
+ */
+export function renderPlaceholderProductCard(categoryName, categoryHandle = '', index = 1) {
+  const catName = categoryName || 'Surgical Instrument';
+  const waText = encodeURIComponent(`Hello Xentia Industries, I would like to inquire about OEM manufacturing for ${catName} instruments.`);
+  return `
+    <article 
+      class="card card-metallic product-card product-card-placeholder-state flex flex-col justify-between" 
+      data-category="${categoryHandle}"
+      role="region"
+      aria-label="${catName} - No Products (OEM Available)"
+    >
+      <div>
+        <div class="product-card-image-wrap placeholder-image-wrap" style="aspect-ratio: 1; border-radius: var(--radius-sm); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05);">
+          <div class="placeholder-blueprint-graphic flex flex-col items-center justify-center text-center p-4">
+            <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" class="blueprint-svg" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.828 2.828M3 3l6.586 6.586m0 0L3 16.586m6.586-6.586L12 12"/>
+            </svg>
+            <span class="blueprint-subtext" style="font-size: 9px; letter-spacing: 1.5px; margin-top: 8px; color: var(--color-steel-muted); font-weight: 700; text-transform: uppercase;">FACTORY OEM BLUEPRINT</span>
+          </div>
+          <span class="stock-badge stock-no-product" style="position: absolute; top: 10px; left: 10px;">
+            NO PRODUCTS
+          </span>
+        </div>
+
+        <div class="product-eyebrow" style="margin-top: var(--space-3);">
+          <span>${catName}</span>
+        </div>
+
+        <h3 class="product-title" style="min-height: 2.5em;">
+          <a href="wholesale-custom-orders.html?specialty=${categoryHandle}" class="product-title-link">
+            Custom ${catName} Tooling
+          </a>
+        </h3>
+
+        <div class="product-tech-badges flex items-center gap-1 flex-wrap">
+          <span class="product-tech-badge">DIN 1.4021</span>
+          <span class="product-tech-badge">ASTM F899</span>
+          <span class="product-tech-badge">Custom CNC</span>
+        </div>
+
+        <div class="product-price-wrapper" style="margin-top: var(--space-2);">
+          <span class="product-price" style="font-size: var(--text-sm); color: var(--color-steel-silver);">Production On Demand</span>
+          <span class="product-price-subtext">/ MOQ 5-10 Pcs</span>
+        </div>
+      </div>
+
+      <div class="product-actions flex flex-col gap-2" style="margin-top: var(--space-4);">
+        <a 
+          href="wholesale-custom-orders.html?specialty=${categoryHandle}" 
+          class="btn btn-secondary btn-sm btn-block text-center"
+          aria-label="Request custom OEM quote for ${catName}"
+        >
+          REQUEST OEM RFQ
+        </a>
+        <a 
+          href="https://wa.me/923497400818?text=${waText}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn btn-primary btn-sm btn-block text-center"
+          aria-label="WhatsApp Inquiry for ${catName}"
+        >
+          WHATSAPP FACTORY
+        </a>
+      </div>
+    </article>
+  `;
+}
+
