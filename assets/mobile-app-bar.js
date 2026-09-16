@@ -18,17 +18,19 @@ export class MobileAppBarController {
     this.bar = document.querySelector('.mobile-bottom-app-bar');
     if (!this.bar) return;
 
-    this.cartBadge = this.bar.querySelector('#mobile-bottom-cart-badge');
+    this.cartBadge = this.bar.querySelector('#mobile-bottom-cart-badge') || this.bar.querySelector('#mobile-cart-badge');
 
     // 1. Sync Active Route
     this._highlightActiveRoute();
 
     // 2. Wire Cart Click to Open Drawer
-    const cartTrigger = this.bar.querySelector('#mobile-bottom-cart-btn');
+    const cartTrigger = this.bar.querySelector('#mobile-bottom-cart-btn') || this.bar.querySelector('#mobile-app-cart-btn') || this.bar.querySelector('.js-cart-trigger');
     if (cartTrigger) {
       cartTrigger.addEventListener('click', (e) => {
         e.preventDefault();
-        cartController.openDrawer();
+        if (cartController && typeof cartController.openDrawer === 'function') {
+          cartController.openDrawer();
+        }
       });
     }
 
@@ -57,18 +59,18 @@ export class MobileAppBarController {
   _highlightActiveRoute() {
     const currentPath = window.location.pathname.toLowerCase();
     const currentHash = window.location.hash;
-    const links = this.bar.querySelectorAll('.mobile-nav-item');
+    const links = this.bar.querySelectorAll('.mobile-nav-item, .mobile-app-nav-item');
 
     links.forEach((link) => {
       const href = (link.getAttribute('href') || '').toLowerCase();
-      link.classList.remove('active');
+      link.classList.remove('active', 'is-active');
 
       if (href === currentPath || (currentPath.endsWith('/') && href.includes('index.html'))) {
-        link.classList.add('active');
+        link.classList.add('active', 'is-active');
       } else if (currentPath.includes(href) && href !== 'index.html' && href !== '/' && href !== '#') {
-        link.classList.add('active');
+        link.classList.add('active', 'is-active');
       } else if (currentHash && href.includes(currentHash)) {
-        link.classList.add('active');
+        link.classList.add('active', 'is-active');
       }
     });
 

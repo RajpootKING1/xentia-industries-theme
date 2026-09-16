@@ -2964,25 +2964,25 @@
 }
 
 /* ==========================================================================
-   MOBILE NATIVE APP BOTTOM NAVIGATION BAR (iOS / Android Native Feel)
+   MOBILE NATIVE APP BOTTOM NAVIGATION BAR (Luxury B2B Surgical App Experience)
    ========================================================================== */
 .mobile-bottom-app-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
-  background: rgba(10, 10, 12, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  height: 66px;
+  background: rgba(10, 11, 15, 0.94);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-around;
   z-index: 1050;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.6), 0 -1px 0 rgba(212, 175, 55, 0.2);
-  transition: transform 0.3s ease;
+  padding: 4px 6px calc(4px + env(safe-area-inset-bottom, 0px)) 6px;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.8), 0 -1px 0 rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @media (min-width: 1025px) {
@@ -2993,78 +2993,177 @@
 
 @media (max-width: 1024px) {
   body {
-    padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
 
-.mobile-nav-item {
+/* Individual Navigation Item / Button */
+.mobile-nav-item,
+.mobile-app-nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
   flex: 1;
   height: 100%;
-  color: var(--color-steel-muted);
+  min-width: 0;
+  padding: 4px 2px;
+  color: rgba(175, 180, 195, 0.72);
   text-decoration: none;
-  font-family: var(--font-display);
-  font-size: 10px;
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  transition: color var(--transition-fast), transform var(--transition-fast);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
   position: relative;
+  border-radius: 10px;
+  transition: color var(--transition-fast), transform var(--transition-fast);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  min-height: 48px;
+  user-select: none;
 }
 
-.mobile-nav-item:active {
+.mobile-nav-item:active,
+.mobile-app-nav-item:active {
   transform: scale(0.92);
 }
 
-.mobile-nav-item svg {
-  width: 20px;
-  height: 20px;
-  transition: transform var(--transition-fast), color var(--transition-fast);
+/* Centered Icon Box */
+.mobile-nav-icon-box,
+.mobile-app-nav-icon-wrapper {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
+.mobile-nav-item svg,
+.mobile-app-nav-item svg,
+.mobile-app-nav-icon {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 1.85;
+  transition: transform 0.2s ease, color 0.2s ease, stroke 0.2s ease, filter 0.2s ease;
+}
+
+/* Typography Label */
+.mobile-nav-label,
+.mobile-app-nav-label {
+  font-family: var(--font-display, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: capitalize;
+  line-height: 1.2;
+  margin-top: 2px;
+  color: inherit;
+  transition: color 0.2s ease, font-weight 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* Hover & Active States */
 .mobile-nav-item:hover,
-.mobile-nav-item.active {
-  color: var(--color-gold-bright);
+.mobile-app-nav-item:hover,
+.mobile-nav-item.active,
+.mobile-nav-item.is-active,
+.mobile-app-nav-item.active,
+.mobile-app-nav-item.is-active {
+  color: var(--color-gold-bright, #f7d57f);
 }
 
-.mobile-nav-item.active::after {
+.mobile-nav-item.active .mobile-nav-icon-box svg,
+.mobile-app-nav-item.is-active .mobile-nav-icon-box svg,
+.mobile-nav-item.active .mobile-app-nav-icon,
+.mobile-app-nav-item.is-active .mobile-app-nav-icon {
+  stroke: var(--color-gold-bright, #f7d57f);
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+  transform: translateY(-1px);
+}
+
+.mobile-nav-item.active .mobile-nav-label,
+.mobile-app-nav-item.is-active .mobile-app-nav-label {
+  color: var(--color-gold-bright, #f7d57f);
+  font-weight: 700;
+}
+
+/* Glowing Top Micro-Pill Indicator */
+.mobile-nav-item.active::after,
+.mobile-nav-item.is-active::after,
+.mobile-app-nav-item.active::after,
+.mobile-app-nav-item.is-active::after {
   content: '';
   position: absolute;
-  top: 0;
-  width: 24px;
-  height: 2px;
-  background: var(--grad-gold);
-  border-radius: var(--radius-pill);
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #d4af37, #fde08b);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.75);
 }
 
-.mobile-nav-item.b2b-highlight {
-  color: var(--color-gold-base);
+/* Center Highlighted B2B RFQ Action Button */
+.mobile-nav-item.b2b-highlight,
+.mobile-nav-item.b2b-quote-action,
+.mobile-app-nav-item.b2b-quote-action {
+  color: #f7d57f;
 }
 
-.mobile-nav-badge {
+.mobile-nav-icon-box.b2b-action-gem {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(180, 130, 20, 0.10) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 9px;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1px;
+}
+
+.mobile-nav-icon-box.b2b-action-gem svg,
+.mobile-app-nav-item.b2b-quote-action svg {
+  stroke: #f7d57f;
+  width: 19px;
+  height: 19px;
+}
+
+.mobile-nav-item.b2b-quote-action .mobile-nav-label,
+.mobile-app-nav-item.b2b-quote-action .mobile-app-nav-label {
+  color: #f7d57f;
+  font-weight: 700;
+}
+
+/* Cart Counter Notification Badge */
+.mobile-nav-badge,
+.mobile-app-nav-badge {
   position: absolute;
-  top: 6px;
-  right: calc(50% - 18px);
-  background: var(--color-gold-base);
-  color: var(--color-bg-deep);
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: var(--weight-bold);
-  min-width: 16px;
-  height: 16px;
-  border-radius: var(--radius-pill);
+  top: -3px;
+  right: -7px;
+  background: linear-gradient(135deg, #d4af37, #b8860b);
+  color: #0c0d10;
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  font-weight: 800;
+  min-width: 17px;
+  height: 17px;
+  line-height: 17px;
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+  padding: 0 3px;
+  border: 1.5px solid #0c0d10;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  pointer-events: none;
 }
 
 /* ==========================================================================
