@@ -51,10 +51,32 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          <li><a href="/pages/policies#warranty" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
-          <li><a href="/pages/policies#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
-          <li><a href="/pages/policies#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
-          <li><a href="/pages/policies#privacy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
+          {%- if shop.policies.size > 0 -%}
+            {%- for policy in shop.policies -%}
+              <li><a href="{{ policy.url }}" style="color: var(--color-steel-silver);">{{ policy.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            {%- if shop.refund_policy != blank -%}
+              <li><a href="{{ shop.refund_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.refund_policy.title }}</a></li>
+            {%- else -%}
+              <li><a href="/policies/refund-policy" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
+            {%- endif -%}
+            {%- if shop.shipping_policy != blank -%}
+              <li><a href="{{ shop.shipping_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.shipping_policy.title }}</a></li>
+            {%- else -%}
+              <li><a href="/policies/shipping-policy" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
+            {%- endif -%}
+            {%- if shop.terms_of_service != blank -%}
+              <li><a href="{{ shop.terms_of_service.url }}" style="color: var(--color-steel-silver);">{{ shop.terms_of_service.title }}</a></li>
+            {%- else -%}
+              <li><a href="/policies/terms-of-service" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
+            {%- endif -%}
+            {%- if shop.privacy_policy != blank -%}
+              <li><a href="{{ shop.privacy_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.privacy_policy.title }}</a></li>
+            {%- else -%}
+              <li><a href="/policies/privacy-policy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
+            {%- endif -%}
+          {%- endif -%}
           <li><a href="/pages/faq" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
         </ul>
       </div>

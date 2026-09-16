@@ -1,1 +1,9 @@
-{% section 'main-page' %}
+{%- assign page_handle_down = page.handle | downcase -%}
+{%- assign page_title_down = page.title | downcase -%}
+{%- if page_handle_down contains 'contact' or page_title_down contains 'contact' or page.template_suffix contains 'contact' or template.suffix contains 'contact' -%}
+  <section class="contact-page-wrapper">
+    {% section 'contact-section' %}
+  </section>
+{%- else -%}
+  {% section 'main-page' %}
+{%- endif -%}

@@ -1,54 +1,73 @@
 <section class="policies-page-section" style="padding: var(--space-12) 0 var(--space-20) 0;">
   <div class="container" style="max-width: 860px;">
     <div class="section-header text-center" style="margin-bottom: var(--space-10);">
-      <span class="badge-pill">COMPLIANCE & LEGAL</span>
-      <h1 class="section-title">FACTORY POLICIES & COMPLIANCE</h1>
+      <span class="badge-pill">COMPLIANCE &amp; LEGAL</span>
+      <h1 class="section-title">FACTORY POLICIES &amp; COMPLIANCE</h1>
       <p class="section-subtitle">
-        Standard terms of international procurement, lifetime warranty obligations, export regulations, and data protection.
+        Standard terms of international procurement, warranty obligations, export regulations, and medical data protection.
       </p>
+      <div style="width: 60px; height: 2px; background: var(--color-gold-base); margin: var(--space-4) auto 0;"></div>
     </div>
 
-    <!-- Policy 1: Lifetime Warranty -->
-    <div class="policy-card glass-card" id="warranty" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
-      <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
-        1. LIFETIME METALLURGICAL WARRANTY
-      </h2>
-      <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
-        Every instrument manufactured by Xentia Industries is guaranteed against defects in materials and craftsmanship for the working lifetime of the instrument. In the event of corrosion, pitting, stress fractures, or premature wear under standard surgical application and validated autoclave reprocessing (134&deg;C steam sterilization), the item will be repaired or replaced free of charge.
-      </p>
-      <p style="color: var(--color-steel-muted); font-size: var(--text-xs);">
-        Exclusions: Damage resulting from misuse, improper chemical cleaning agents (e.g., chlorine bleaches), accidental drops, or unauthorized field modifications.
-      </p>
-    </div>
+    {%- if shop.policies.size > 0 -%}
+      {%- for p in shop.policies -%}
+        <div class="policy-card glass-card" id="{{ p.title | handleize }}" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md); background: rgba(14, 15, 19, 0.95);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); border-bottom: var(--border-hairline); padding-bottom: var(--space-3);">
+            <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin: 0;">
+              {{ p.title | upcase }}
+            </h2>
+            <a href="{{ p.url }}" class="btn btn-secondary btn-sm" style="font-size: 11px; padding: 4px 10px;">
+              Official URL &rarr;
+            </a>
+          </div>
+          <div class="rte" style="color: var(--color-steel-silver); line-height: 1.8; font-size: var(--text-base);">
+            {{ p.body }}
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Policy 1: Lifetime Warranty -->
+      <div class="policy-card glass-card" id="warranty" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          1. LIFETIME METALLURGICAL WARRANTY
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          Every instrument manufactured by Xentia Industries is guaranteed against defects in materials and craftsmanship for the working lifetime of the instrument. In the event of corrosion, pitting, stress fractures, or premature wear under standard surgical application and validated autoclave reprocessing (134&deg;C steam sterilization), the item will be repaired or replaced free of charge.
+        </p>
+        <p style="color: var(--color-steel-muted); font-size: var(--text-xs);">
+          Exclusions: Damage resulting from misuse, improper chemical cleaning agents (e.g., chlorine bleaches), accidental drops, or unauthorized field modifications.
+        </p>
+      </div>
 
-    <!-- Policy 2: Shipping & Export -->
-    <div class="policy-card glass-card" id="shipping" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
-      <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
-        2. INTERNATIONAL SHIPPING & INCOTERMS 2020
-      </h2>
-      <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
-        Evaluation sample shipments are dispatched via tracked courier (DHL Express / FedEx International Priority) with average transit times of 4 to 7 business days worldwide. Commercial volume exports are offered under FOB (Karachi Port / Sialkot Dry Port), CIF, and DAP terms. All shipments include official commercial invoices, packing lists, Certificate of Origin (Chamber of Commerce Sialkot), and Mill Test Certificates.
-      </p>
-    </div>
+      <!-- Policy 2: Shipping & Export -->
+      <div class="policy-card glass-card" id="shipping" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          2. INTERNATIONAL SHIPPING &amp; INCOTERMS 2020
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          Evaluation sample shipments are dispatched via tracked courier (DHL Express / FedEx International Priority) with average transit times of 4 to 7 business days worldwide. Commercial volume exports are offered under FOB (Karachi Port / Sialkot Dry Port), CIF, and DAP terms. All shipments include official commercial invoices, packing lists, Certificate of Origin (Chamber of Commerce Sialkot), and Mill Test Certificates.
+        </p>
+      </div>
 
-    <!-- Policy 3: Terms of Service -->
-    <div class="policy-card glass-card" id="terms" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
-      <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
-        3. INSTITUTIONAL TERMS OF SERVICE
-      </h2>
-      <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
-        All quotation agreements, custom tooling commitments, and formal order confirmations are governed by the laws of Pakistan with international commercial arbitration standards. Quotations remain valid for 30 calendar days from the date of issue unless otherwise specified in writing.
-      </p>
-    </div>
+      <!-- Policy 3: Terms of Service -->
+      <div class="policy-card glass-card" id="terms" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          3. INSTITUTIONAL TERMS OF SERVICE
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          All quotation agreements, custom tooling commitments, and formal order confirmations are governed by the laws of Pakistan with international commercial arbitration standards. Quotations remain valid for 30 calendar days from the date of issue unless otherwise specified in writing.
+        </p>
+      </div>
 
-    <!-- Policy 4: Privacy & GDPR -->
-    <div class="policy-card glass-card" id="privacy" style="padding: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
-      <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
-        4. GDPR & MEDICAL DATA PRIVACY
-      </h2>
-      <p style="color: var(--color-steel-silver); line-height: 1.8;">
-        Xentia Industries respects the confidentiality of all hospital procurement data, surgical blueprint designs, and institutional purchasing histories. In compliance with European GDPR standards, client contact data is utilized exclusively for order fulfillment, technical advisory, and logistics tracking. We do not sell or monetize medical buyer data.
-      </p>
-    </div>
+      <!-- Policy 4: Privacy & GDPR -->
+      <div class="policy-card glass-card" id="privacy" style="padding: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          4. GDPR &amp; MEDICAL DATA PRIVACY
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8;">
+          Xentia Industries respects the confidentiality of all hospital procurement data, surgical blueprint designs, and institutional purchasing histories. In compliance with European GDPR standards, client contact data is utilized exclusively for order fulfillment, technical advisory, and logistics tracking. We do not sell or monetize medical buyer data.
+        </p>
+      </div>
+    {%- endif -%}
   </div>
 </section>

@@ -1,12 +1,25 @@
-<section class="section contact-section" id="contact">
+<section class="section contact-section" id="contact" style="padding-top: var(--space-12);">
   <div class="container">
     <div class="section-header text-center">
-      <span class="badge-pill">GLOBAL FACTORY DESK</span>
-      <h2 class="section-title">CONNECT DIRECTLY WITH SIALKOT HEADQUARTERS</h2>
+      <span class="badge-pill" style="margin-bottom: var(--space-3); display: inline-block;">GLOBAL FACTORY DESK</span>
+      <h1 class="section-title">
+        {%- if page.title != blank -%}
+          {{ page.title | upcase }}
+        {%- else -%}
+          CONNECT DIRECTLY WITH SIALKOT HEADQUARTERS
+        {%- endif -%}
+      </h1>
       <p class="section-subtitle">
         Direct communication with metallurgical engineers, tooling managers, and international export directors.
       </p>
+      <div style="width: 60px; height: 2px; background: var(--color-gold-base); margin: var(--space-4) auto 0;"></div>
     </div>
+
+    {%- if page.content != blank -%}
+      <div class="page-content rte text-center" style="max-width: 860px; margin: 0 auto var(--space-10) auto; color: var(--color-steel-silver); line-height: 1.8; font-size: var(--text-base); background: rgba(255,255,255,0.02); padding: var(--space-6); border-radius: var(--radius-md); border: 1px solid rgba(212,175,55,0.2);">
+        {{ page.content }}
+      </div>
+    {%- endif -%}
 
     <div class="contact-grid">
       <!-- Factory Info Column -->
@@ -17,7 +30,7 @@
         </div>
 
         <div class="info-block">
-          <h4 class="info-label">Plant Location & Export Office</h4>
+          <h4 class="info-label">Plant Location &amp; Export Office</h4>
           <p class="info-val">{{ settings.factory_address | default: 'Ugoki Road / Shahab Pura Road, Small Industrial Estate, Sialkot 51310, Punjab, Pakistan' }}</p>
         </div>
 
@@ -30,7 +43,7 @@
         </div>
 
         <div class="info-block">
-          <h4 class="info-label">Official Inquiries & Blueprints</h4>
+          <h4 class="info-label">Official Inquiries &amp; Blueprints</h4>
           <p class="info-val">
             <a href="mailto:{{ settings.contact_email | default: 'info@xentiaindustries.com' }}">{{ settings.contact_email | default: 'info@xentiaindustries.com' }}</a>
           </p>
@@ -38,9 +51,9 @@
 
         <div class="info-block">
           <h4 class="info-label">WhatsApp Direct Desk</h4>
-          <a href="{{ settings.social_whatsapp_url | default: 'https://wa.me/923497400818' }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 6px;">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            Instant WhatsApp Desk
+          <a href="{{ settings.social_whatsapp_url | default: 'https://wa.me/923497400818' }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; border-color: #25D366; color: #25D366;">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Chat on WhatsApp (+92 349 7400818)
           </a>
         </div>
 
@@ -53,34 +66,36 @@
       <!-- Factory Form Column -->
       <div class="contact-form-card">
         {% form 'contact', id: 'contact-inquiry-form', class: 'contact-inquiry-form' %}
+          <input type="hidden" name="contact[tags]" value="inquiry,contact-page">
+
           {%- if form.posted_successfully? -%}
-            <div class="form-feedback success">
+            <div class="form-feedback success" style="background: rgba(37, 211, 102, 0.1); border: 1px solid #25D366; padding: var(--space-4); border-radius: var(--radius-sm); margin-bottom: var(--space-6); color: #25D366; display: flex; align-items: center; gap: var(--space-3);">
               <svg width="24" height="24" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-              <span>{{ 'contact.form.success' | t }}</span>
+              <span>{{ 'contact.form.success' | t | default: 'Your inquiry has been logged. Our Sialkot metallurgical team will reply within 24 hours.' }}</span>
             </div>
           {%- endif -%}
 
           {%- if form.errors -%}
-            <div class="form-feedback error">
+            <div class="form-feedback error" style="background: rgba(220, 53, 69, 0.1); border: 1px solid #dc3545; padding: var(--space-4); border-radius: var(--radius-sm); margin-bottom: var(--space-6); color: #ff6b6b;">
               <span>{{ form.errors | default_errors }}</span>
             </div>
           {%- endif -%}
 
           <div class="form-row">
             <div class="form-group">
-              <label for="contact-name" class="form-label">Full Name & Title <span class="required">*</span></label>
-              <input type="text" id="contact-name" name="contact[name]" class="form-input" placeholder="e.g., Dr. Alexander Wright / MD" required>
+              <label for="contact-name" class="form-label">Full Name &amp; Title <span class="required" style="color: var(--color-gold-base);">*</span></label>
+              <input type="text" id="contact-name" name="contact[name]" class="form-input" placeholder="e.g., Dr. Alexander Wright / MD" value="{{ form.name }}" required>
             </div>
             <div class="form-group">
-              <label for="contact-email" class="form-label">Corporate / Hospital Email <span class="required">*</span></label>
-              <input type="email" id="contact-email" name="contact[email]" class="form-input" placeholder="surgeon@hospital.org" required>
+              <label for="contact-email" class="form-label">Corporate / Hospital Email <span class="required" style="color: var(--color-gold-base);">*</span></label>
+              <input type="email" id="contact-email" name="contact[email]" class="form-input" placeholder="surgeon@hospital.org" value="{{ form.email }}" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label for="contact-phone" class="form-label">Direct Phone / WhatsApp</label>
-              <input type="tel" id="contact-phone" name="contact[phone]" class="form-input" placeholder="+1 (555) 000-0000">
+              <label for="contact-phone" class="form-label">Direct Phone / WhatsApp Desk</label>
+              <input type="tel" id="contact-phone" name="contact[phone]" class="form-input" placeholder="+92 349 7400818" value="{{ form.phone }}">
             </div>
             <div class="form-group">
               <label for="contact-company" class="form-label">Hospital / Clinic / Company</label>
@@ -88,26 +103,37 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="contact-discipline" class="form-label">Surgical Specialty / Inquiry Type</label>
-            <select id="contact-discipline" name="contact[discipline]" class="form-select">
-              <option value="Plastic & Rhinoplasty">Plastic & Rhinoplasty Surgery</option>
-              <option value="Hair Restoration FUE">Hair Restoration (FUE / FUT)</option>
-              <option value="Dental & Maxillofacial">Dental & Oral Surgery</option>
-              <option value="Orthopedic & Spine">Orthopedic & Spine</option>
-              <option value="Custom OEM / Private Label">Custom OEM / Private Label Tooling</option>
-              <option value="Institutional Procurement">Bulk Hospital Tender / Tender Bid</option>
-            </select>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-discipline" class="form-label">Surgical Specialty / Inquiry Type</label>
+              <select id="contact-discipline" name="contact[discipline]" class="form-select">
+                <option value="Plastic & Rhinoplasty">Plastic &amp; Rhinoplasty Surgery</option>
+                <option value="Hair Restoration FUE">Hair Restoration (FUE / FUT)</option>
+                <option value="Dental & Maxillofacial">Dental &amp; Oral Surgery</option>
+                <option value="Orthopedic & Spine">Orthopedic &amp; Spine</option>
+                <option value="Custom OEM / Private Label">Custom OEM / Private Label Tooling</option>
+                <option value="Institutional Procurement">Bulk Hospital Tender / Tender Bid</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact-quantity" class="form-label">Estimated Order Volume / Timeline</label>
+              <select id="contact-quantity" name="contact[estimated_quantity]" class="form-select">
+                <option value="Evaluation Samples (1-5 units)">Evaluation Samples (1-5 units)</option>
+                <option value="Initial Batch (25-100 units)">Initial Batch (25-100 units)</option>
+                <option value="Commercial Volume (100-500 units)">Commercial Volume (100-500 units)</option>
+                <option value="Full Container (1000+ units)">Full Container Export (1000+ units)</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
-            <label for="contact-message" class="form-label">Instrument SKUs, Quantities or Technical Questions <span class="required">*</span></label>
-            <textarea id="contact-message" name="contact[body]" rows="5" class="form-textarea" placeholder="Detail the instrument models, stainless steel alloy preferences (DIN 1.4021 vs Japanese 440C), laser marking requirements, or sample requests..." required></textarea>
+            <label for="contact-message" class="form-label">Instrument SKUs, Quantities or Technical Questions <span class="required" style="color: var(--color-gold-base);">*</span></label>
+            <textarea id="contact-message" name="contact[body]" rows="5" class="form-textarea" placeholder="Detail the instrument models, stainless steel alloy preferences (DIN 1.4021 vs Japanese 440C), laser marking requirements, or sample requests..." required>{{ form.body }}</textarea>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block">
+          <button type="submit" class="btn btn-primary btn-block" style="padding: 1rem; font-size: var(--text-sm); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wider);">
             SUBMIT FACTORY INQUIRY
-            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 8px; display: inline-block; vertical-align: middle;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </button>
         {% endform %}
       </div>
