@@ -1,0 +1,103 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Xentia Precision Surgical Theme",
+    "theme_version": "2.0.0",
+    "theme_author": "Xentia Industries",
+    "theme_documentation_url": "https://xentiaindustries.com/docs",
+    "theme_support_url": "mailto:info@xentiaindustries.com"
+  },
+  {
+    "name": "Factory & Contact Details",
+    "settings": [
+      {
+        "type": "text",
+        "id": "factory_address",
+        "label": "Factory Address",
+        "default": "Ugoki Road, Small Industrial Estate, Sialkot 51310, Punjab, Pakistan"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_1",
+        "label": "Primary Contact Phone",
+        "default": "+92 345 9656454"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_2",
+        "label": "Secondary Contact Phone",
+        "default": "+92 349 7400818"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "Inquiry Email",
+        "default": "info@xentiaindustries.com"
+      },
+      {
+        "type": "text",
+        "id": "whatsapp_number",
+        "label": "WhatsApp Desk (International)",
+        "default": "+92 345 9656454"
+      }
+    ]
+  },
+  {
+    "name": "Social Media Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_facebook_url",
+        "label": "Facebook URL",
+        "default": "https://facebook.com/xentiaindustries"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram_url",
+        "label": "Instagram URL",
+        "default": "https://instagram.com/xentiaindustries"
+      },
+      {
+        "type": "text",
+        "id": "social_linkedin_url",
+        "label": "LinkedIn URL",
+        "default": "https://linkedin.com/company/xentiaindustries"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube_url",
+        "label": "YouTube URL",
+        "default": "https://youtube.com/@xentiaindustries"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp_url",
+        "label": "WhatsApp Direct URL",
+        "default": "https://wa.me/923459656454"
+      }
+    ]
+  },
+  {
+    "name": "Typography & Branding",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_primary_gold",
+        "label": "Primary Gold Accent",
+        "default": "#d4af37"
+      },
+      {
+        "type": "color",
+        "id": "color_bg_obsidian",
+        "label": "Background Obsidian",
+        "default": "#0a0a0c"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_mobile_app_bar",
+        "label": "Enable Native Mobile App Bar",
+        "default": true
+      }
+    ]
+  }
+]

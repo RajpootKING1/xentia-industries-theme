@@ -1,0 +1,55 @@
+{%- comment -%}
+  Renders a surgical instrument card
+  Accepts:
+  - product: {Object} Shopify Product object
+{%- endcomment -%}
+
+<article class="product-card" data-product-id="{{ product.id }}" data-handle="{{ product.handle }}">
+  <div class="product-card-image-wrap">
+    {%- if product.featured_media -%}
+      <img 
+        src="{{ product.featured_media | image_url: width: 600 }}" 
+        alt="{{ product.title | escape }}" 
+        loading="lazy" 
+        class="product-card-img"
+        width="600"
+        height="600"
+      >
+    {%- else -%}
+      <div class="product-card-placeholder">
+        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.828 2.828M3 3l6.586 6.586m0 0L3 16.586m6.586-6.586L12 12"/></svg>
+      </div>
+    {%- endif -%}
+
+    <div class="product-card-badges">
+      {%- if product.available -%}
+        <span class="stock-badge stock-sample">Sample In-Stock</span>
+      {%- else -%}
+        <span class="stock-badge stock-custom">Made to Order</span>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="product-card-body">
+    <div class="product-card-meta">
+      <span class="product-card-type">{{ product.type | default: 'Surgical Instrument' }}</span>
+      {%- if product.tags contains 'TC' -%}
+        <span class="product-card-tc-badge">TC Inlay</span>
+      {%- endif -%}
+    </div>
+
+    <h3 class="product-card-title">
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </h3>
+
+    <div class="product-card-pricing">
+      <span class="product-card-price">{{ product.price | money }}</span>
+      <span class="product-card-unit">/ eval sample</span>
+    </div>
+
+    <div class="product-card-actions">
+      <a href="{{ product.url }}" class="btn btn-secondary btn-sm" style="flex: 1;">SPECS & VIEW</a>
+      <a href="/pages/wholesale-custom-orders?product={{ product.handle }}&title={{ product.title | url_encode }}" class="btn btn-primary btn-sm">B2B QUOTE</a>
+    </div>
+  </div>
+</article>

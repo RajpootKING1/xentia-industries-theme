@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "specialties": {
+      "type": "specialties",
+      "settings": {}
+    },
+    "surgical_sets": {
+      "type": "surgical-sets",
+      "settings": {}
+    },
+    "oem_showcase": {
+      "type": "oem-showcase",
+      "settings": {}
+    },
+    "why_choose": {
+      "type": "why-choose",
+      "settings": {}
+    },
+    "contact_section": {
+      "type": "contact-section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "specialties",
+    "surgical_sets",
+    "oem_showcase",
+    "why_choose",
+    "contact_section"
+  ]
+}

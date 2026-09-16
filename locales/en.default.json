@@ -1,0 +1,82 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_text": "Skip to content",
+      "close": "Close",
+      "cart": "Procurement Cart"
+    },
+    "meta": {
+      "tags": "Tags",
+      "page": "Page {{ page }}"
+    },
+    "search": {
+      "placeholder": "Search 50+ surgical instruments, SKU, or specialty...",
+      "submit": "Search"
+    }
+  },
+  "sections": {
+    "header": {
+      "catalog": "Catalog",
+      "sets": "Surgical Sets",
+      "oem": "Custom OEM",
+      "about": "About Factory",
+      "contact": "Contact",
+      "quote": "B2B Quote"
+    },
+    "cart": {
+      "title": "PROCUREMENT CART",
+      "empty": "Your procurement cart is empty.",
+      "checkout": "PROCEED TO SECURE CHECKOUT",
+      "sample_order": "Direct Sample Order",
+      "tier_note": "Institutional Tier: Minimum order 1 unit for clinical evaluation. Volume discounts applied at checkout."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "ADD EVALUATION UNIT TO CART",
+      "request_quote": "REQUEST B2B FACTORY QUOTE",
+      "in_stock": "In Stock for Evaluation",
+      "custom_build": "Custom Build / Made to Order",
+      "sold_out": "Factory Backorder",
+      "price": "Sample Unit Price",
+      "specifications": "Instrument Metallurgy & Specifications"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Hospital & B2B Portal",
+      "welcome": "Welcome back",
+      "details": "Account Details",
+      "orders": "Procurement Inquiries & Orders"
+    },
+    "login": {
+      "title": "Institutional Sign In",
+      "email": "Official Hospital / Business Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "sign_in": "ACCESS PROCUREMENT PORTAL",
+      "create_account": "Register Hospital / Clinic Account"
+    },
+    "register": {
+      "title": "Register Medical Institution",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "org_type": "Institutional Role",
+      "email": "Business Email",
+      "password": "Password",
+      "submit": "CREATE VERIFIED ACCOUNT"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Full Name & Title",
+      "email": "Hospital / Corporate Email",
+      "phone": "Direct Phone / WhatsApp",
+      "facility": "Facility / Company Name",
+      "discipline": "Medical Discipline",
+      "message": "Project Requirements / Instrument SKUs",
+      "submit": "SUBMIT FACTORY INQUIRY",
+      "success": "Your inquiry has been logged. Our Sialkot metallurgical team will reply within 24 hours."
+    }
+  }
+}

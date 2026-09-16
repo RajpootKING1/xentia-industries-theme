@@ -1,0 +1,64 @@
+<section class="hero-section" id="hero">
+  <div class="hero-bg-overlay">
+    <img 
+      src="{{ 'hero_surgical_showcase.webp' | asset_url }}" 
+      alt="Xentia Precision Surgical Instruments" 
+      class="hero-bg-media"
+      loading="eager"
+      width="1920"
+      height="1080"
+    >
+    <div class="hero-gradient-overlay"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badge-wrap">
+      {% render 'metallurgy-badges' %}
+    </div>
+
+    <h1 class="hero-title">
+      PRECISION SURGICAL INSTRUMENTS
+      <span class="gold-gradient-text block">FORGED FOR SURGICAL MASTERY</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Manufactured directly in our Sialkot production facility using German DIN 1.4021 stainless steel and Japanese cobalt alloys. Providing world-class surgeons and medical distributors with micro-tolerance cutting shears, tungsten carbide needle holders, and custom OEM surgical sets.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="/collections/all" class="btn btn-primary btn-lg">
+        EXPLORE 50+ INSTRUMENTS
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+      <a href="/pages/wholesale-custom-orders" class="btn btn-secondary btn-lg">
+        REQUEST B2B FACTORY QUOTE
+      </a>
+    </div>
+
+    <div class="hero-stats-row">
+      <div class="hero-stat-item">
+        <span class="stat-number">54-58</span>
+        <span class="stat-label">Rockwell HRC Temper</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Optical Microscope Inspected</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="stat-number">ISO 13485</span>
+        <span class="stat-label">Medical Quality Standard</span>
+      </div>
+      <div class="hero-stat-item">
+        <span class="stat-number">45+</span>
+        <span class="stat-label">Countries Exported Direct</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Showcase",
+  "settings": []
+}
+{% endschema %}

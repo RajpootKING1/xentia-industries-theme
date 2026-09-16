@@ -1,0 +1,62 @@
+<section class="cart-page-section">
+  <div class="container" style="max-width: 960px; padding: var(--space-16) var(--space-4);">
+    <div class="section-header text-center">
+      <span class="badge-pill">PROCUREMENT ORDER</span>
+      <h1 class="section-title">YOUR PROCUREMENT CART</h1>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="/cart" method="post" novalidate class="cart-table-form">
+        <table class="cart-table" style="width: 100%; border-collapse: collapse; margin-top: var(--space-8);">
+          <thead>
+            <tr style="border-bottom: var(--border-medium); text-align: left; font-size: var(--text-xs); color: var(--color-steel-muted); text-transform: uppercase;">
+              <th style="padding: var(--space-4);">Instrument</th>
+              <th style="padding: var(--space-4);">Sample Price</th>
+              <th style="padding: var(--space-4);">Quantity</th>
+              <th style="padding: var(--space-4); text-align: right;">Total</th>
+            </tr>
+          </thead>
+          <tbody style="border-bottom: var(--border-medium);">
+            {%- for item in cart.items -%}
+              <tr style="border-bottom: var(--border-hairline);">
+                <td style="padding: var(--space-4); display: flex; align-items: center; gap: var(--space-4);">
+                  {%- if item.image -%}
+                    <img src="{{ item.image | image_url: width: 120 }}" alt="{{ item.title | escape }}" width="60" height="60" style="border-radius: var(--radius-sm); border: var(--border-hairline);">
+                  {%- endif -%}
+                  <div>
+                    <h3 style="font-size: var(--text-base); color: var(--color-steel-white); margin-bottom: 2px;">{{ item.product.title }}</h3>
+                    {%- unless item.variant.title contains 'Default' -%}
+                      <p style="font-size: var(--text-xs); color: var(--color-gold-base);">{{ item.variant.title }}</p>
+                    {%- endunless -%}
+                  </div>
+                </td>
+                <td style="padding: var(--space-4); color: var(--color-steel-silver);">{{ item.price | money }}</td>
+                <td style="padding: var(--space-4);">
+                  <input type="number" name="updates[]" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0" style="width: 70px; background: rgba(255,255,255,0.05); border: var(--border-hairline); color: #fff; padding: 6px 10px; border-radius: var(--radius-sm); text-align: center;">
+                </td>
+                <td style="padding: var(--space-4); text-align: right; color: var(--color-gold-bright); font-weight: 700;">{{ item.final_line_price | money }}</td>
+              </tr>
+            {%- endfor -%}
+          </tbody>
+        </table>
+
+        <div class="cart-summary-box" style="margin-top: var(--space-8); display: flex; flex-direction: column; align-items: flex-end; gap: var(--space-4);">
+          <div style="font-size: var(--text-xl); color: var(--color-steel-white);">
+            Subtotal: <span style="color: var(--color-gold-bright); font-weight: 700;">{{ cart.total_price | money }}</span>
+          </div>
+          <p style="font-size: var(--text-xs); color: var(--color-steel-muted);">Evaluation samples ship direct from Sialkot factory via DHL Express with mill test certs.</p>
+          <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+            <button type="submit" name="update" class="btn btn-secondary btn-sm">UPDATE QUANTITIES</button>
+            <button type="submit" name="checkout" class="btn btn-primary btn-sm">PROCEED TO CHECKOUT</button>
+          </div>
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty text-center" style="padding: var(--space-16) 0;">
+        <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="opacity: 0.4; margin: 0 auto var(--space-4) auto;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <p style="color: var(--color-steel-silver); font-size: var(--text-lg); margin-bottom: var(--space-6);">Your procurement cart is currently empty.</p>
+        <a href="/collections/all" class="btn btn-primary btn-sm">EXPLORE SURGICAL INSTRUMENTS</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>

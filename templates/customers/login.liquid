@@ -1,0 +1,40 @@
+<section class="auth-section" style="padding: var(--space-16) var(--space-4);">
+  <div class="container" style="max-width: 520px;">
+    <div class="auth-card">
+      <div class="auth-header text-center">
+        <span class="badge-pill">INSTITUTIONAL PORTAL</span>
+        <h1 class="auth-title">CLIENT SIGN IN</h1>
+        <p class="auth-subtitle">Access your hospital procurement records, active B2B quotations, and sample tracking.</p>
+      </div>
+
+      {% form 'customer_login' %}
+        {{ form.errors | default_errors }}
+
+        <div class="form-group">
+          <label for="CustomerEmail" class="form-label">Official Hospital / Corporate Email</label>
+          <input type="email" name="customer[email]" id="CustomerEmail" class="form-input" autocomplete="email" autocorrect="off" autocapitalize="off" placeholder="surgeon@hospital.org" required>
+        </div>
+
+        {%- if form.password_needed -%}
+          <div class="form-group">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <label for="CustomerPassword" class="form-label" style="margin-bottom: 0;">Password</label>
+              <a href="#recover" onclick="document.getElementById('recover').style.display='block'; document.getElementById('login-form-block').style.display='none';" style="font-size: var(--text-xs); color: var(--color-gold-base);">Forgot password?</a>
+            </div>
+            <input type="password" name="customer[password]" id="CustomerPassword" class="form-input" autocomplete="current-password" placeholder="••••••••" required>
+          </div>
+        {%- endif -%}
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
+          SIGN IN TO PORTAL
+        </button>
+      {% endform %}
+
+      <div class="auth-footer text-center" style="margin-top: var(--space-6); padding-top: var(--space-6); border-top: var(--border-hairline);">
+        <p style="color: var(--color-steel-silver); font-size: var(--text-sm);">
+          New institutional client? <a href="/account/register" style="color: var(--color-gold-bright); font-weight: 600;">Register Hospital / Clinic Account &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

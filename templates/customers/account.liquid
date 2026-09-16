@@ -1,0 +1,89 @@
+<section class="account-dashboard-section" style="padding: var(--space-16) var(--space-4);">
+  <div class="container" style="max-width: 1100px;">
+    <div class="account-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-8); padding-bottom: var(--space-4); border-bottom: var(--border-medium); flex-wrap: wrap; gap: var(--space-4);">
+      <div>
+        <span class="badge-pill">INSTITUTIONAL CLIENT PORTAL</span>
+        <h1 class="page-title" style="font-size: var(--text-3xl); color: var(--color-steel-white); margin-top: var(--space-2);">
+          Welcome, {{ customer.name }}
+        </h1>
+        <p style="color: var(--color-steel-muted); font-size: var(--text-sm);">Account ID: #CLT-{{ customer.id }} | Tier: Verified Institutional Partner</p>
+      </div>
+      <div>
+        <a href="/account/logout" class="btn btn-secondary btn-sm">LOG OUT</a>
+      </div>
+    </div>
+
+    <div class="account-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-8);">
+      <!-- Left: Orders / Procurement Inquiries -->
+      <div class="account-card glass-card" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); font-size: var(--text-xl); color: var(--color-steel-white); margin-bottom: var(--space-4);">
+          EVALUATION SAMPLES & ORDERS
+        </h2>
+
+        {%- paginate customer.orders by 10 -%}
+          {%- if customer.orders.size > 0 -%}
+            <div class="orders-table-wrap">
+              <table style="width: 100%; border-collapse: collapse; font-size: var(--text-sm);">
+                <thead>
+                  <tr style="border-bottom: var(--border-medium); text-align: left; color: var(--color-steel-muted);">
+                    <th style="padding: 8px;">Order</th>
+                    <th style="padding: 8px;">Date</th>
+                    <th style="padding: 8px;">Status</th>
+                    <th style="padding: 8px; text-align: right;">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {%- for order in customer.orders -%}
+                    <tr style="border-bottom: var(--border-hairline);">
+                      <td style="padding: 8px;"><a href="{{ order.customer_url }}" style="color: var(--color-gold-bright);">{{ order.name }}</a></td>
+                      <td style="padding: 8px; color: var(--color-steel-silver);">{{ order.created_at | date: "%b %d, %Y" }}</td>
+                      <td style="padding: 8px;"><span class="badge-pill" style="font-size: 10px;">{{ order.fulfillment_status_label }}</span></td>
+                      <td style="padding: 8px; text-align: right; color: var(--color-steel-white);">{{ order.total_price | money }}</td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+          {%- else -%}
+            <p style="color: var(--color-steel-silver); font-size: var(--text-sm); line-height: 1.6;">
+              No sample or bulk purchase orders on file yet. Ready to evaluate instruments for your surgical practice?
+            </p>
+            <div style="margin-top: var(--space-4);">
+              <a href="/collections/all" class="btn btn-primary btn-sm">BROWSE INSTRUMENT CATALOG</a>
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+
+      <!-- Right: Account Details & Factory Contact -->
+      <div class="account-card glass-card" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); font-size: var(--text-xl); color: var(--color-steel-white); margin-bottom: var(--space-4);">
+          HOSPITAL / CLINIC PROFILE
+        </h2>
+        <div style="color: var(--color-steel-silver); font-size: var(--text-sm); line-height: 1.8;">
+          <p><strong>Primary Contact:</strong> {{ customer.name }}</p>
+          <p><strong>Email:</strong> {{ customer.email }}</p>
+          {%- if customer.default_address -%}
+            <p><strong>Dispatch Facility:</strong><br>
+              {{ customer.default_address.address1 }}<br>
+              {% if customer.default_address.address2 %}{{ customer.default_address.address2 }}<br>{% endif %}
+              {{ customer.default_address.city }}, {{ customer.default_address.province_code }} {{ customer.default_address.zip }}<br>
+              {{ customer.default_address.country }}
+            </p>
+          {%- endif -%}
+        </div>
+
+        <div style="margin-top: var(--space-6); padding-top: var(--space-6); border-top: var(--border-hairline);">
+          <h3 style="font-size: var(--text-sm); color: var(--color-gold-bright); text-transform: uppercase; margin-bottom: var(--space-2);">Direct Factory Account Rep</h3>
+          <p style="font-size: var(--text-xs); color: var(--color-steel-muted); line-height: 1.6;">
+            Your dedicated Sialkot export coordinator is on standby for custom OEM inquiries, volume container logistics, and mill certificates.
+          </p>
+          <div style="display: flex; gap: var(--space-2); margin-top: var(--space-4);">
+            <a href="https://wa.me/923459656454" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="flex: 1; text-align: center;">WHATSAPP DESK</a>
+            <a href="/pages/wholesale-custom-orders" class="btn btn-primary btn-sm" style="flex: 1; text-align: center;">NEW B2B QUOTE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,163 @@
+/**
+ * XENTIA INDUSTRIES - MOTION & ANIMATION UTILITIES
+ * Version: 1.0.0
+ * Authority: /docs/DESIGN-SYSTEM.md
+ */
+
+/* ==========================================================================
+   Hardware-Accelerated Keyframes
+   ========================================================================== */
+
+/* Metallic Gold Pulse */
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
+    border-color: rgba(212, 175, 55, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(212, 175, 55, 0.5);
+    border-color: rgba(243, 229, 171, 0.8);
+  }
+}
+
+/* Subtle Shimmer for Loading & Highlights */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Continuous Infinite Marquee */
+@keyframes marqueeScroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Fade In Up Entrance */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Typing Caret Blink */
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Slow Precision Rotation (for Gears / Dial graphics) */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==========================================================================
+   Animation Utility Classes
+   ========================================================================== */
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+.animate-fade-up {
+  animation: fadeInUp var(--transition-slow) forwards;
+}
+
+.animate-pulse-gold {
+  animation: pulseGold 3s infinite ease-in-out;
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.15em;
+  background-color: var(--color-gold-base);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: caretBlink 1s infinite;
+}
+
+/* Shimmer Loading Skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #181920 25%, #262834 50%, #181920 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Preloader Emblem Scanning Sheen */
+@keyframes loaderSheen {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion Enforcements
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none !important;
+    overflow-x: auto;
+  }
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-pulse-gold,
+  .skeleton,
+  .loader-scan-sheen {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .typing-cursor {
+    animation: none !important;
+  }
+  .xentia-loader {
+    transition: none !important;
+  }
+}

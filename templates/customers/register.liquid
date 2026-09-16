@@ -1,0 +1,56 @@
+<section class="auth-section" style="padding: var(--space-16) var(--space-4);">
+  <div class="container" style="max-width: 580px;">
+    <div class="auth-card">
+      <div class="auth-header text-center">
+        <span class="badge-pill">INSTITUTIONAL REGISTRATION</span>
+        <h1 class="auth-title">CREATE VERIFIED ACCOUNT</h1>
+        <p class="auth-subtitle">Register your surgical practice, clinic, hospital group, or distribution company for direct factory pricing.</p>
+      </div>
+
+      {% form 'create_customer' %}
+        {{ form.errors | default_errors }}
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="FirstName" class="form-label">First Name</label>
+            <input type="text" name="customer[first_name]" id="FirstName" class="form-input" placeholder="e.g. Marcus" required>
+          </div>
+          <div class="form-group">
+            <label for="LastName" class="form-label">Last Name</label>
+            <input type="text" name="customer[last_name]" id="LastName" class="form-input" placeholder="e.g. Vance" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="CustomerOrgType" class="form-label">Institutional / Clinical Role</label>
+          <select id="CustomerOrgType" name="customer[note][Role]" class="form-select">
+            <option value="Surgeon / Private Practice">Surgeon / Private Practice Clinic</option>
+            <option value="Hospital Procurement Department">Hospital Procurement Department</option>
+            <option value="Medical Supply Distributor">Medical Supply Distributor / Wholesaler</option>
+            <option value="OEM / Private Label Brand">OEM / Private Label Surgical Brand</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="Email" class="form-label">Official Business / Hospital Email</label>
+          <input type="email" name="customer[email]" id="Email" class="form-input" placeholder="name@surgical-center.org" required>
+        </div>
+
+        <div class="form-group">
+          <label for="CreatePassword" class="form-label">Password</label>
+          <input type="password" name="customer[password]" id="CreatePassword" class="form-input" placeholder="At least 8 characters" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
+          REGISTER MEDICAL ACCOUNT
+        </button>
+      {% endform %}
+
+      <div class="auth-footer text-center" style="margin-top: var(--space-6); padding-top: var(--space-6); border-top: var(--border-hairline);">
+        <p style="color: var(--color-steel-silver); font-size: var(--text-sm);">
+          Already have an account? <a href="/account/login" style="color: var(--color-gold-bright); font-weight: 600;">Sign in here &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

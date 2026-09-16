@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <!-- SEO Title & Meta -->
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- else -%}
+    <meta name="description" content="Xentia Industries &ndash; Precision German DIN 1.4021 Surgical Instruments, OEM/ODM Manufacturing, and Wholesale Hospital Procurement from Sialkot, Pakistan.">
+  {%- endif -%}
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
+  <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
+  <meta name="theme-color" content="#0a0a0c">
+
+  <!-- Shopify Required Header Tags -->
+  {{ content_for_header }}
+
+  <!-- Xentia Design System & Component Styles -->
+  {{ 'tokens.css' | asset_url | stylesheet_tag }}
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+  {{ 'layout.css' | asset_url | stylesheet_tag }}
+  {{ 'components.css' | asset_url | stylesheet_tag }}
+  {{ 'animations.css' | asset_url | stylesheet_tag }}
+  {{ 'shopify-overrides.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body class="template-{{ template.name | handle }}">
+  <a class="sr-only focus:not-sr-only" href="#MainContent">Skip to content</a>
+
+  {% section 'header' %}
+
+  <main role="main" id="MainContent" class="main-content">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  {% section 'mobile-bottom-nav' %}
+
+  {% render 'cart-drawer' %}
+
+  <script>
+    // Header & Mobile Drawer Controls
+    document.addEventListener('DOMContentLoaded', () => {
+      const openMenuBtn = document.getElementById('mobile-menu-open-btn');
+      const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
+      const drawer = document.getElementById('mobile-menu-drawer');
+
+      if (openMenuBtn && drawer) {
+        openMenuBtn.addEventListener('click', () => {
+          drawer.style.display = 'block';
+        });
+      }
+
+      if (closeMenuBtn && drawer) {
+        closeMenuBtn.addEventListener('click', () => {
+          drawer.style.display = 'none';
+        });
+      }
+
+      // Cart Drawer Trigger
+      const cartTriggers = document.querySelectorAll('.js-cart-trigger');
+      const cartDrawer = document.getElementById('shopify-cart-drawer');
+      cartTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          if (cartDrawer) {
+            e.preventDefault();
+            cartDrawer.style.display = 'flex';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

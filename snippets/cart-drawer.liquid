@@ -1,0 +1,36 @@
+<div id="shopify-cart-drawer" class="cart-drawer-overlay" aria-hidden="true" style="display: none;">
+  <div class="cart-drawer-backdrop" onclick="document.getElementById('shopify-cart-drawer').style.display='none'"></div>
+  <aside class="cart-drawer" role="dialog" aria-modal="true" aria-label="Procurement Cart">
+    <div class="cart-drawer-header">
+      <div class="cart-drawer-title-wrap">
+        <h2 class="cart-drawer-title">PROCUREMENT CART</h2>
+        <span class="cart-drawer-badge" id="drawer-item-count">0 items</span>
+      </div>
+      <button type="button" class="cart-drawer-close" onclick="document.getElementById('shopify-cart-drawer').style.display='none'" aria-label="Close Cart">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="cart-drawer-body" id="cart-drawer-items">
+      <!-- Reactive cart items rendered here -->
+      <div class="cart-empty-state">
+        <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="opacity: 0.4; margin-bottom: var(--space-4);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+        <p>Your procurement cart is empty.</p>
+        <a href="/collections/all" class="btn btn-secondary btn-sm" style="margin-top: var(--space-4);">BROWSE CATALOG</a>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer">
+      <div class="cart-drawer-tier-notice">
+        <span>INSTITUTIONAL TIER</span>
+        <p>Evaluation samples ship direct from Sialkot factory via DHL Express with mill test certs.</p>
+      </div>
+      <div class="cart-drawer-subtotal">
+        <span>Estimated Total</span>
+        <span class="cart-drawer-subtotal-val" id="drawer-subtotal-val">$0.00</span>
+      </div>
+      <a href="/checkout" class="btn btn-primary btn-block">PROCEED TO SECURE CHECKOUT</a>
+      <a href="/pages/wholesale-custom-orders" class="btn btn-secondary btn-block" style="margin-top: var(--space-2);">SUBMIT AS B2B QUOTE</a>
+    </div>
+  </aside>
+</div>

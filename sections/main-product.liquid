@@ -1,0 +1,125 @@
+<article class="product-detail-section">
+  <div class="container product-detail-grid">
+    <!-- Media Gallery -->
+    <div class="product-gallery">
+      <div class="product-gallery-main">
+        {%- if product.featured_media -%}
+          <img 
+            src="{{ product.featured_media | image_url: width: 1000 }}" 
+            alt="{{ product.title | escape }}" 
+            id="main-product-image"
+            class="product-detail-img"
+            width="1000"
+            height="1000"
+          >
+        {%- else -%}
+          <div class="product-detail-placeholder">
+            <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.828 2.828M3 3l6.586 6.586m0 0L3 16.586m6.586-6.586L12 12"/></svg>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="product-thumbnails">
+          {%- for media in product.media -%}
+            <button type="button" class="thumb-btn {% if forloop.first %}is-active{% endif %}" onclick="document.getElementById('main-product-image').src='{{ media | image_url: width: 1000 }}'">
+              <img src="{{ media | image_url: width: 160 }}" alt="{{ media.alt | escape }}" width="80" height="80">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Product Info & Actions -->
+    <div class="product-info-column">
+      <div class="product-meta-header">
+        <span class="badge-pill">{{ product.type | default: 'Precision Surgical Instrument' }}</span>
+        {%- if product.tags contains 'TC' -%}
+          <span class="badge-pill-tc">Tungsten Carbide Inlay</span>
+        {%- endif -%}
+      </div>
+
+      <h1 class="product-detail-title">{{ product.title }}</h1>
+      <p class="product-sku">SKU: <span class="font-mono text-gold">{{ product.selected_or_first_available_variant.sku | default: 'XNT-PR-001' }}</span> | Origin: Sialkot, Pakistan</p>
+
+      <div class="product-pricing-box">
+        <span class="product-price">{{ product.price | money }}</span>
+        <span class="product-price-note">Single Unit Evaluation Sample (Direct Factory Dispatch)</span>
+      </div>
+
+      {% form 'product', product, id: 'product-form' %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {%- if product.variants.size > 1 -%}
+          <div class="form-group" style="margin-bottom: var(--space-4);">
+            <label for="variant-select" class="form-label">Instrument Pattern / Tip Size</label>
+            <select name="id" id="variant-select" class="form-select">
+              {%- for variant in product.variants -%}
+                <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {%- endfor -%}
+            </select>
+          </div>
+        {%- endif -%}
+
+        <div class="product-actions-row">
+          <div class="qty-selector">
+            <label for="Quantity" class="sr-only">Quantity</label>
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="qty-input">
+          </div>
+
+          <button type="submit" name="add" class="btn btn-secondary btn-lg" style="flex: 1;">
+            ADD SAMPLE TO CART
+          </button>
+        </div>
+      {% endform %}
+
+      <div class="b2b-quote-banner" style="margin-top: var(--space-6);">
+        <h4>Need Volume Hospital Procurement or OEM Customization?</h4>
+        <p>Direct mill pricing available for orders of 25+ units with custom laser branding.</p>
+        <a href="/pages/wholesale-custom-orders?product={{ product.handle }}&title={{ product.title | url_encode }}" class="btn btn-primary btn-block" style="margin-top: var(--space-3);">
+          REQUEST B2B WHOLESALE QUOTE
+        </a>
+      </div>
+
+      <!-- Metallurgy & Spec Accordion -->
+      <div class="product-specs-accordion" style="margin-top: var(--space-8);">
+        <h3 class="specs-heading">METALLURGICAL SPECIFICATIONS</h3>
+        <table class="tech-specs-table">
+          <tr>
+            <th>Raw Steel Grade</th>
+            <td>German DIN 1.4021 (AISI 420 Martensitic Stainless)</td>
+          </tr>
+          <tr>
+            <th>Rockwell Hardness</th>
+            <td>54 - 58 HRC (Vacuum Tempered)</td>
+          </tr>
+          <tr>
+            <th>Passivation Standard</th>
+            <td>ASTM F899 / ASTM A967 Citric/Nitric Bath</td>
+          </tr>
+          <tr>
+            <th>Autoclave Tolerance</th>
+            <td>Up to 134&deg;C (273&deg;F) Steam Sterilization Tested</td>
+          </tr>
+          <tr>
+            <th>Regulatory Compliance</th>
+            <td>CE Marking (Directive 93/42/EEC), ISO 13485:2016</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="product-description-content" style="margin-top: var(--space-6);">
+        {{ product.description }}
+      </div>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Product Details",
+  "settings": []
+}
+{% endschema %}

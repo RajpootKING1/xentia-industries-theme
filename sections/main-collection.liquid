@@ -1,0 +1,49 @@
+<section class="collection-page-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="badge-pill">SIALKOT FACTORY CATALOG</span>
+      <h1 class="section-title">{{ collection.title | default: 'All Precision Surgical Instruments' }}</h1>
+      <p class="section-subtitle">
+        {{ collection.description | default: 'Precision medical instruments forged from German DIN 1.4021 stainless steel and Japanese cobalt alloys. Clinical evaluation samples ready for direct dispatch.' }}
+      </p>
+    </div>
+
+    <!-- Collection Filter Tabs -->
+    <div class="catalog-filter-bar">
+      <div class="filter-tabs-wrapper">
+        <a href="/collections/all" class="tab-pill {% if collection.handle == 'all' or collection.handle == blank %}tab-pill-active{% endif %}">ALL INSTRUMENTS</a>
+        <a href="/collections/all?specialty=rhinoplasty" class="tab-pill">PLASTIC & RHINOPLASTY</a>
+        <a href="/collections/all?specialty=hair-restoration" class="tab-pill">HAIR RESTORATION</a>
+        <a href="/collections/all?specialty=dental" class="tab-pill">DENTAL SURGERY</a>
+        <a href="/collections/all?specialty=orthopedic" class="tab-pill">ORTHOPEDIC</a>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="product-grid" style="margin-top: var(--space-8);">
+      {%- paginate collection.products by 48 -%}
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product %}
+        {%- else -%}
+          <div class="catalog-empty text-center" style="grid-column: 1 / -1; padding: var(--space-16) 0;">
+            <p style="color: var(--color-steel-silver); font-size: var(--text-lg);">No surgical instruments found in this collection.</p>
+            <a href="/collections/all" class="btn btn-secondary btn-sm" style="margin-top: var(--space-4);">VIEW ALL INSTRUMENTS</a>
+          </div>
+        {%- endfor -%}
+
+        {%- if paginate.pages > 1 -%}
+          <div class="pagination-wrap" style="grid-column: 1 / -1; text-align: center; margin-top: var(--space-10);">
+            {{ paginate | default_pagination }}
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": []
+}
+{% endschema %}
