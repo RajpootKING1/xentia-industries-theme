@@ -10,19 +10,8 @@
 
 <section id="hero" class="hero-section" aria-label="Xentia Industries Precision Surgical Manufacturing">
   
-  <!-- Video & Fallback Poster Layer -->
-  <div class="hero-video-wrapper">
-    <!-- Instant High-Res Poster Fallback (Zero CLS) -->
-    <img 
-      id="hero-poster-fallback" 
-      src="{{ 'hero_surgical_showcase.webp' | asset_url }}" 
-      alt="Precision Surgical Instruments Showcase" 
-      class="hero-poster-fallback"
-      width="1920"
-      height="1080"
-      fetchpriority="high"
-    >
-    
+  <!-- Video Stream Layer (Pure Dark Gray Base, Zero Image Artifacts) -->
+  <div class="hero-video-wrapper" style="background-color: #0c0d10;">
     {%- if section.settings.mp4_video_url != blank -%}
       <video
         id="hero-video-native"
@@ -32,7 +21,6 @@
         loop
         playsinline
         preload="auto"
-        poster="{{ 'hero_surgical_showcase.webp' | asset_url }}"
         style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); object-fit: cover; z-index: 2; opacity: {{ section.settings.video_opacity | default: 85 | divided_by: 100.0 }}; filter: brightness(0.92) contrast(1.06);"
       >
         <source src="{{ section.settings.mp4_video_url }}" type="video/mp4">
@@ -52,7 +40,7 @@
     {%- endif -%}
   </div>
 
-  <!-- Soft Obsidian Scrim Layer (Balanced Contrast & Maximum Video Clarity) -->
+  <!-- Plain Low-Opacity Gray Backdrop Layer (Zero Image Bleed, Maximum Video Visibility) -->
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <!-- Main Hero Content -->
@@ -141,24 +129,7 @@
         </div>
       </div>
 
-    </div>
   </div>
-
-  <!-- Ambient Video Play / Pause Toggle Button -->
-  <button 
-    type="button" 
-    id="hero-video-toggle" 
-    class="hero-video-control" 
-    aria-label="Pause background factory video"
-  >
-    <svg class="video-icon-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
-    </svg>
-    <svg class="video-icon-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="display: none;">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <span class="video-toggle-label">PAUSE VIDEO</span>
-  </button>
 
 </section>
 

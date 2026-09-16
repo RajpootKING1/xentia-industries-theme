@@ -39,7 +39,7 @@ export class HeroController {
 
     this.typewriterEl = document.getElementById('hero-typewriter-text');
     this.videoIframe = document.getElementById('hero-video-iframe');
-    this.videoPoster = document.getElementById('hero-poster-fallback');
+    this.videoPoster = null;
     this.videoToggleBtn = document.getElementById('hero-video-toggle');
 
     // Check system accessibility preferences

@@ -865,14 +865,19 @@
 
 /* Architectural Header */
 .site-header {
-  background: rgba(10, 10, 12, 0.9);
+  background: rgba(10, 10, 12, 0.94);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: var(--border-hairline);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
   z-index: 1000;
   transition: background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.utility-strip {
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
 }
 
 /* Nav Mega-Menu Wrapper */
@@ -1129,7 +1134,7 @@
   }
 }
 
-/* Background Video & Fallback Poster Container */
+/* Background Video Container (Zero Image Artifacts, Pure Charcoal Base) */
 .hero-video-wrapper {
   position: absolute;
   inset: 0;
@@ -1138,19 +1143,7 @@
   z-index: 1;
   overflow: hidden;
   pointer-events: none;
-}
-
-/* Crisp Fallback Poster Image (Instant paint, Zero CLS) */
-.hero-poster-fallback {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 1;
-  filter: brightness(0.68) contrast(1.1);
-  transition: opacity 0.8s ease;
+  background-color: #0c0d10;
 }
 
 /* YouTube Video Iframe Embed (16:9 responsive cover) */
@@ -1191,7 +1184,7 @@
   pointer-events: none;
 }
 
-/* Balanced Obsidian Scrim Layer for Superior Video Visibility */
+/* Plain Low-Opacity Gray Backdrop Layer (Zero Image Bleed, Maximum Video Visibility) */
 .hero-scrim {
   position: absolute;
   inset: 0;
@@ -1199,9 +1192,7 @@
   height: 100%;
   z-index: 3;
   pointer-events: none;
-  background: 
-    linear-gradient(180deg, rgba(10, 10, 12, 0.38) 0%, rgba(10, 10, 12, 0.52) 50%, rgba(10, 10, 12, 0.88) 100%),
-    radial-gradient(circle at 50% 35%, rgba(212, 175, 55, 0.04) 0%, transparent 70%);
+  background: rgba(18, 20, 26, 0.40);
 }
 
 /* Main Hero Typography & Content Layer */
