@@ -26,6 +26,7 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">PAGES &amp; CATALOG</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
+          <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" style="color: var(--color-gold-base); font-weight: 600;">Products &amp; Categories Showcase</a></li>
           <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
           <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Complete Surgical Sets (19 Sets)</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>

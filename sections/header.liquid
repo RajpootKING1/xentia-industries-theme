@@ -34,17 +34,24 @@
         <li><a href="{{ routes.root_url }}" style="color: var(--color-gold-base);">HOME</a></li>
         
         <!-- Products Link with Interactive 4-Wing Mega-Menu -->
-        <li class="nav-item-has-mega">
+        <li class="nav-item-has-mega" style="display: flex; align-items: center;">
+          <a 
+            href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" 
+            class="nav-products-link" 
+            style="color: var(--color-steel-silver); padding: 8px 2px 8px 0; text-transform: uppercase; text-decoration: none;"
+          >
+            PRODUCTS
+          </a>
           <button 
             type="button" 
             id="nav-products-trigger" 
-            class="flex items-center gap-1" 
-            style="background: none; border: none; font-family: inherit; font-size: inherit; font-weight: inherit; letter-spacing: inherit; color: var(--color-steel-silver); cursor: pointer; padding: 8px 0; text-transform: uppercase;"
+            class="mega-menu-chevron-btn" 
+            style="background: none; border: none; font-family: inherit; color: var(--color-steel-silver); cursor: pointer; padding: 8px 2px; display: inline-flex; align-items: center;"
             aria-haspopup="true" 
             aria-expanded="false" 
             aria-controls="products-mega-menu"
+            aria-label="Toggle products disciplines menu"
           >
-            <span>PRODUCTS</span>
             <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="transition: transform var(--transition-fast);">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
             </svg>
@@ -61,12 +68,12 @@
                   <span>General & Reconstructive</span>
                 </div>
                 <ul class="mega-wing-list">
-                  <li><a href="{{ routes.all_products_collection_url }}">Scalpels & Precision Handles</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Metzenbaum & Mayo Dissecting Scissors</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Tungsten Carbide Needle Holders</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Hemostatic Forceps & Clamps</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Atraumatic Tissue Forceps</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Self-Retaining Retractors</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Scalpels & Precision Handles</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Metzenbaum & Mayo Dissecting Scissors</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Tungsten Carbide Needle Holders</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Hemostatic Forceps & Clamps</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Atraumatic Tissue Forceps</a></li>
+                  <li><a href="/collections/general-surgery-instruments">Self-Retaining Retractors</a></li>
                 </ul>
               </div>
 
@@ -77,12 +84,12 @@
                   <span>Plastic & Aesthetic Surgery</span>
                 </div>
                 <ul class="mega-wing-list">
-                  <li><a href="{{ routes.all_products_collection_url }}">Rhinoplasty Chisels & Osteotomes</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Aufricht & Cottle Retractors</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Liposuction Cannulas (Luer / Power)</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Breast Retractors with Fiber Optic Light</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Facelift Scissors & Dissectors</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">FUE Hair Transplant Punches & Forceps</a></li>
+                  <li><a href="/collections/rhinoplasty-ent-instruments">Rhinoplasty Chisels & Osteotomes</a></li>
+                  <li><a href="/collections/rhinoplasty-ent-instruments">Aufricht & Cottle Retractors</a></li>
+                  <li><a href="/collections/plastic-cosmetic-surgery-instruments">Liposuction Cannulas (Luer / Power)</a></li>
+                  <li><a href="/collections/plastic-cosmetic-surgery-instruments">Breast Retractors with Fiber Optic Light</a></li>
+                  <li><a href="/collections/plastic-cosmetic-surgery-instruments">Facelift Scissors & Dissectors</a></li>
+                  <li><a href="/collections/plastic-cosmetic-surgery-instruments">FUE Hair Transplant Punches & Forceps</a></li>
                 </ul>
               </div>
 
@@ -93,12 +100,12 @@
                   <span>Orthopedic & Spine Surgery</span>
                 </div>
                 <ul class="mega-wing-list">
-                  <li><a href="{{ routes.all_products_collection_url }}">Bone Holding Clamps & Forceps</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Liston & Stille Bone Cutters</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Kerrison Cervical / Lumbar Rongeurs</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Hohmann & Beckman Retractors</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Orthopedic Mallets & Gouges</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Periosteal Elevators & Curettes</a></li>
+                  <li><a href="/collections/orthopedic-instruments">Bone Holding Clamps & Forceps</a></li>
+                  <li><a href="/collections/orthopedic-instruments">Liston & Stille Bone Cutters</a></li>
+                  <li><a href="/collections/spine-surgery-instruments">Kerrison Cervical / Lumbar Rongeurs</a></li>
+                  <li><a href="/collections/orthopedic-instruments">Hohmann & Beckman Retractors</a></li>
+                  <li><a href="/collections/orthopedic-instruments">Orthopedic Mallets & Gouges</a></li>
+                  <li><a href="/collections/orthopedic-instruments">Periosteal Elevators & Curettes</a></li>
                 </ul>
               </div>
 
@@ -110,12 +117,20 @@
                 </div>
                 <ul class="mega-wing-list">
                   <li><a href="{{ routes.root_url }}#surgical-sets">19 Turnkey Procedural Trays</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Dental & Oral Maxillofacial Instruments</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Veterinary Surgical Instrumentation</a></li>
-                  <li><a href="{{ routes.all_products_collection_url }}">Japanese 440C Convex Hairdressing Shears</a></li>
+                  <li><a href="/collections/dental-instruments">Dental & Oral Maxillofacial Instruments</a></li>
+                  <li><a href="/collections/veterinary-instruments">Veterinary Surgical Instrumentation</a></li>
+                  <li><a href="/collections/laparoscopic-instruments">Laparoscopic & Minimally Invasive</a></li>
                   <li><a href="/pages/wholesale-custom-orders">Custom OEM / ODM Blueprint Tooling</a></li>
-                  <li><a href="/pages/wholesale-custom-orders">DIN Sterilization Container Systems</a></li>
+                  <li><a href="/collections/electrosurgical-surgical-accessories">DIN Sterilization Container Systems</a></li>
                 </ul>
+              </div>
+
+              <!-- Mega-Menu Bottom Bar -->
+              <div class="mega-menu-footer-bar" style="grid-column: 1 / -1; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: var(--space-3); margin-top: var(--space-2); display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 11px; color: var(--color-steel-muted); letter-spacing: 0.5px;">OVER 50+ MASTER INSTRUMENT MODELS &bull; DIN 1.4021 FORGED GERMAN STEEL</span>
+                <a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" class="btn btn-secondary btn-sm" style="font-size: 11px; padding: 4px 12px; text-transform: uppercase;">
+                  EXPLORE ALL CATEGORIES &amp; PRODUCTS &rarr;
+                </a>
               </div>
 
             </div>
@@ -174,7 +189,7 @@
 
     <ul class="mobile-nav-links">
       <li><a href="{{ routes.root_url }}" class="mobile-nav-link">HOME</a></li>
-      <li><a href="{{ routes.all_products_collection_url }}" class="mobile-nav-link">CATALOG (50+ TOOLS)</a></li>
+      <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" class="mobile-nav-link" style="color: var(--color-gold-base); font-weight: 700;">PRODUCTS &amp; CATEGORIES</a></li>
       <li><a href="{{ routes.root_url }}#surgical-sets" class="mobile-nav-link">SURGICAL SETS (19)</a></li>
       <li><a href="/pages/wholesale-custom-orders" class="mobile-nav-link" style="color: var(--color-gold-base);">CUSTOM OEM / RFQ</a></li>
       <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" class="mobile-nav-link">ABOUT XENTIA</a></li>

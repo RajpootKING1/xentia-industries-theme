@@ -11,7 +11,7 @@
 {%- endcomment -%}
 
 {%- assign is_all_catalog = false -%}
-{%- if collection.handle == 'all' or collection.handle == blank or template.name == 'list-collections' -%}
+{%- if collection == blank or collection.handle == blank or collection.handle == 'all' or template.name == 'list-collections' or template.name == 'page' -%}
   {%- assign is_all_catalog = true -%}
 {%- endif -%}
 
@@ -82,8 +82,17 @@
           {% endif %}
 
           {% assign live_count = 0 %}
-          {% if active_collection != blank and active_collection.products.size > 0 %}
-            {% assign live_count = active_collection.products.size %}
+          {% if active_collection != blank %}
+            {% if active_collection.all_products_count > 0 %}
+              {% assign live_count = active_collection.all_products_count %}
+            {% elsif active_collection.products.size > 0 %}
+              {% assign live_count = active_collection.products.size %}
+            {% endif %}
+          {% endif %}
+
+          {% assign view_more_url = '/collections/' | append: cat_handle %}
+          {% if active_collection != blank and active_collection.url != blank %}
+            {% assign view_more_url = active_collection.url %}
           {% endif %}
 
           <!-- Individual Category Section -->
@@ -106,7 +115,7 @@
               </div>
 
               <div class="category-header-actions">
-                <a href="{{ active_collection.url | default: '/collections/' | append: cat_handle }}" class="btn btn-secondary btn-view-more" aria-label="View all {{ cat_name }} instruments">
+                <a href="{{ view_more_url }}" class="btn btn-secondary btn-view-more" aria-label="View all {{ cat_name }} instruments">
                   <span>VIEW MORE</span>
                   <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>

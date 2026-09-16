@@ -885,6 +885,25 @@
   position: relative;
 }
 
+.nav-products-link {
+  transition: color var(--transition-fast);
+}
+
+.nav-products-link:hover,
+.nav-item-has-mega:hover .nav-products-link {
+  color: var(--color-gold-base) !important;
+}
+
+.mega-menu-chevron-btn {
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.nav-item-has-mega:hover .mega-menu-chevron-btn svg,
+.mega-menu-chevron-btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+  color: var(--color-gold-base);
+}
+
 .mega-menu {
   position: absolute;
   top: calc(100% + 14px);

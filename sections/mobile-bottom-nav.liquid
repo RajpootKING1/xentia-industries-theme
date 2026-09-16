@@ -9,13 +9,13 @@
     <span class="mobile-nav-label mobile-app-nav-label">Home</span>
   </a>
 
-  <a href="{{ routes.all_products_collection_url }}" class="mobile-nav-item mobile-app-nav-item {% if request.path contains '/collections' or request.path contains '/products' %}active is-active{% endif %}" aria-label="Browse Surgical Catalog">
+  <a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" class="mobile-nav-item mobile-app-nav-item {% if request.path contains '/collections' or request.path contains 'product' or request.path contains 'categor' %}active is-active{% endif %}" aria-label="Browse Surgical Catalog">
     <div class="mobile-nav-icon-box">
       <svg class="mobile-app-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
       </svg>
     </div>
-    <span class="mobile-nav-label mobile-app-nav-label">Catalog</span>
+    <span class="mobile-nav-label mobile-app-nav-label">Products</span>
   </a>
 
   <a href="/pages/wholesale-custom-orders" class="mobile-nav-item mobile-app-nav-item b2b-quote-action {% if request.path contains 'wholesale' %}active is-active{% endif %}" aria-label="Request Factory RFQ Quote">

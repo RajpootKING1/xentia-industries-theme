@@ -8,6 +8,10 @@
   <section class="about-page-wrapper">
     {% render 'about-content' %}
   </section>
+{%- elsif page_handle_down contains 'product' or page_handle_down contains 'categories' or page_handle_down contains 'category' or page_handle_down contains 'shop' or page_handle_down contains 'catalog' or page_title_down contains 'product' or page_title_down contains 'categories' or page_title_down contains 'category' or page_title_down contains 'shop' or page_title_down contains 'catalog' or page.template_suffix contains 'product' or template.suffix contains 'product' or page.template_suffix contains 'categor' or template.suffix contains 'categor' or page.template_suffix contains 'catalog' or template.suffix contains 'catalog' -%}
+  <div class="products-catalog-page-wrapper">
+    {% section 'main-collection' %}
+  </div>
 {%- else -%}
   {% section 'main-page' %}
 {%- endif -%}
