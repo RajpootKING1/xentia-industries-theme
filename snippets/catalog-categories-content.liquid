@@ -1,0 +1,143 @@
+{%- comment -%}
+  Xentia Industries - Master Catalog Categories Showcase Content
+  Displays 18 clinical disciplines with:
+  - Category header with sub-disciplines and "VIEW MORE →" button
+  - 5 horizontal product cards in a single row
+  - Dynamic placeholders for unpopulated slots that disappear as products are published in Shopify Admin
+  NOTE: This snippet contains NO paginate tags so it is 100% safe to render on any page template.
+{%- endcomment -%}
+
+<section class="section collection-page-section master-catalog-showcase" id="master-catalog-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header text-center" style="max-width: 860px; margin: 0 auto var(--space-8) auto;">
+      <span class="badge-pill">SIALKOT FACTORY CATALOG &amp; DISCIPLINES</span>
+      <h1 class="section-title" style="margin-top: var(--space-3); margin-bottom: var(--space-3);">
+        PRECISION SURGICAL <span class="section-title-highlight">CATALOG</span>
+      </h1>
+      <p class="section-subtitle">
+        Explore our certified surgical instrumentation organized by clinical disciplines. Forged from German DIN 1.4021 Stainless Steel and Japanese Cobalt alloys under strict ISO 13485:2016 quality systems.
+      </p>
+    </div>
+
+    <!-- Quick Discipline Jump Navigation Bar -->
+    <div class="catalog-jump-bar-container" style="margin-bottom: var(--space-10);">
+      <div class="catalog-jump-bar">
+        <a href="#cat-plastic-cosmetic" class="jump-pill">Plastic &amp; Cosmetic</a>
+        <a href="#cat-rhinoplasty-ent" class="jump-pill">Rhinoplasty &amp; ENT</a>
+        <a href="#cat-general-surgery" class="jump-pill">General Surgery</a>
+        <a href="#cat-orthopedic" class="jump-pill">Orthopedic</a>
+        <a href="#cat-spine-surgery" class="jump-pill">Spine Surgery</a>
+        <a href="#cat-neurosurgical" class="jump-pill">Neurosurgery</a>
+        <a href="#cat-maxillofacial" class="jump-pill">Maxillofacial &amp; Oral</a>
+        <a href="#cat-ophthalmic" class="jump-pill">Ophthalmic</a>
+        <a href="#cat-dental" class="jump-pill">Dental Surgery</a>
+        <a href="#cat-hair-restoration" class="jump-pill">Hair Restoration &amp; FUE</a>
+        <a href="#cat-arthroscopy" class="jump-pill">Arthroscopy</a>
+        <a href="#cat-gynecology" class="jump-pill">Gynecology &amp; OB</a>
+        <a href="#cat-urology" class="jump-pill">Urology</a>
+        <a href="#cat-veterinary" class="jump-pill">Veterinary</a>
+        <a href="#cat-laparoscopic" class="jump-pill">Laparoscopic</a>
+        <a href="#cat-cardiovascular" class="jump-pill">Cardiovascular</a>
+        <a href="#cat-dermatology" class="jump-pill">Dermatology</a>
+        <a href="#cat-electrosurgical" class="jump-pill">Electrosurgical &amp; Trays</a>
+      </div>
+    </div>
+
+    <!-- Delimited Category Definitions -->
+    {% assign categories_data = "cat-plastic-cosmetic|plastic-cosmetic-surgery-instruments|Plastic & Cosmetic Surgery|Facelift Scissors, Breast Retractors, Liposuction Cannulas, Blepharoplasty Forceps, Calipers|plastic-cosmetic-surgery,plastic-surgery,cosmetic-surgery:::cat-rhinoplasty-ent|rhinoplasty-ent-instruments|Rhinoplasty & ENT Instruments|Aufricht Retractors, Cottle Speculums, Bone Rasps, Nasal Osteotomes, Septum Forceps|rhinoplasty,ent-instruments,ent:::cat-general-surgery|general-surgery-instruments|General & Reconstructive Surgery|Scalpels, Mayo & Metzenbaum Scissors, TC Needle Holders, Hemostatic Clamps|general-surgery:::cat-orthopedic|orthopedic-instruments|Orthopedic Instruments|Bone Holding Clamps, Liston Cutters, Hohmann Retractors, Bone Gouges, Mallets|orthopedics,orthopedic:::cat-spine-surgery|spine-surgery-instruments|Spine Surgery Instruments|Kerrison Cervical/Lumbar Rongeurs, Caspar Distractors, Lamina Spreaders|spine-surgery,spine:::cat-neurosurgical|neurosurgical-instruments|Neurosurgical Instruments|Micro Scissors, Brain Spatulas, Bayonet Forceps, Skull Punches, Micro Dissectors|neurosurgery:::cat-maxillofacial|maxillofacial-oral-surgery-instruments|Maxillofacial & Oral Surgery|Dingman Mouth Gags, Bone Spreaders, Wire Cutters, Plate Bending Pliers|maxillofacial:::cat-ophthalmic|ophthalmic-instruments|Ophthalmic Instruments|Eye Speculums, Micro Capsulorhexis Forceps, Corneal Scissors, Needle Micro Holders|ophthalmic,ophthalmology:::cat-dental|dental-instruments|Dental & Oral Maxillofacial|Extraction Forceps, Root Elevators, Scalers, Periodontal Probes, Amalgam Pluggers|dental:::cat-hair-restoration|hair-restoration-instruments|Hair Restoration & FUE|Motorized & Manual FUE Punches, Micro Grafting Forceps, Implanter Pens|hair-restoration,fue:::cat-arthroscopy|arthroscopy-instruments|Arthroscopy & Sports Medicine|Arthroscopic Punches, Graspers, Hook Probes, Meniscectomy Scissors, Shaver Blades|arthroscopy:::cat-gynecology|gynecology-obstetrics-instruments|Gynecology & Obstetrics|Graves Speculums, Uterine Dilators, Biopsy Punches, Hysterectomy Clamps|gynecology,ob-gyn:::cat-urology|urology-instruments|Urology Instruments|Resectoscope Sheaths, Urethral Sounds, Catheter Guides, Stone Retrieval Forceps|urology:::cat-veterinary|veterinary-instruments|Veterinary Surgical Instruments|Veterinary Forceps, Bone Reduction Clamps, Spay Packs, Orthopedic Pins|veterinary:::cat-laparoscopic|laparoscopic-instruments|Laparoscopic Instruments|5mm/10mm Trocar Sets, Bipolar Laparoscopic Graspers, Endo-Scissors, Clip Appliers|laparoscopy,laparoscopic:::cat-cardiovascular|cardiovascular-thoracic-instruments|Cardiovascular & Thoracic|Sternal Retractors, Vascular DeBakey Clamps, Potts Scissors, Valve Hooks|cardiovascular,thoracic:::cat-dermatology|dermatology-instruments|Dermatology Instruments|Dermal Curettes, Biopsy Punches, Comedone Extractors, Cryo-Probes|dermatology:::cat-electrosurgical|electrosurgical-surgical-accessories|Electrosurgical & Accessories|Non-Stick Bipolar Forceps, Monopolar Electrodes, DIN Sterilization Wire Trays|electrosurgical,accessories" | split: ":::" %}
+
+    <!-- Categories Loop -->
+    <div class="categories-showcase-flow">
+      {% for cat_item in categories_data %}
+        {% assign cat_parts = cat_item | split: "|" %}
+        {% assign anchor_id = cat_parts[0] %}
+        {% assign cat_handle = cat_parts[1] %}
+        {% assign cat_name = cat_parts[2] %}
+        {% assign cat_sub = cat_parts[3] %}
+        {% assign alt_handles = cat_parts[4] | split: "," %}
+
+        {% comment %} Find collection in Shopify store {% endcomment %}
+        {% assign active_collection = collections[cat_handle] %}
+        {% if active_collection == blank or active_collection.products.size == 0 %}
+          {% for alt in alt_handles %}
+            {% if collections[alt] != blank and collections[alt].products.size > 0 %}
+              {% assign active_collection = collections[alt] %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% assign live_count = 0 %}
+        {% if active_collection != blank %}
+          {% if active_collection.all_products_count > 0 %}
+            {% assign live_count = active_collection.all_products_count %}
+          {% elsif active_collection.products.size > 0 %}
+            {% assign live_count = active_collection.products.size %}
+          {% endif %}
+        {% endif %}
+
+        {% assign view_more_url = '/collections/' | append: cat_handle %}
+        {% if active_collection != blank and active_collection.url != blank %}
+          {% assign view_more_url = active_collection.url %}
+        {% endif %}
+
+        <!-- Individual Category Section -->
+        <section id="{{ anchor_id }}" class="category-section-block" style="margin-bottom: var(--space-12);">
+          
+          <!-- Category Header Bar with VIEW MORE Button -->
+          <div class="category-header-bar">
+            <div class="category-header-info">
+              <div class="category-meta-badge">
+                <span class="category-badge-dot"></span>
+                <span class="category-badge-text">CLINICAL DISCIPLINE</span>
+                {% if live_count > 0 %}
+                  <span class="category-badge-count">{{ live_count }} In-Stock Products</span>
+                {% else %}
+                  <span class="category-badge-count pending">OEM Production on Demand</span>
+                {% endif %}
+              </div>
+              <h2 class="category-title">{{ cat_name }}</h2>
+              <p class="category-subtext">{{ cat_sub }}</p>
+            </div>
+
+            <div class="category-header-actions">
+              <a href="{{ view_more_url }}" class="btn btn-secondary btn-view-more" aria-label="View all {{ cat_name }} instruments">
+                <span>VIEW MORE</span>
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Horizontal 5-Card Product Row -->
+          <div class="category-products-row-container">
+            <div class="category-products-row">
+              {% assign rendered_cards = 0 %}
+
+              {% comment %} Render live Shopify products up to 5 {% endcomment %}
+              {% if live_count > 0 %}
+                {% for product in active_collection.products limit: 5 %}
+                  {% render 'product-card', product: product %}
+                  {% assign rendered_cards = rendered_cards | plus: 1 %}
+                {% endfor %}
+              {% endif %}
+
+              {% comment %} Dynamic remaining slots: automatically filled by placeholders; auto-disappear when live products added {% endcomment %}
+              {% assign needed_placeholders = 5 | minus: rendered_cards %}
+              {% if needed_placeholders > 0 %}
+                {% for slot_idx in (1..needed_placeholders) %}
+                  {% render 'product-card-placeholder', category_name: cat_name, category_handle: cat_handle, index: slot_idx %}
+                {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+
+        </section>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

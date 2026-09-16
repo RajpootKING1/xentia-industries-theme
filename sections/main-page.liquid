@@ -8,7 +8,7 @@
 
 {%- if page_handle_down contains 'product' or page_handle_down contains 'categor' or page_handle_down contains 'shop' or page_handle_down contains 'catalog' or page_title_down contains 'product' or page_title_down contains 'categor' or page_title_down contains 'shop' or page_title_down contains 'catalog' or page.template_suffix contains 'product' or template.suffix contains 'product' or page.template_suffix contains 'categor' or template.suffix contains 'categor' -%}
   <div class="products-catalog-page-wrapper">
-    {% section 'main-collection' %}
+    {% render 'catalog-categories-content' %}
   </div>
 {%- elsif page_handle_down contains 'about' or page_title_down contains 'about' or page.template_suffix contains 'about' or template.suffix contains 'about' -%}
   <div class="about-page-wrapper">

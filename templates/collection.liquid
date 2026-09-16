@@ -1,1 +1,5 @@
-{% section 'main-collection' %}
+{%- if collection.handle == 'all' or collection.handle == blank -%}
+  {% section 'catalog-categories' %}
+{%- else -%}
+  {% section 'main-collection' %}
+{%- endif -%}
