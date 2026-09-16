@@ -1,13 +1,51 @@
 <section class="error-404-section text-center" style="padding: var(--space-20) var(--space-4);">
-  <div class="container" style="max-width: 600px;">
-    <span class="badge-pill">ERROR 404</span>
-    <h1 style="font-family: var(--font-heading); font-size: var(--text-5xl); color: var(--color-steel-white); margin: var(--space-4) 0;">INSTRUMENT NOT FOUND</h1>
-    <p style="color: var(--color-steel-silver); font-size: var(--text-base); margin-bottom: var(--space-8);">
-      The surgical instrument pattern, tray configuration, or page you requested could not be located in our active factory catalog.
+  <div class="container" style="max-width: 820px;">
+    <span class="badge-pill" style="margin-bottom: var(--space-4);">STATUS CODE: 404 &bull; PATTERN NOT LOCATED</span>
+    
+    <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 5vw, 3.6rem); color: var(--color-steel-white); margin-bottom: var(--space-4);">
+      Instrument Not Found <br>
+      <span class="section-title-highlight">(Error 404)</span>
+    </h1>
+    
+    <p class="section-subtitle container-reading" style="font-size: var(--text-base); color: var(--color-steel-silver); margin-bottom: var(--space-8);">
+      The surgical instrument pattern, procedural tray, or page you requested could not be located in our active factory catalog.
     </p>
-    <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
-      <a href="{{ routes.root_url }}" class="btn btn-primary btn-sm">RETURN TO STOREFRONT</a>
-      <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary btn-sm">BROWSE FULL CATALOG</a>
+
+    <div class="flex items-center justify-center gap-4 flex-wrap" style="margin-bottom: var(--space-12);">
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">
+        EXPLORE 50+ INSTRUMENT CATALOG
+      </a>
+      <a href="{{ routes.root_url }}" class="btn btn-secondary">
+        RETURN TO STOREFRONT
+      </a>
+      <a href="/pages/wholesale-custom-orders" class="btn btn-ghost-gold">
+        REQUEST CUSTOM RFQ
+      </a>
+    </div>
+
+    <!-- Quick Category Recovery Grid -->
+    <div style="background: var(--color-bg-card); border: var(--border-hairline); border-radius: var(--radius-md); padding: var(--space-8); text-align: left;">
+      <h2 style="font-family: var(--font-accent); font-size: var(--text-sm); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-6);">
+        BROWSE POPULAR SURGICAL SPECIALTIES:
+      </h2>
+      <div class="grid-4" style="gap: var(--space-4);">
+        <a href="{{ routes.all_products_collection_url }}?specialty=general-surgery" style="background: rgba(255,255,255,0.02); border: var(--border-hairline); border-radius: var(--radius-sm); padding: var(--space-4); display: block; text-decoration: none;">
+          <strong style="display: block; color: var(--color-steel-white); font-size: var(--text-sm); margin-bottom: 2px;">General Surgery</strong>
+          <span style="font-size: var(--text-xs); color: var(--color-steel-medium);">Scalpels, Mayo Scissors, Retractors</span>
+        </a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=rhinoplasty" style="background: rgba(255,255,255,0.02); border: var(--border-hairline); border-radius: var(--radius-sm); padding: var(--space-4); display: block; text-decoration: none;">
+          <strong style="display: block; color: var(--color-steel-white); font-size: var(--text-sm); margin-bottom: 2px;">Plastic &amp; Rhinoplasty</strong>
+          <span style="font-size: var(--text-xs); color: var(--color-steel-medium);">Aufricht Retractors, Morselizers</span>
+        </a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=orthopedic" style="background: rgba(255,255,255,0.02); border: var(--border-hairline); border-radius: var(--radius-sm); padding: var(--space-4); display: block; text-decoration: none;">
+          <strong style="display: block; color: var(--color-steel-white); font-size: var(--text-sm); margin-bottom: 2px;">Orthopedic &amp; Spine</strong>
+          <span style="font-size: var(--text-xs); color: var(--color-steel-medium);">Kerrison Rongeurs, Bone Clamps</span>
+        </a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=hair-restoration" style="background: rgba(255,255,255,0.02); border: var(--border-hairline); border-radius: var(--radius-sm); padding: var(--space-4); display: block; text-decoration: none;">
+          <strong style="display: block; color: var(--color-steel-white); font-size: var(--text-sm); margin-bottom: 2px;">Hair Restoration</strong>
+          <span style="font-size: var(--text-xs); color: var(--color-steel-medium);">FUE Micro Punches, Forceps</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
