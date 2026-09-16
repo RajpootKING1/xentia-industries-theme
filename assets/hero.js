@@ -116,12 +116,52 @@ export class HeroController {
    * @private
    */
   _setupVideoPlayer() {
-    if (!this.videoIframe) return;
+    this.nativeVideo = document.getElementById('hero-video-native');
 
-    // Fade in video once iframe finishes network load
-    this.videoIframe.addEventListener('load', () => {
+    // 1. If native video exists, trigger play
+    if (this.nativeVideo) {
+      this.nativeVideo.play().catch((err) => {
+        console.log('[HeroController] Native video autoplay prevented, will resume on interaction:', err);
+      });
+    }
+
+    // 2. Setup YouTube video playback and autoplay enforcement
+    if (this.videoIframe) {
       this.videoIframe.classList.add('is-loaded');
-    });
+
+      const triggerPlay = () => {
+        if (this.videoIframe && this.videoIframe.contentWindow) {
+          this.videoIframe.contentWindow.postMessage(
+            JSON.stringify({ event: 'command', func: 'playVideo', args: '' }),
+            '*'
+          );
+        }
+      };
+
+      this.videoIframe.addEventListener('load', () => {
+        this.videoIframe.classList.add('is-loaded');
+        triggerPlay();
+      });
+
+      // Send proactive play signals to bypass asynchronous iframe handshakes
+      setTimeout(triggerPlay, 400);
+      setTimeout(triggerPlay, 1200);
+      setTimeout(triggerPlay, 2500);
+
+      // On first user interaction (click, touch, scroll), resume video if policy suspended it
+      const onUserActive = () => {
+        triggerPlay();
+        if (this.nativeVideo && this.nativeVideo.paused) {
+          this.nativeVideo.play().catch(() => {});
+        }
+        window.removeEventListener('click', onUserActive);
+        window.removeEventListener('touchstart', onUserActive);
+        window.removeEventListener('scroll', onUserActive);
+      };
+      window.addEventListener('click', onUserActive, { passive: true, once: true });
+      window.addEventListener('touchstart', onUserActive, { passive: true, once: true });
+      window.addEventListener('scroll', onUserActive, { passive: true, once: true });
+    }
 
     // If reduced motion is requested, pause the background video immediately
     if (this.prefersReducedMotion) {
@@ -148,7 +188,7 @@ export class HeroController {
   }
 
   /**
-   * Pause YouTube background stream via postMessage API
+   * Pause background video via postMessage API & native API
    */
   pauseVideo() {
     if (this.videoIframe && this.videoIframe.contentWindow) {
@@ -157,12 +197,15 @@ export class HeroController {
         '*'
       );
     }
+    if (this.nativeVideo) {
+      this.nativeVideo.pause();
+    }
     this.isVideoPlaying = false;
     this._updateToggleBtnUI();
   }
 
   /**
-   * Play YouTube background stream via postMessage API
+   * Play background video via postMessage API & native API
    */
   playVideo() {
     if (this.videoIframe && this.videoIframe.contentWindow) {
@@ -170,6 +213,9 @@ export class HeroController {
         JSON.stringify({ event: 'command', func: 'playVideo', args: '' }),
         '*'
       );
+    }
+    if (this.nativeVideo) {
+      this.nativeVideo.play().catch(() => {});
     }
     this.isVideoPlaying = true;
     this._updateToggleBtnUI();

@@ -1,3 +1,13 @@
+{%- assign raw_video = section.settings.video_url | default: 'Lu-k3_RsUY4' -%}
+{%- assign video_id = raw_video -%}
+{%- if raw_video contains 'v=' -%}
+  {%- assign video_id = raw_video | split: 'v=' | last | split: '&' | first -%}
+{%- elsif raw_video contains 'youtu.be/' -%}
+  {%- assign video_id = raw_video | split: 'youtu.be/' | last | split: '?' | first -%}
+{%- elsif raw_video contains 'embed/' -%}
+  {%- assign video_id = raw_video | split: 'embed/' | last | split: '?' | first -%}
+{%- endif -%}
+
 <section id="hero" class="hero-section" aria-label="Xentia Industries Precision Surgical Manufacturing">
   
   <!-- Video & Fallback Poster Layer -->
@@ -13,19 +23,36 @@
       fetchpriority="high"
     >
     
-    <!-- Privacy-Enhanced YouTube Loop Stream -->
-    <iframe
-      id="hero-video-iframe"
-      class="hero-video-iframe"
-      src="https://www.youtube-nocookie.com/embed/Lu-k3_RsUY4?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Lu-k3_RsUY4&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-      title="Xentia Industries Sialkot Surgical Instrument Manufacturing Facility"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      tabindex="-1"
-      aria-hidden="true"
-    ></iframe>
+    {%- if section.settings.mp4_video_url != blank -%}
+      <video
+        id="hero-video-native"
+        class="hero-video-native"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="{{ 'hero_surgical_showcase.webp' | asset_url }}"
+        style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%); object-fit: cover; z-index: 2; opacity: {{ section.settings.video_opacity | default: 85 | divided_by: 100.0 }}; filter: brightness(0.92) contrast(1.06);"
+      >
+        <source src="{{ section.settings.mp4_video_url }}" type="video/mp4">
+      </video>
+    {%- else -%}
+      <!-- Cross-Browser High-Visibility YouTube Stream -->
+      <iframe
+        id="hero-video-iframe"
+        class="hero-video-iframe"
+        src="https://www.youtube.com/embed/{{ video_id }}?autoplay=1&mute=1&loop=1&playlist={{ video_id }}&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1&enablejsapi=1"
+        title="Xentia Industries Sialkot Surgical Instrument Manufacturing Facility"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        tabindex="-1"
+        aria-hidden="true"
+        style="opacity: {{ section.settings.video_opacity | default: 85 | divided_by: 100.0 }};"
+      ></iframe>
+    {%- endif -%}
   </div>
 
-  <!-- Dark Obsidian Scrim Layer (WCAG AAA Contrast Guarantee) -->
+  <!-- Soft Obsidian Scrim Layer (Balanced Contrast & Maximum Video Clarity) -->
   <div class="hero-scrim" aria-hidden="true"></div>
 
   <!-- Main Hero Content -->
@@ -138,6 +165,30 @@
 {% schema %}
 {
   "name": "Hero Showcase",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "video_url",
+      "label": "YouTube Video URL or ID",
+      "default": "Lu-k3_RsUY4",
+      "info": "YouTube video ID (e.g. Lu-k3_RsUY4) or full YouTube watch/embed URL"
+    },
+    {
+      "type": "text",
+      "id": "mp4_video_url",
+      "label": "Direct MP4 Video URL (Optional)",
+      "info": "Upload an MP4 to Shopify Files (Content > Files) and paste link here"
+    },
+    {
+      "type": "range",
+      "id": "video_opacity",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Video Visibility",
+      "default": 85
+    }
+  ]
 }
 {% endschema %}
