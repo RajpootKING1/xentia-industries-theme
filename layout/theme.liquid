@@ -42,6 +42,7 @@
   {{ 'animations.css' | asset_url | stylesheet_tag }}
   {{ 'shopify-overrides.css' | asset_url | stylesheet_tag }}
 
+  {%- unless request.design_mode -%}
   <!-- Preloader Safety Failsafe -->
   <script>
     (function() {
@@ -63,12 +64,14 @@
       });
     })();
   </script>
+  {%- endunless -%}
 </head>
 
-<body class="template-{{ template.name | handle }} is-loading">
+<body class="template-{{ template.name | handle }}{% unless request.design_mode %} is-loading{% endunless %}">
   <!-- Accessible Skip Link -->
   <a class="skip-to-content" href="#main-content">Skip to main content</a>
 
+  {%- unless request.design_mode -%}
   <!-- Precision Surgical Preloader -->
   <div id="xentia-loader" class="xentia-loader" role="status" aria-live="polite" aria-label="Loading Xentia Industries storefront">
     <div class="loader-content">
@@ -86,6 +89,7 @@
       <div id="loader-tip" class="loader-tip">ASTM F899 &bull; German Stainless Steel &bull; Sialkot Facility</div>
     </div>
   </div>
+  {%- endunless -%}
 
   {% section 'header' %}
 

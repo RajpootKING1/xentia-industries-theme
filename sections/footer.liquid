@@ -30,7 +30,7 @@
           <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Complete Surgical Sets (19 Sets)</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
           <li><a href="/pages/about" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
-          <li><a href="/pages/contact" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
+          <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
           <li><a href="{{ routes.account_url }}" style="color: var(--color-steel-silver);">Customer Account Portal</a></li>
         </ul>
       </div>

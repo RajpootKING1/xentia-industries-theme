@@ -9,9 +9,7 @@
     </div>
 
     <div class="glass-card" style="padding: var(--space-8); border: var(--border-medium); border-radius: var(--radius-lg); background: rgba(14, 15, 19, 0.95); box-shadow: var(--shadow-xl);">
-      <form id="shopify-wholesale-form" action="/contact#contact_form" method="post" class="contact-inquiry-form">
-        <input type="hidden" name="form_type" value="contact">
-        <input type="hidden" name="utf8" value="✓">
+      {% form 'contact', id: 'shopify-wholesale-form', class: 'contact-inquiry-form' %}
         <input type="hidden" name="contact[tags]" value="b2b-rfq,wholesale,oem">
 
         <h3 style="font-family: var(--font-heading); color: var(--color-steel-white); font-size: var(--text-xl); margin-bottom: var(--space-4); border-bottom: var(--border-hairline); padding-bottom: var(--space-2);">
@@ -82,7 +80,7 @@
         <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
           SUBMIT FORMAL B2B PRODUCTION REQUEST
         </button>
-      </form>
+      {% endform %}
     </div>
   </div>
 </section>

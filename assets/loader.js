@@ -37,22 +37,30 @@ export class LoaderController {
   init() {
     if (!this.loaderEl) return;
 
-    // 1. Accessibility Check: prefers-reduced-motion
+    // 1. Accessibility & Theme Editor Check
+    if (window.Shopify && window.Shopify.designMode) {
+      this.dismissImmediately();
+      return;
+    }
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       this.dismissImmediately();
       return;
     }
 
     // 2. Session Check: Fast-path for returning internal page navigation
-    const hasSeenThisSession = sessionStorage.getItem(STORAGE_KEY_SEEN);
-    if (hasSeenThisSession) {
-      // Rapid 200ms micro-fade for returning pages in same tab
-      setTimeout(() => this.dismiss(), 200);
+    try {
+      const hasSeenThisSession = sessionStorage.getItem(STORAGE_KEY_SEEN);
+      if (hasSeenThisSession) {
+        // Rapid 200ms micro-fade for returning pages in same tab
+        setTimeout(() => this.dismiss(), 200);
+        return;
+      }
+      sessionStorage.setItem(STORAGE_KEY_SEEN, 'true');
+    } catch (e) {
+      // Storage access may be blocked in sandboxed iframes (e.g. Shopify theme editor)
+      this.dismissImmediately();
       return;
     }
-
-    // 3. First Visit in Session: Full Engineered Reveal
-    sessionStorage.setItem(STORAGE_KEY_SEEN, 'true');
     this._startProgressAnimation();
 
     // 4. Safe Auto-Dismissal Listeners

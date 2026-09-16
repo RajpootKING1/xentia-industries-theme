@@ -22,8 +22,10 @@ import { SurgicalSetsController } from './surgical-sets.js';
 import { ContactFormController } from './contact-form.js';
 import { mobileAppBarController } from './mobile-app-bar.js';
 
-// Boot preloader immediately
-loaderController.init();
+// Boot preloader immediately if not in Shopify designMode
+if (!window.Shopify || !window.Shopify.designMode) {
+  loaderController.init();
+}
 
 // ============================================================================
 // GLOBAL APPLICATION STATE

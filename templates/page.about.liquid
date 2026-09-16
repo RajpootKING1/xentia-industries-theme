@@ -77,7 +77,7 @@
       <p style="color: var(--color-steel-silver); font-size: var(--text-sm); margin-bottom: var(--space-6);">Schedule a virtual plant tour or discuss custom tooling requirements with our head metallurgical engineer.</p>
       <div style="display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
         <a href="/pages/wholesale-custom-orders" class="btn btn-primary btn-sm">START B2B QUOTE</a>
-        <a href="/pages/contact" class="btn btn-secondary btn-sm">CONTACT FACTORY DESK</a>
+        <a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="btn btn-secondary btn-sm">CONTACT FACTORY DESK</a>
       </div>
     </div>
   </section>
