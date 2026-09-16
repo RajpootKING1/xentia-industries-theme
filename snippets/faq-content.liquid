@@ -1,0 +1,86 @@
+{%- comment -%}
+  Xentia Industries - Institutional Frequently Asked Questions (FAQ)
+  Metallurgical protocols, MOQ, ISO 13485:2016 certifications, shipping, and warranty.
+{%- endcomment -%}
+
+<section class="faq-page-section" style="padding: var(--space-12) 0 var(--space-20) 0;">
+  <div class="container" style="max-width: 860px;">
+    <div class="section-header text-center" style="margin-bottom: var(--space-10);">
+      <span class="badge-pill">PROCUREMENT PROTOCOLS</span>
+      <h1 class="section-title">INSTITUTIONAL FREQUENTLY ASKED QUESTIONS</h1>
+      <p class="section-subtitle">
+        Everything hospital procurement teams, distributors, and surgeons need to know regarding minimum orders, metallurgy, certifications, and international shipping.
+      </p>
+    </div>
+
+    {%- if page.content != blank -%}
+      <div class="page-content rte" style="max-width: 860px; margin: 0 auto var(--space-8) auto; color: var(--color-steel-silver); line-height: 1.8;">
+        {{ page.content }}
+      </div>
+    {%- endif -%}
+
+    <div class="faq-accordion-group">
+      <!-- FAQ 1 -->
+      <details class="faq-accordion-item" open>
+        <summary class="faq-accordion-header">
+          <span>What steel grades are used in Xentia surgical instruments?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-accordion-body">
+          <p>We forge using genuine German DIN 1.4021 (AISI 420) martensitic stainless steel for high hardness and cutting edge retention, and Japanese SUS440C cobalt alloy for micro-dissection shears. We also integrate German tungsten carbide (TC) inlays (66-68 HRC) on all gold-handled needle holders and supercut scissors.</p>
+        </div>
+      </details>
+
+      <!-- FAQ 2 -->
+      <details class="faq-accordion-item">
+        <summary class="faq-accordion-header">
+          <span>What are the minimum order quantities (MOQ) for hospital and OEM orders?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-accordion-body">
+          <p>For stock catalog instruments, evaluation samples have an MOQ of 1 unit. For custom OEM manufacturing or private label fiber laser marking, our minimum production batch is 25 units per pattern.</p>
+        </div>
+      </details>
+
+      <!-- FAQ 3 -->
+      <details class="faq-accordion-item">
+        <summary class="faq-accordion-header">
+          <span>What international regulatory certifications do you maintain?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-accordion-body">
+          <p>Our manufacturing plant operates under ISO 13485:2016 Medical Devices Quality Management System, CE Mark compliance (Directive 93/42/EEC), FDA establishment registration, and ASTM F899 surgical metallurgy passivation standards.</p>
+        </div>
+      </details>
+
+      <!-- FAQ 4 -->
+      <details class="faq-accordion-item">
+        <summary class="faq-accordion-header">
+          <span>How are evaluation samples and volume orders shipped?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-accordion-body">
+          <p>Evaluation sample orders are dispatched direct from Sialkot via DHL Express or FedEx International Priority (typically 4-7 business days worldwide with tracking). Volume freight is exported under Incoterms 2020 (FOB Karachi, CIF, or DAP air cargo to your regional airport).</p>
+        </div>
+      </details>
+
+      <!-- FAQ 5 -->
+      <details class="faq-accordion-item">
+        <summary class="faq-accordion-header">
+          <span>What warranty is provided against corrosion or mechanical defects?</span>
+          <span class="faq-icon">+</span>
+        </summary>
+        <div class="faq-accordion-body">
+          <p>We provide an unconditional Lifetime Metallurgical Warranty covering rust, pitting, and material failure under validated autoclave sterilization cycles (134&deg;C steam). Any defective instrument will be replaced free of charge directly from our factory.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Contact CTA -->
+    <div class="glass-card text-center" style="margin-top: var(--space-12); padding: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+      <h3 style="color: var(--color-steel-white); font-size: var(--text-xl); margin-bottom: var(--space-2);">Have a Specific Metallurgical or Tender Question?</h3>
+      <p style="color: var(--color-steel-silver); font-size: var(--text-sm); margin-bottom: var(--space-6);">Our engineering desk is available to assist with custom dimensional modifications and tender compliance.</p>
+      <a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="btn btn-primary btn-sm">CONTACT FACTORY DESK</a>
+    </div>
+  </div>
+</section>

@@ -12,6 +12,10 @@
   <div class="products-catalog-page-wrapper">
     {% section 'catalog-categories' %}
   </div>
+{%- elsif page_handle_down contains 'faq' or page_title_down contains 'faq' or page.template_suffix contains 'faq' or template.suffix contains 'faq' -%}
+  <section class="faq-page-wrapper">
+    {% render 'faq-content' %}
+  </section>
 {%- else -%}
   {% section 'main-page' %}
 {%- endif -%}

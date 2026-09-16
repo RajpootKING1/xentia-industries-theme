@@ -44,7 +44,7 @@
           <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
-          <li><a href="/pages/faq" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Guide</a></li>
+          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Guide</a></li>
         </ul>
       </div>
 
@@ -78,7 +78,7 @@
               <li><a href="/policies/privacy-policy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
             {%- endif -%}
           {%- endif -%}
-          <li><a href="/pages/faq" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
+          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
         </ul>
       </div>
     </div>

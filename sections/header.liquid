@@ -141,7 +141,7 @@
         <li><a href="{{ routes.root_url }}#oem-showcase" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
         <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">ABOUT</a></li>
         <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">CONTACT</a></li>
-        <li><a href="/pages/faq" style="color: var(--color-steel-silver);">FAQ</a></li>
+        <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ</a></li>
       </ul>
     </nav>
 
@@ -195,7 +195,7 @@
       <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" class="mobile-nav-link">ABOUT XENTIA</a></li>
       <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="mobile-nav-link">CONTACT FACTORY</a></li>
       <li><a href="{{ routes.account_url }}" class="mobile-nav-link">CUSTOMER ACCOUNT</a></li>
-      <li><a href="/pages/faq" class="mobile-nav-link">PROCUREMENT FAQ</a></li>
+      <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" class="mobile-nav-link">PROCUREMENT FAQ</a></li>
       <li><a href="/pages/policies" class="mobile-nav-link">WARRANTY & POLICIES</a></li>
     </ul>
   </div>

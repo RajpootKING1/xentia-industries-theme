@@ -14,6 +14,10 @@
   <div class="about-page-wrapper">
     {% render 'about-content' %}
   </div>
+{%- elsif page_handle_down contains 'faq' or page_title_down contains 'faq' or page.template_suffix contains 'faq' or template.suffix contains 'faq' -%}
+  <div class="faq-page-wrapper">
+    {% render 'faq-content' %}
+  </div>
 {%- else -%}
 <article class="standard-page-section" style="padding: var(--space-12) 0 var(--space-20) 0;">
   <div class="container" style="max-width: {% if is_contact_page %}1140px{% else %}900px{% endif %}; padding: 0 var(--space-4);">
