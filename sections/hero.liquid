@@ -1,59 +1,138 @@
-<section class="hero-section" id="hero">
-  <div class="hero-bg-overlay">
+<section id="hero" class="hero-section" aria-label="Xentia Industries Precision Surgical Manufacturing">
+  
+  <!-- Video & Fallback Poster Layer -->
+  <div class="hero-video-wrapper">
+    <!-- Instant High-Res Poster Fallback (Zero CLS) -->
     <img 
+      id="hero-poster-fallback" 
       src="{{ 'hero_surgical_showcase.webp' | asset_url }}" 
-      alt="Xentia Precision Surgical Instruments" 
-      class="hero-bg-media"
-      loading="eager"
+      alt="Precision Surgical Instruments Showcase" 
+      class="hero-poster-fallback"
       width="1920"
       height="1080"
+      fetchpriority="high"
     >
-    <div class="hero-gradient-overlay"></div>
+    
+    <!-- Privacy-Enhanced YouTube Loop Stream -->
+    <iframe
+      id="hero-video-iframe"
+      class="hero-video-iframe"
+      src="https://www.youtube-nocookie.com/embed/Lu-k3_RsUY4?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=Lu-k3_RsUY4&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+      title="Xentia Industries Sialkot Surgical Instrument Manufacturing Facility"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      tabindex="-1"
+      aria-hidden="true"
+    ></iframe>
   </div>
 
-  <div class="container hero-content">
-    <div class="hero-badge-wrap">
-      {% render 'metallurgy-badges' %}
-    </div>
+  <!-- Dark Obsidian Scrim Layer (WCAG AAA Contrast Guarantee) -->
+  <div class="hero-scrim" aria-hidden="true"></div>
 
-    <h1 class="hero-title">
-      PRECISION SURGICAL INSTRUMENTS
-      <span class="gold-gradient-text block">FORGED FOR SURGICAL MASTERY</span>
-    </h1>
+  <!-- Main Hero Content -->
+  <div class="hero-content">
+    <div class="container">
+      
+      <!-- Manufacturing Pedigree Eyebrow -->
+      <div class="hero-eyebrow-badge">
+        <span class="status-dot"></span>
+        <span style="font-family: var(--font-display); font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wider); color: var(--color-gold-bright); text-transform: uppercase;">
+          Sialkot, Pakistan &bull; Precision Surgical Instrument Manufacturer
+        </span>
+      </div>
 
-    <p class="hero-subtitle">
-      Manufactured directly in our Sialkot production facility using German DIN 1.4021 stainless steel and Japanese cobalt alloys. Providing world-class surgeons and medical distributors with micro-tolerance cutting shears, tungsten carbide needle holders, and custom OEM surgical sets.
-    </p>
+      <!-- Main Architectural Title -->
+      <h1 class="hero-title">
+        Precision Surgical Instruments <br>
+        <span class="section-title-highlight">Crafted for Global Excellence</span>
+      </h1>
 
-    <div class="hero-cta-group">
-      <a href="/collections/all" class="btn btn-primary btn-lg">
-        EXPLORE 50+ INSTRUMENTS
-        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-left: 8px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
-      <a href="/pages/wholesale-custom-orders" class="btn btn-secondary btn-lg">
-        REQUEST B2B FACTORY QUOTE
-      </a>
-    </div>
+      <!-- Dynamic Tagline Typewriter Rotator -->
+      <div class="hero-tagline-row">
+        <div class="hero-typewriter">
+          <span id="hero-typewriter-text">BUILT ON PRECISION.</span>
+          <span id="hero-typewriter-cursor" class="typing-cursor" aria-hidden="true"></span>
+        </div>
+      </div>
 
-    <div class="hero-stats-row">
-      <div class="hero-stat-item">
-        <span class="stat-number">54-58</span>
-        <span class="stat-label">Rockwell HRC Temper</span>
+      <!-- Subtitle Narrative -->
+      <p class="hero-subtitle">
+        Direct-from-factory surgical, dental, orthopedic, and veterinary instrumentation manufactured to ASTM F899 &amp; ISO standards. Supplying hospitals, clinics, and surgical distributors across 40+ nations with custom OEM production and modular sterilization sets.
+      </p>
+
+      <!-- Primary CTAs -->
+      <div class="flex items-center justify-center gap-4 flex-wrap" style="margin-bottom: var(--space-6);">
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary" id="hero-cta-explore">
+          EXPLORE SURGICAL CATALOG
+        </a>
+        <a href="/pages/wholesale-custom-orders" class="btn btn-secondary" id="hero-cta-quote">
+          REQUEST FACTORY RFQ
+        </a>
+        <a href="{{ routes.cart_url }}" class="btn btn-ghost-gold" aria-label="View Shopping Cart">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+          </svg>
+          <span>VIEW CART</span>
+        </a>
       </div>
-      <div class="hero-stat-item">
-        <span class="stat-number">100%</span>
-        <span class="stat-label">Optical Microscope Inspected</span>
+
+      <!-- Direct WhatsApp Channel Indicator -->
+      <div style="font-size: var(--text-xs); color: var(--color-steel-medium); margin-bottom: var(--space-8);">
+        <span>Urgent Hospital or Wholesale Inquiries:</span>
+        <a href="{{ settings.social_whatsapp_url | default: 'https://wa.me/923497400818' }}" target="_blank" rel="noopener noreferrer" style="color: var(--color-gold-base); font-weight: var(--weight-bold); margin-left: 6px; text-decoration: underline;">
+          WhatsApp Desk {{ settings.whatsapp_number | default: '+92 349 7400818' }}
+        </a>
       </div>
-      <div class="hero-stat-item">
-        <span class="stat-number">ISO 13485</span>
-        <span class="stat-label">Medical Quality Standard</span>
+
+      <!-- Trust Capability Metrics Strip -->
+      <div class="hero-capability-strip" role="region" aria-label="Manufacturing Quality &amp; Export Specifications">
+        <div class="hero-capability-item">
+          <div class="hero-capability-val">
+            <span>ASTM</span> F899
+          </div>
+          <div class="hero-capability-desc">German &amp; French Stainless Steel</div>
+        </div>
+
+        <div class="hero-capability-item">
+          <div class="hero-capability-val">
+            <span>HRC</span> 52&ndash;56
+          </div>
+          <div class="hero-capability-desc">Cryogenic Vacuum Heat Treatment</div>
+        </div>
+
+        <div class="hero-capability-item">
+          <div class="hero-capability-val">
+            <span>134&deg;C</span> Steam
+          </div>
+          <div class="hero-capability-desc">Autoclave Sterilization Endurance</div>
+        </div>
+
+        <div class="hero-capability-item">
+          <div class="hero-capability-val">
+            <span>Global</span> Delivery
+          </div>
+          <div class="hero-capability-desc">EXW &bull; FOB &bull; CIF &bull; DAP &bull; DDP Terms</div>
+        </div>
       </div>
-      <div class="hero-stat-item">
-        <span class="stat-number">45+</span>
-        <span class="stat-label">Countries Exported Direct</span>
-      </div>
+
     </div>
   </div>
+
+  <!-- Ambient Video Play / Pause Toggle Button -->
+  <button 
+    type="button" 
+    id="hero-video-toggle" 
+    class="hero-video-control" 
+    aria-label="Pause background factory video"
+  >
+    <svg class="video-icon-pause" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+    </svg>
+    <svg class="video-icon-play" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true" style="display: none;">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <span class="video-toggle-label">PAUSE VIDEO</span>
+  </button>
+
 </section>
 
 {% schema %}

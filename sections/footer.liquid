@@ -1,68 +1,77 @@
-<footer class="footer-root">
-  <div class="container footer-grid">
-    <!-- Col 1: Brand & Sialkot HQ -->
-    <div class="footer-col">
-      <img src="{{ 'logo_xentia.png' | asset_url }}" alt="Xentia Industries" width="160" height="40" class="footer-logo">
-      <p class="footer-text">
-        Precision surgical instruments engineered from German DIN 1.4021 & Japanese cobalt stainless steel. Direct factory manufacturing, custom OEM/ODM tooling, and global hospital export since 2008.
-      </p>
-      <div class="footer-contact-details">
-        <p><strong>Factory:</strong> {{ settings.factory_address | default: 'Ugoki Road, Small Industrial Estate, Sialkot 51310, Punjab, Pakistan' }}</p>
-        <p><strong>Desk:</strong> {{ settings.contact_phone_1 | default: '+92 345 9656454' }} / {{ settings.contact_phone_2 | default: '+92 349 7400818' }}</p>
-        <p><strong>Email:</strong> {{ settings.contact_email | default: 'info@xentiaindustries.com' }}</p>
+<footer style="background-color: var(--color-bg-deep); border-top: var(--border-medium); padding: var(--space-16) 0 var(--space-8) 0; font-size: var(--text-sm);" role="contentinfo">
+  <div class="container">
+    <div class="grid-4" style="margin-bottom: var(--space-12);">
+      
+      <!-- Column 1: Company Info & Social Handles -->
+      <div>
+        <a href="{{ routes.root_url }}" aria-label="Xentia Industries">
+          <img src="{{ 'logo-for-website.png' | asset_url }}" alt="Xentia Industries" width="160" height="68" style="height: 42px; width: auto; margin-bottom: var(--space-4);">
+        </a>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-medium); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);">
+          Premier manufacturer and international exporter of professional surgical, dental, orthopedic, and veterinary instruments forged from German DIN 1.4021 Stainless Steel.
+        </p>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: var(--space-4);">
+          <strong>{{ settings.factory_address | default: 'Shahab Pura Road / Ugoki Road, Small Industries Estate, Sialkot 51310, Punjab, Pakistan' }}</strong>
+        </p>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-medium); margin-bottom: var(--space-4);">
+          Desk: <a href="tel:{{ settings.contact_phone_1 | default: '+923459656454' }}" style="color: var(--color-gold-base);">{{ settings.contact_phone_1 | default: '+92 345 9656454' }}</a> &bull;
+          Email: <a href="mailto:{{ settings.contact_email | default: 'info@xentiaindustries.com' }}" style="color: var(--color-gold-base);">{{ settings.contact_email | default: 'info@xentiaindustries.com' }}</a>
+        </p>
+        
+        <!-- Social Icons -->
+        {% render 'social-icons' %}
       </div>
-      {% render 'social-icons', class: 'footer-socials' %}
+
+      <!-- Column 2: Clinical Disciplines & Navigation -->
+      <div>
+        <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">PAGES &amp; CATALOG</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
+          <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
+          <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Complete Surgical Sets (19 Sets)</a></li>
+          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
+          <li><a href="/pages/about" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
+          <li><a href="/pages/contact" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
+          <li><a href="{{ routes.account_url }}" style="color: var(--color-steel-silver);">Customer Account Portal</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: B2B Solutions -->
+      <div>
+        <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">B2B SOLUTIONS</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
+          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Wholesale &amp; Custom Orders</a></li>
+          <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
+          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
+          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
+          <li><a href="/pages/faq" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Institutional Policies -->
+      <div>
+        <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
+        <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
+          <li><a href="/pages/policies#warranty" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
+          <li><a href="/pages/policies#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
+          <li><a href="/pages/policies#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
+          <li><a href="/pages/policies#privacy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
+          <li><a href="/pages/faq" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Col 2: Surgical Specialties -->
-    <div class="footer-col">
-      <h3 class="footer-heading">SURGICAL DISCIPLINES</h3>
-      <ul class="footer-links">
-        <li><a href="/collections/all?specialty=rhinoplasty">Plastic & Rhinoplasty Instruments</a></li>
-        <li><a href="/collections/all?specialty=hair-restoration">FUE & FUT Hair Restoration</a></li>
-        <li><a href="/collections/all?specialty=dental">Dental & Maxillofacial Extraction</a></li>
-        <li><a href="/collections/all?specialty=orthopedic">Orthopedic Retractors & Elevators</a></li>
-        <li><a href="/collections/all?specialty=ophthalmic">Microsurgical Ophthalmic Tools</a></li>
-        <li><a href="/collections/all?specialty=tc-inlays">Tungsten Carbide (TC) Inlays</a></li>
-      </ul>
-    </div>
+    <hr class="divider" style="margin: var(--space-8) 0 var(--space-6) 0;">
 
-    <!-- Col 3: Factory Services -->
-    <div class="footer-col">
-      <h3 class="footer-heading">B2B SERVICES</h3>
-      <ul class="footer-links">
-        <li><a href="/pages/wholesale-custom-orders">Custom OEM / ODM Manufacturing</a></li>
-        <li><a href="/#surgical-sets">Custom Modular Surgical Trays</a></li>
-        <li><a href="/pages/about#metallurgy">German Metallurgy & Passivation</a></li>
-        <li><a href="/pages/wholesale-custom-orders">Private Labeling & Fiber Laser Marking</a></li>
-        <li><a href="/pages/wholesale-custom-orders">Cleanroom Packaging & Sterile Pouching</a></li>
-        <li><a href="/pages/faq">Bulk Institutional Procurement</a></li>
-      </ul>
-    </div>
-
-    <!-- Col 4: Quality & Compliance -->
-    <div class="footer-col">
-      <h3 class="footer-heading">COMPLIANCE & LEGAL</h3>
-      <ul class="footer-links">
-        <li><a href="/pages/policies#warranty">Lifetime Metallurgical Warranty</a></li>
-        <li><a href="/pages/policies#shipping">Incoterms 2020 Export Protocols</a></li>
-        <li><a href="/pages/policies#terms">Institutional Terms of Service</a></li>
-        <li><a href="/pages/policies#privacy">GDPR & Medical Data Privacy</a></li>
-        <li><a href="/pages/faq">Procurement FAQ</a></li>
-        <li><a href="/pages/contact">Factory Visit Request</a></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="footer-bottom">
-    <div class="container footer-bottom-inner">
-      <p>&copy; {{ 'now' | date: "%Y" }} Xentia Industries. All rights reserved. Sialkot, Pakistan.</p>
-      <div class="footer-bottom-badges">
+    <div class="flex items-center justify-between flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--color-steel-muted);">
+      <p>&copy; {{ 'now' | date: "%Y" }} Xentia Industries. All rights reserved. Sialkot, Punjab, Pakistan.</p>
+      <div class="flex items-center gap-4">
         <span>ISO 13485:2016</span>
+        <span>&bull;</span>
         <span>CE DIRECTIVE 93/42/EEC</span>
-        <span>FDA REGISTERED</span>
-        <span>ASTM F899 COMPLIANT</span>
+        <span>&bull;</span>
+        <span>FDA Registered</span>
+        <span>&bull;</span>
+        <span>ASTM F899 Compliant</span>
       </div>
     </div>
   </div>

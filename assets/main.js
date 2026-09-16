@@ -10,17 +10,17 @@
 import { CONFIG } from './config.js';
 import { shopifyClient } from './api.js';
 import { cartController } from './cart.js';
-import { renderProductCard, renderSkeletonProductCard } from './components/product-card.js';
-import { productModal } from './components/product-modal.js';
-import { CollectionFilterController } from './components/collection-filter.js';
-import { getQuoteUrl, navigateToQuote } from './components/quote-hook.js';
-import { loaderController } from './components/loader.js';
-import { headerController } from './components/header.js';
-import { heroController } from './components/hero.js';
-import { OEMTabsController } from './components/oem-tabs.js';
-import { SurgicalSetsController } from './components/surgical-sets.js';
-import { ContactFormController } from './components/contact-form.js';
-import { mobileAppBarController } from './components/mobile-app-bar.js';
+import { renderProductCard, renderSkeletonProductCard } from './product-card.js';
+import { productModal } from './product-modal.js';
+import { CollectionFilterController } from './collection-filter.js';
+import { getQuoteUrl, navigateToQuote } from './quote-hook.js';
+import { loaderController } from './loader.js';
+import { headerController } from './header.js';
+import { heroController } from './hero.js';
+import { OEMTabsController } from './oem-tabs.js';
+import { SurgicalSetsController } from './surgical-sets.js';
+import { ContactFormController } from './contact-form.js';
+import { mobileAppBarController } from './mobile-app-bar.js';
 
 // Boot preloader immediately
 loaderController.init();

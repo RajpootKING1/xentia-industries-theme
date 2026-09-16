@@ -9,7 +9,7 @@
         <p style="color: var(--color-steel-muted); font-size: var(--text-sm);">Account ID: #CLT-{{ customer.id }} | Tier: Verified Institutional Partner</p>
       </div>
       <div>
-        <a href="/account/logout" class="btn btn-secondary btn-sm">LOG OUT</a>
+        <a href="{{ routes.account_logout_url }}" class="btn btn-secondary btn-sm">LOG OUT</a>
       </div>
     </div>
 
@@ -49,7 +49,7 @@
               No sample or bulk purchase orders on file yet. Ready to evaluate instruments for your surgical practice?
             </p>
             <div style="margin-top: var(--space-4);">
-              <a href="/collections/all" class="btn btn-primary btn-sm">BROWSE INSTRUMENT CATALOG</a>
+              <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary btn-sm">BROWSE INSTRUMENT CATALOG</a>
             </div>
           {%- endif -%}
         {%- endpaginate -%}

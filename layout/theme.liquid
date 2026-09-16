@@ -18,6 +18,11 @@
     <meta name="description" content="Xentia Industries &ndash; Precision German DIN 1.4021 Surgical Instruments, OEM/ODM Manufacturing, and Wholesale Hospital Procurement from Sialkot, Pakistan.">
   {%- endif -%}
 
+  <!-- Google Web Fonts: Cinzel, Inter, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="{{ 'favicon.svg' | asset_url }}">
   <link rel="apple-touch-icon" href="{{ 'apple-touch-icon.png' | asset_url }}">
@@ -33,14 +38,55 @@
   {{ 'components.css' | asset_url | stylesheet_tag }}
   {{ 'animations.css' | asset_url | stylesheet_tag }}
   {{ 'shopify-overrides.css' | asset_url | stylesheet_tag }}
+
+  <!-- Preloader Safety Failsafe -->
+  <script>
+    (function() {
+      var DISMISS_AFTER_MS = 2500;
+      function forceShowPage() {
+        var loader = document.getElementById('xentia-loader');
+        if (loader) {
+          loader.style.transition = 'opacity 0.4s ease';
+          loader.style.opacity = '0';
+          loader.style.visibility = 'hidden';
+          loader.style.pointerEvents = 'none';
+          setTimeout(function() { loader.style.display = 'none'; }, 450);
+        }
+        document.body.classList.remove('is-loading');
+      }
+      window._xentiaLoaderFailsafe = setTimeout(forceShowPage, DISMISS_AFTER_MS);
+      window.addEventListener('load', function() {
+        setTimeout(forceShowPage, 600);
+      });
+    })();
+  </script>
 </head>
 
-<body class="template-{{ template.name | handle }}">
-  <a class="sr-only focus:not-sr-only" href="#MainContent">Skip to content</a>
+<body class="template-{{ template.name | handle }} is-loading">
+  <!-- Accessible Skip Link -->
+  <a class="skip-to-content" href="#main-content">Skip to main content</a>
+
+  <!-- Precision Surgical Preloader -->
+  <div id="xentia-loader" class="xentia-loader" role="status" aria-live="polite" aria-label="Loading Xentia Industries storefront">
+    <div class="loader-content">
+      <div class="loader-emblem-wrapper">
+        <img src="{{ 'logo-for-website.png' | asset_url }}" alt="Xentia Industries" class="loader-emblem" width="160" height="68">
+        <div class="loader-scan-sheen"></div>
+      </div>
+      <div class="loader-meter-bar">
+        <div id="loader-progress" class="loader-progress-fill"></div>
+      </div>
+      <div class="loader-meta-row flex items-center justify-between">
+        <span id="loader-status-text" class="loader-status">CALIBRATING MICRON TOLERANCES...</span>
+        <span id="loader-percentage" class="loader-percentage">100%</span>
+      </div>
+      <div id="loader-tip" class="loader-tip">ASTM F899 &bull; German Stainless Steel &bull; Sialkot Facility</div>
+    </div>
+  </div>
 
   {% section 'header' %}
 
-  <main role="main" id="MainContent" class="main-content">
+  <main role="main" id="main-content" class="main-content">
     {{ content_for_layout }}
   </main>
 
@@ -48,39 +94,10 @@
 
   {% section 'mobile-bottom-nav' %}
 
+  <!-- Interactive Slide-Out Cart Drawer -->
   {% render 'cart-drawer' %}
 
-  <script>
-    // Header & Mobile Drawer Controls
-    document.addEventListener('DOMContentLoaded', () => {
-      const openMenuBtn = document.getElementById('mobile-menu-open-btn');
-      const closeMenuBtn = document.getElementById('mobile-menu-close-btn');
-      const drawer = document.getElementById('mobile-menu-drawer');
-
-      if (openMenuBtn && drawer) {
-        openMenuBtn.addEventListener('click', () => {
-          drawer.style.display = 'block';
-        });
-      }
-
-      if (closeMenuBtn && drawer) {
-        closeMenuBtn.addEventListener('click', () => {
-          drawer.style.display = 'none';
-        });
-      }
-
-      // Cart Drawer Trigger
-      const cartTriggers = document.querySelectorAll('.js-cart-trigger');
-      const cartDrawer = document.getElementById('shopify-cart-drawer');
-      cartTriggers.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          if (cartDrawer) {
-            e.preventDefault();
-            cartDrawer.style.display = 'flex';
-          }
-        });
-      });
-    });
-  </script>
+  <!-- Core JavaScript Modules -->
+  <script type="module" src="{{ 'main.js' | asset_url }}"></script>
 </body>
 </html>

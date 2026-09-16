@@ -1,13 +1,13 @@
 {%- if settings.enable_mobile_app_bar -%}
 <nav class="mobile-bottom-app-bar" aria-label="Mobile Storefront Navigation">
-  <a href="/" class="mobile-app-nav-item {% if request.path == '/' %}is-active{% endif %}" aria-label="Storefront Home">
+  <a href="{{ routes.root_url }}" class="mobile-app-nav-item {% if request.path == routes.root_url %}is-active{% endif %}" aria-label="Storefront Home">
     <svg class="mobile-app-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
     </svg>
     <span class="mobile-app-nav-label">Home</span>
   </a>
 
-  <a href="/collections/all" class="mobile-app-nav-item {% if request.path contains '/collections' %}is-active{% endif %}" aria-label="Browse Surgical Catalog">
+  <a href="{{ routes.all_products_collection_url }}" class="mobile-app-nav-item {% if request.path contains '/collections' %}is-active{% endif %}" aria-label="Browse Surgical Catalog">
     <svg class="mobile-app-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"/>
     </svg>
@@ -19,7 +19,7 @@
     <span class="mobile-app-nav-label">Quote</span>
   </a>
 
-  <a href="/cart" class="mobile-app-nav-item js-cart-trigger" id="mobile-app-cart-btn" aria-label="View Procurement Cart">
+  <a href="{{ routes.cart_url }}" class="mobile-app-nav-item js-cart-trigger" id="mobile-app-cart-btn" aria-label="View Procurement Cart">
     <div class="mobile-app-nav-icon-wrapper">
       <svg class="mobile-app-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
@@ -29,7 +29,7 @@
     <span class="mobile-app-nav-label">Cart</span>
   </a>
 
-  <a href="/account" class="mobile-app-nav-item {% if request.path contains '/account' %}is-active{% endif %}" aria-label="Institutional Account">
+  <a href="{{ routes.account_url }}" class="mobile-app-nav-item {% if request.path contains '/account' %}is-active{% endif %}" aria-label="Institutional Account">
     <svg class="mobile-app-nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
     </svg>

@@ -11,11 +11,11 @@
     <!-- Collection Filter Tabs -->
     <div class="catalog-filter-bar">
       <div class="filter-tabs-wrapper">
-        <a href="/collections/all" class="tab-pill {% if collection.handle == 'all' or collection.handle == blank %}tab-pill-active{% endif %}">ALL INSTRUMENTS</a>
-        <a href="/collections/all?specialty=rhinoplasty" class="tab-pill">PLASTIC & RHINOPLASTY</a>
-        <a href="/collections/all?specialty=hair-restoration" class="tab-pill">HAIR RESTORATION</a>
-        <a href="/collections/all?specialty=dental" class="tab-pill">DENTAL SURGERY</a>
-        <a href="/collections/all?specialty=orthopedic" class="tab-pill">ORTHOPEDIC</a>
+        <a href="{{ routes.all_products_collection_url }}" class="tab-pill {% if collection.handle == 'all' or collection.handle == blank %}tab-pill-active{% endif %}">ALL INSTRUMENTS</a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=rhinoplasty" class="tab-pill">PLASTIC &amp; RHINOPLASTY</a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=hair-restoration" class="tab-pill">HAIR RESTORATION</a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=dental" class="tab-pill">DENTAL SURGERY</a>
+        <a href="{{ routes.all_products_collection_url }}?specialty=orthopedic" class="tab-pill">ORTHOPEDIC</a>
       </div>
     </div>
 
@@ -27,7 +27,7 @@
         {%- else -%}
           <div class="catalog-empty text-center" style="grid-column: 1 / -1; padding: var(--space-16) 0;">
             <p style="color: var(--color-steel-silver); font-size: var(--text-lg);">No surgical instruments found in this collection.</p>
-            <a href="/collections/all" class="btn btn-secondary btn-sm" style="margin-top: var(--space-4);">VIEW ALL INSTRUMENTS</a>
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary btn-sm" style="margin-top: var(--space-4);">VIEW ALL INSTRUMENTS</a>
           </div>
         {%- endfor -%}
 

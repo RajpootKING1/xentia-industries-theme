@@ -1,66 +1,203 @@
-<section class="specialties-section" id="specialties">
+<section id="specialties" class="section specialty-section" aria-label="Surgical Disciplines &amp; Instrument Specialties">
   <div class="container">
-    <div class="section-header text-center">
-      <span class="badge-pill">CLINICAL CATEGORIES</span>
-      <h2 class="section-title">PRECISION BY SURGICAL SPECIALTY</h2>
-      <p class="section-subtitle">
-        Calibrated micro-patterns engineered to meet the stringent biomechanical tolerances of leading operating theatres.
+    
+    <!-- Section Header -->
+    <div class="section-header text-center" style="margin-bottom: var(--space-12);">
+      <div class="section-eyebrow">Comprehensive Instrumentation Catalog</div>
+      <h2 class="section-title">
+        Specialty Category <span class="section-title-highlight">Explorer</span>
+      </h2>
+      <p class="section-subtitle container-reading">
+        Direct access to our 17 specialized surgical instrumentation disciplines manufactured in Sialkot. Select any clinical category to browse our precision-engineered instruments.
       </p>
     </div>
 
-    <div class="specialties-grid">
-      <!-- 1. Plastic & Rhinoplasty -->
-      <a href="/collections/all?specialty=rhinoplasty" class="specialty-card">
-        <div class="specialty-card-img-wrap">
-          <img src="{{ 'spec_rhinoplasty.webp' | asset_url }}" alt="Plastic & Rhinoplasty Instruments" loading="lazy" width="400" height="280">
+    <!-- 17-Discipline Responsive Grid -->
+    <div class="specialty-grid" role="region" aria-label="17 Clinical Disciplines Grid">
+      
+      <!-- Discipline 1: General Surgery -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=general-surgery" class="specialty-card" aria-label="Filter catalog by General Surgery Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">General &amp; Recon</span>
+          </div>
+          <h3 class="specialty-title">General Surgery</h3>
+          <p class="specialty-desc">
+            Scalpels, Mayo &amp; Metzenbaum dissecting scissors, Allis tissue forceps, and Langenbeck retractors.
+          </p>
         </div>
-        <div class="specialty-card-body">
-          <span class="specialty-tag">54-56 HRC | GERMAN DIN 1.4021</span>
-          <h3 class="specialty-name">Plastic & Rhinoplasty</h3>
-          <p class="specialty-desc">Aufricht & Cottle retractors, osteotomes, cartilage morselizers, and supercut iris dissection scissors.</p>
-          <span class="specialty-link-text">Browse 16 Instruments &rarr;</span>
-        </div>
-      </a>
-
-      <!-- 2. Hair Restoration -->
-      <a href="/collections/all?specialty=hair-restoration" class="specialty-card">
-        <div class="specialty-card-img-wrap">
-          <img src="{{ 'spec_hair_restoration.webp' | asset_url }}" alt="Hair Restoration Instruments" loading="lazy" width="400" height="280">
-        </div>
-        <div class="specialty-card-body">
-          <span class="specialty-tag">58-60 HRC | TITANIUM COATED</span>
-          <h3 class="specialty-name">Hair Restoration (FUE / FUT)</h3>
-          <p class="specialty-desc">Serrated micro-punches (0.7mm - 1.0mm), angled follicular forceps, and implanter pen assemblies.</p>
-          <span class="specialty-link-text">Browse 12 Instruments &rarr;</span>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </div>
       </a>
 
-      <!-- 3. Dental & Maxillofacial -->
-      <a href="/collections/all?specialty=dental" class="specialty-card">
-        <div class="specialty-card-img-wrap">
-          <img src="{{ 'spec_dental.webp' | asset_url }}" alt="Dental & Maxillofacial Instruments" loading="lazy" width="400" height="280">
+      <!-- Discipline 2: Plastic & Cosmetic Surgery -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=plastic-cosmetic" class="specialty-card" aria-label="Filter catalog by Plastic and Cosmetic Surgery Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Aesthetic Recon</span>
+          </div>
+          <h3 class="specialty-title">Plastic &amp; Cosmetic</h3>
+          <p class="specialty-desc">
+            Supercut fine scissors, delicate skin hooks, Castroviejo micro forceps, calipers, and facelift retractors.
+          </p>
         </div>
-        <div class="specialty-card-body">
-          <span class="specialty-tag">52-55 HRC | ASTM F899</span>
-          <h3 class="specialty-name">Dental & Oral Surgery</h3>
-          <p class="specialty-desc">Atraumatic extraction forceps, periosteal elevators, bone rongeurs, and sinus lift osteotome kits.</p>
-          <span class="specialty-link-text">Browse 14 Instruments &rarr;</span>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </div>
       </a>
 
-      <!-- 4. Orthopedic & Spine -->
-      <a href="/collections/all?specialty=orthopedic" class="specialty-card">
-        <div class="specialty-card-img-wrap">
-          <img src="{{ 'spec_orthopedic.webp' | asset_url }}" alt="Orthopedic & Spine Instruments" loading="lazy" width="400" height="280">
+      <!-- Discipline 3: Rhinoplasty & ENT -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=rhinoplasty" class="specialty-card" aria-label="Filter catalog by Rhinoplasty and ENT Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Head &amp; Neck</span>
+          </div>
+          <h3 class="specialty-title">Rhinoplasty &amp; ENT</h3>
+          <p class="specialty-desc">
+            Killian &amp; Cottle nasal specula, osteotomes, bone rasps, micro nasal forceps, and adenoid curettes.
+          </p>
         </div>
-        <div class="specialty-card-body">
-          <span class="specialty-tag">56-58 HRC | FORGED STAINLESS</span>
-          <h3 class="specialty-name">Orthopedic & Spine Surgery</h3>
-          <p class="specialty-desc">Hohmann & Beckman retractor systems, bone holding clamps, Kerrison rongeurs, and mallet assemblies.</p>
-          <span class="specialty-link-text">Browse 10 Instruments &rarr;</span>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
         </div>
       </a>
+
+      <!-- Discipline 4: Orthopedic Instruments -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=orthopedic" class="specialty-card" aria-label="Filter catalog by Orthopedic Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Ortho &amp; Neuro</span>
+          </div>
+          <h3 class="specialty-title">Orthopedic Instruments</h3>
+          <p class="specialty-desc">
+            Heavy bone rongeurs, bone holding clamps, surgical mallets, periosteal elevators, and bone files.
+          </p>
+        </div>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+      </a>
+
+      <!-- Discipline 5: Hair Restoration (FUE / FUT) -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=hair-restoration" class="specialty-card" aria-label="Filter catalog by Hair Restoration Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">FUE / FUT</span>
+          </div>
+          <h3 class="specialty-title">Hair Restoration</h3>
+          <p class="specialty-desc">
+            Serrated micro punches (0.75&ndash;1.0mm), angled follicular jewelers forceps, and implanter pen assemblies.
+          </p>
+        </div>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+      </a>
+
+      <!-- Discipline 6: Neurosurgical Instruments -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=neurosurgical" class="specialty-card" aria-label="Filter catalog by Neurosurgical Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Neuroscience</span>
+          </div>
+          <h3 class="specialty-title">Neurosurgical</h3>
+          <p class="specialty-desc">
+            Cushing bayonet forceps, micro-nerve dissecting hooks, cranial rongeurs, and dural elevators.
+          </p>
+        </div>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+      </a>
+
+      <!-- Discipline 7: Dental Instruments -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=dental" class="specialty-card" aria-label="Filter catalog by Dental Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Dental &amp; Oral</span>
+          </div>
+          <h3 class="specialty-title">Dental &amp; Oral Surgery</h3>
+          <p class="specialty-desc">
+            English and American pattern extraction forceps, Bein root elevators, dental scalers, and probe explorers.
+          </p>
+        </div>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+      </a>
+
+      <!-- Discipline 8: Ophthalmic Microsurgery -->
+      <a href="{{ routes.all_products_collection_url }}?specialty=ophthalmic" class="specialty-card" aria-label="Filter catalog by Ophthalmic Instruments">
+        <div>
+          <div class="specialty-card-top">
+            <div class="specialty-icon-wrapper">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </div>
+            <span class="specialty-card-wing-badge">Microsurgery</span>
+          </div>
+          <h3 class="specialty-title">Ophthalmic</h3>
+          <p class="specialty-desc">
+            Wire-type adult and pediatric lid specula, Barraquer blade holders, Castroviejo micro-corneal scissors.
+          </p>
+        </div>
+        <div class="specialty-card-footer">
+          <span>EXPLORE INSTRUMENTS</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </div>
+      </a>
+
     </div>
+
+    <!-- Featured Banner: 19 Complete Specialized Surgical Sets -->
+    <div class="specialty-sets-banner">
+      <div class="specialty-sets-banner-info">
+        <span class="badge badge-gold" style="margin-bottom: var(--space-2); font-size: 10px;">Turnkey OR Instrumentation</span>
+        <h3 class="specialty-sets-banner-title">
+          Complete Surgical Sets &amp; <span>Modular Sterilization Trays</span>
+        </h3>
+        <p class="specialty-sets-banner-desc">
+          19 pre-configured institutional operating sets including Rhinoplasty, BBL Liposuction, Minor Surgery, Spine, Dental Implantology, and Veterinary Surgery in custom-fitted anodized aluminum trays with silicone fixing mats.
+        </p>
+      </div>
+      <div class="flex items-center gap-4 flex-wrap">
+        <a href="{{ routes.root_url }}#surgical-sets" class="btn btn-primary">
+          BROWSE 19 SURGICAL SETS
+        </a>
+        <a href="/pages/wholesale-custom-orders" class="btn btn-secondary">
+          CUSTOM SET RFQ
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
