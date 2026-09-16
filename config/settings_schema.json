@@ -20,7 +20,7 @@
         "type": "text",
         "id": "contact_phone_1",
         "label": "Primary Contact Phone",
-        "default": "+92 345 9656454"
+        "default": "+92 349 7400818"
       },
       {
         "type": "text",
@@ -38,7 +38,7 @@
         "type": "text",
         "id": "whatsapp_number",
         "label": "WhatsApp Desk (International)",
-        "default": "+92 345 9656454"
+        "default": "+92 349 7400818"
       }
     ]
   },
@@ -55,7 +55,7 @@
         "type": "text",
         "id": "social_instagram_url",
         "label": "Instagram URL",
-        "default": "https://instagram.com/xentiaindustries"
+        "default": "https://www.instagram.com/xentia.industries"
       },
       {
         "type": "text",
@@ -73,7 +73,7 @@
         "type": "text",
         "id": "social_whatsapp_url",
         "label": "WhatsApp Direct URL",
-        "default": "https://wa.me/923459656454"
+        "default": "https://wa.me/923497400818"
       }
     ]
   },

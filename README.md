@@ -41,8 +41,9 @@ Any changes pushed to `main` will automatically deploy live to Shopify!
 
 ## 🏭 Factory Headquarters
 * **Location:** Ugoki Road, Small Industrial Estate, Sialkot 51310, Punjab, Pakistan
-* **Hotlines:** +92 345 9656454 / +92 349 7400818
+* **Hotline:** +92 349 7400818
 * **Inquiries:** info@xentiaindustries.com
-* **WhatsApp Desk:** [wa.me/923459656454](https://wa.me/923459656454)
+* **WhatsApp Desk:** [wa.me/923497400818](https://wa.me/923497400818)
+* **Instagram:** [@xentia.industries](https://www.instagram.com/xentia.industries)
 
 &copy; 2026 Xentia Industries. All rights reserved.

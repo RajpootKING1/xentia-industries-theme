@@ -8,8 +8,8 @@
       <span class="hide-mobile" style="color: var(--color-steel-medium);">Worldwide Export Delivery (EXW, FOB, CIF, DAP, DDP)</span>
     </div>
     <div class="flex items-center gap-4">
-      <a href="https://wa.me/923459656454" target="_blank" rel="noopener noreferrer" style="color: var(--color-steel-silver); display: inline-flex; align-items: center; gap: 4px;">
-        <span>WhatsApp:</span> <strong style="color: var(--color-gold-base);">{{ settings.contact_phone_1 | default: '+92 345 9656454' }}</strong>
+      <a href="{{ settings.social_whatsapp_url | default: 'https://wa.me/923497400818' }}" target="_blank" rel="noopener noreferrer" style="color: var(--color-steel-silver); display: inline-flex; align-items: center; gap: 4px;">
+        <span>WhatsApp:</span> <strong style="color: var(--color-gold-base);">{{ settings.contact_phone_1 | default: '+92 349 7400818' }}</strong>
       </a>
       <span class="hide-mobile" style="color: var(--color-steel-dark);">|</span>
       <a href="mailto:{{ settings.contact_email | default: 'info@xentiaindustries.com' }}" class="hide-mobile" style="color: var(--color-steel-medium);">{{ settings.contact_email | default: 'info@xentiaindustries.com' }}</a>

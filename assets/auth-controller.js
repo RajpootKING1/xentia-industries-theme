@@ -227,7 +227,7 @@ export class AuthController {
                       </div>
                       <div class="flex items-center gap-3">
                         <span class="badge badge-gold" style="font-size:10px;">UNDER FACTORY REVIEW</span>
-                        <a href="https://wa.me/923459656454?text=${encodeURIComponent('Inquiring about RFQ-' + (1000 + idx) + ': ' + inq.category)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;">
+                        <a href="https://wa.me/923497400818?text=${encodeURIComponent('Inquiring about RFQ-' + (1000 + idx) + ': ' + inq.category)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;">
                           WhatsApp Desk &rarr;
                         </a>
                       </div>

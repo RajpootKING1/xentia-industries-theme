@@ -78,7 +78,7 @@ export class ContactFormController {
         <p style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.5; margin: 0 0 12px 0;">
           Thank you, <strong>${escapeHtml(data.name)}</strong>. Your technical RFQ for <strong>${escapeHtml(data.category)} (${escapeHtml(data.quantity)})</strong> has been routed to our Sales Engineering Desk in Sialkot. An official quotation will be sent to <strong>${escapeHtml(data.email)}</strong> within 4 business hours.
         </p>
-        <a href="https://wa.me/923459656454?text=${encodeURIComponent('Hello Xentia Sales Engineering, I just submitted an inquiry on your website: ' + data.name + ' (' + data.company + ') regarding ' + data.category + ' [' + data.quantity + '].')}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex; align-items:center; gap:6px;">
+        <a href="https://wa.me/923497400818?text=${encodeURIComponent('Hello Xentia Sales Engineering, I just submitted an inquiry on your website: ' + data.name + ' (' + data.company + ') regarding ' + data.category + ' [' + data.quantity + '].')}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="display:inline-flex; align-items:center; gap:6px;">
           <span>ACCELERATE VIA WHATSAPP FACTORY DESK</span> &rarr;
         </a>
       `;
