@@ -7,7 +7,7 @@
  * handling client-side and Storefront API filtering, search query debouncing, and sort selection.
  */
 
-import { shopifyClient } from '../api.js';
+import { shopifyClient } from './api.js';
 
 export class CollectionFilterController {
   constructor({ containerId, onFilterChange }) {

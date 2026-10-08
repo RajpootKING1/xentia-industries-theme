@@ -6,7 +6,7 @@
  * cart counter badges, active route indicator, and direct cart drawer opening.
  */
 
-import { cartController } from '../cart.js';
+import { cartController } from './cart.js';
 
 export class MobileAppBarController {
   constructor() {

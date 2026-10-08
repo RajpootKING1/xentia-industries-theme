@@ -7,8 +7,8 @@
  * dynamic availability feedback, image updates, and direct cart/quote actions.
  */
 
-import { shopifyClient, formatMoney } from '../api.js';
-import { cartController } from '../cart.js';
+import { shopifyClient, formatMoney } from './api.js';
+import { cartController } from './cart.js';
 import { getQuoteUrl } from './quote-hook.js';
 
 class ProductModalController {

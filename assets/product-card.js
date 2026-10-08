@@ -7,7 +7,7 @@
  * availability indicators, accessible action CTAs, and custom quote routing.
  */
 
-import { formatMoney } from '../api.js';
+import { formatMoney } from './api.js';
 import { getQuoteUrl } from './quote-hook.js';
 
 /**
