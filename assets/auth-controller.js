@@ -215,24 +215,33 @@ export class AuthController {
                 </div>
               ` : `
                 <div style="display:flex; flex-direction:column; gap:12px;">
-                  ${inquiries.map((inq, idx) => `
+                  ${inquiries.map((inq, idx) => {
+                    const category = escapeHtml(inq?.category || 'Custom Surgical Inquiry');
+                    const quantity = escapeHtml(inq?.quantity || 'Standard Production Batch');
+                    const dateFormatted = inq?.submittedAt && !isNaN(new Date(inq.submittedAt).getTime())
+                      ? new Date(inq.submittedAt).toLocaleDateString()
+                      : 'Recent Submission';
+                    const rfqNum = 1000 + idx;
+                    const inquiryText = encodeURIComponent(`Inquiring about RFQ-${rfqNum}: ${category}`);
+                    return `
                     <div style="background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius-md); padding:12px 16px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
                       <div>
                         <div style="font-family:var(--font-display); font-size:var(--text-sm); font-weight:var(--weight-bold); color:var(--color-steel-pure);">
-                          ${escapeHtml(inq.category)} • ${escapeHtml(inq.quantity)}
+                          ${category} • ${quantity}
                         </div>
                         <div style="font-size:11px; color:var(--color-steel-muted); margin-top:2px;">
-                          ${new Date(inq.submittedAt).toLocaleDateString()} • Ref: <span style="font-family:var(--font-mono); color:var(--color-gold-base);">RFQ-${1000 + idx}</span>
+                          ${dateFormatted} • Ref: <span style="font-family:var(--font-mono); color:var(--color-gold-base);">RFQ-${rfqNum}</span>
                         </div>
                       </div>
                       <div class="flex items-center gap-3">
                         <span class="badge badge-gold" style="font-size:10px;">UNDER FACTORY REVIEW</span>
-                        <a href="https://wa.me/923497400818?text=${encodeURIComponent('Inquiring about RFQ-' + (1000 + idx) + ': ' + inq.category)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;">
+                        <a href="https://wa.me/923497400818?text=${inquiryText}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding:4px 8px; font-size:10px;">
                           WhatsApp Desk &rarr;
                         </a>
                       </div>
                     </div>
-                  `).join('')}
+                  `;
+                  }).join('')}
                 </div>
               `}
             </div>
@@ -315,8 +324,12 @@ export class AuthController {
 
   async handleSignIn(e) {
     e.preventDefault();
-    const email = document.getElementById('signin-email').value.trim();
-    const password = document.getElementById('signin-password').value;
+    const emailEl = document.getElementById('signin-email');
+    const passEl = document.getElementById('signin-password');
+    if (!emailEl || !passEl) return;
+
+    const email = emailEl.value.trim();
+    const password = passEl.value;
 
     if (!email || !password) return;
 
@@ -335,11 +348,19 @@ export class AuthController {
 
   async handleSignUp(e) {
     e.preventDefault();
-    const fname = document.getElementById('signup-fname').value.trim();
-    const lname = document.getElementById('signup-lname').value.trim();
-    const role = document.getElementById('signup-role').value;
-    const org = document.getElementById('signup-org').value.trim();
-    const email = document.getElementById('signup-email').value.trim();
+    const fnameEl = document.getElementById('signup-fname');
+    const lnameEl = document.getElementById('signup-lname');
+    const roleEl = document.getElementById('signup-role');
+    const orgEl = document.getElementById('signup-org');
+    const emailEl = document.getElementById('signup-email');
+
+    if (!fnameEl || !emailEl) return;
+
+    const fname = fnameEl.value.trim();
+    const lname = lnameEl ? lnameEl.value.trim() : '';
+    const role = roleEl ? roleEl.value : 'Verified Medical Buyer';
+    const org = orgEl ? orgEl.value.trim() : '';
+    const email = emailEl.value.trim();
 
     if (!fname || !email) return;
 
@@ -367,7 +388,7 @@ function hashCode(str) {
 }
 
 function escapeHtml(str) {
-  return String(str)
+  return String(str == null ? '' : str)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')

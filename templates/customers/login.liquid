@@ -1,40 +1,134 @@
 <section class="auth-section" style="padding: var(--space-16) var(--space-4);">
   <div class="container" style="max-width: 520px;">
     <div class="auth-card">
-      <div class="auth-header text-center">
-        <span class="badge-pill">INSTITUTIONAL PORTAL</span>
-        <h1 class="auth-title">CLIENT SIGN IN</h1>
-        <p class="auth-subtitle">Access your hospital procurement records, active B2B quotations, and sample tracking.</p>
-      </div>
-
-      {% form 'customer_login' %}
-        {{ form.errors | default_errors }}
-
-        <div class="form-group">
-          <label for="CustomerEmail" class="form-label">Official Hospital / Corporate Email</label>
-          <input type="email" name="customer[email]" id="CustomerEmail" class="form-input" autocomplete="email" autocorrect="off" autocapitalize="off" placeholder="surgeon@hospital.org" required>
+      <!-- Sign In Block -->
+      <div id="login-form-block">
+        <div class="auth-header text-center">
+          <span class="badge-pill">INSTITUTIONAL PORTAL</span>
+          <h1 class="auth-title">CLIENT SIGN IN</h1>
+          <p class="auth-subtitle">Access your hospital procurement records, active B2B quotations, and sample tracking.</p>
         </div>
 
-        {%- if form.password_needed -%}
+        {% form 'customer_login' %}
+          {{ form.errors | default_errors }}
+
           <div class="form-group">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-              <label for="CustomerPassword" class="form-label" style="margin-bottom: 0;">Password</label>
-              <a href="#recover" onclick="document.getElementById('recover').style.display='block'; document.getElementById('login-form-block').style.display='none';" style="font-size: var(--text-xs); color: var(--color-gold-base);">Forgot password?</a>
-            </div>
-            <input type="password" name="customer[password]" id="CustomerPassword" class="form-input" autocomplete="current-password" placeholder="••••••••" required>
+            <label for="CustomerEmail" class="form-label">Official Hospital / Corporate Email</label>
+            <input type="email" name="customer[email]" id="CustomerEmail" class="form-input" autocomplete="email" autocorrect="off" autocapitalize="off" placeholder="surgeon@hospital.org" required>
           </div>
-        {%- endif -%}
 
-        <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
-          SIGN IN TO PORTAL
-        </button>
-      {% endform %}
+          {%- if form.password_needed -%}
+            <div class="form-group">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <label for="CustomerPassword" class="form-label" style="margin-bottom: 0;">Password</label>
+                <a href="#recover" id="RecoverPassword" style="font-size: var(--text-xs); color: var(--color-gold-base);">Forgot password?</a>
+              </div>
+              <input type="password" name="customer[password]" id="CustomerPassword" class="form-input" autocomplete="current-password" placeholder="••••••••" required>
+            </div>
+          {%- endif -%}
 
-      <div class="auth-footer text-center" style="margin-top: var(--space-6); padding-top: var(--space-6); border-top: var(--border-hairline);">
-        <p style="color: var(--color-steel-silver); font-size: var(--text-sm);">
-          New institutional client? <a href="{{ routes.account_register_url }}" style="color: var(--color-gold-bright); font-weight: 600;">Register Hospital / Clinic Account &rarr;</a>
-        </p>
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
+            SIGN IN TO PORTAL
+          </button>
+        {% endform %}
+
+        <div class="auth-footer text-center" style="margin-top: var(--space-6); padding-top: var(--space-6); border-top: var(--border-hairline);">
+          <p style="color: var(--color-steel-silver); font-size: var(--text-sm);">
+            New institutional client? <a href="{{ routes.account_register_url }}" style="color: var(--color-gold-bright); font-weight: 600;">Register Hospital / Clinic Account &rarr;</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Password Recovery Block -->
+      <div id="recover" style="display: none;">
+        <div class="auth-header text-center">
+          <span class="badge-pill">ACCOUNT RECOVERY</span>
+          <h2 class="auth-title" style="font-size: var(--text-2xl);">RESET PASSWORD</h2>
+          <p class="auth-subtitle">Enter your registered institutional email to receive secure recovery instructions.</p>
+        </div>
+
+        {% form 'recover_customer_password' %}
+          {%- if form.errors -%}
+            {{ form.errors | default_errors }}
+          {%- endif -%}
+
+          {%- if form.posted_successfully? -%}
+            <div class="alert alert-success" style="margin-bottom: var(--space-4); padding: 12px; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: var(--radius-sm); color: #4ade80; font-size: var(--text-sm); text-align: center;">
+              Password recovery instructions have been dispatched. Please check your inbox.
+            </div>
+          {%- endif -%}
+
+          <div class="form-group">
+            <label for="RecoverEmail" class="form-label">Official Business / Hospital Email</label>
+            <input type="email" name="email" id="RecoverEmail" class="form-input" autocomplete="email" autocorrect="off" autocapitalize="off" placeholder="surgeon@hospital.org" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" style="margin-top: var(--space-6);">
+            SEND RECOVERY INSTRUCTIONS
+          </button>
+
+          <div class="text-center" style="margin-top: var(--space-4);">
+            <a href="#login" id="HideRecoverPasswordLink" class="btn btn-secondary btn-sm" style="display: inline-block; width: 100%;">
+              Cancel &amp; Return to Sign In
+            </a>
+          </div>
+        {% endform %}
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  (function() {
+    function showRecover() {
+      var login = document.getElementById('login-form-block');
+      var recover = document.getElementById('recover');
+      if (login && recover) {
+        login.style.display = 'none';
+        recover.style.display = 'block';
+      }
+    }
+
+    function hideRecover() {
+      var login = document.getElementById('login-form-block');
+      var recover = document.getElementById('recover');
+      if (login && recover) {
+        recover.style.display = 'none';
+        login.style.display = 'block';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var recoverBtn = document.getElementById('RecoverPassword');
+      var hideBtn = document.getElementById('HideRecoverPasswordLink');
+
+      if (recoverBtn) {
+        recoverBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          showRecover();
+          if (history.pushState) {
+            history.pushState(null, null, '#recover');
+          } else {
+            location.hash = '#recover';
+          }
+        });
+      }
+
+      if (hideBtn) {
+        hideBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          hideRecover();
+          if (history.pushState) {
+            history.pushState(null, null, window.location.pathname);
+          } else {
+            location.hash = '';
+          }
+        });
+      }
+
+      if (window.location.hash === '#recover') {
+        showRecover();
+      }
+    });
+  })();
+</script>
