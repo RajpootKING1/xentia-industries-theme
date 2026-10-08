@@ -4830,6 +4830,169 @@
   }
 }
 
+/* ==========================================================================
+   HOMEPAGE POLICIES & COMPLIANCE OVERVIEW SECTION
+   ========================================================================== */
+.policies-overview-section {
+  position: relative;
+  padding: var(--space-20) 0;
+  background: radial-gradient(circle at 50% 10%, rgba(212, 175, 55, 0.05) 0%, var(--color-bg-deep) 70%);
+  border-top: var(--border-hairline);
+  border-bottom: var(--border-hairline);
+  overflow: hidden;
+}
+
+.policies-overview-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+}
+
+.policies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+  margin-bottom: var(--space-10);
+}
+
+.policy-feature-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(22, 23, 29, 0.9) 0%, rgba(14, 15, 19, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  overflow: hidden;
+}
+
+.policy-feature-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold-base), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.policy-feature-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.policy-feature-card:hover::after {
+  opacity: 1;
+}
+
+.policy-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.policy-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-bright);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.policy-feature-card:hover .policy-card-icon {
+  transform: scale(1.08);
+  background: rgba(212, 175, 55, 0.18);
+}
+
+.policy-card-badge {
+  font-family: var(--font-accent);
+  font-size: 10px;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold-base);
+  background: rgba(212, 175, 55, 0.08);
+  padding: 4px 8px;
+  border-radius: var(--radius-xs);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.policy-card-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  color: var(--color-steel-bright);
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-tight);
+}
+
+.policy-card-desc {
+  font-size: var(--text-sm);
+  color: var(--color-steel-silver);
+  line-height: var(--leading-relaxed);
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
+}
+
+.policy-pill-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.policy-pill {
+  font-size: 11px;
+  color: var(--color-steel-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  padding: 2px 10px;
+  font-family: var(--font-mono, monospace);
+}
+
+.policy-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-gold-base);
+  text-decoration: none;
+  transition: color 0.2s ease, gap 0.2s ease;
+  margin-top: auto;
+}
+
+.policy-card-link:hover {
+  color: var(--color-gold-bright);
+  gap: var(--space-3);
+}
+
+.policy-card-link svg {
+  transition: transform 0.2s ease;
+}
+
+.policy-card-link:hover svg {
+  transform: translateX(3px);
+}
+
 
 
 

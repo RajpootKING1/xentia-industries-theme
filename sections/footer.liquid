@@ -28,7 +28,7 @@
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
           <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" style="color: var(--color-gold-base); font-weight: 600;">Products &amp; Categories Showcase</a></li>
           <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
-          <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Complete Surgical Sets (19 Sets)</a></li>
+          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">Surgical Sets (19 Sets)</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
           <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
           <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
@@ -41,7 +41,7 @@
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">B2B SOLUTIONS</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Wholesale &amp; Custom Orders</a></li>
-          <li><a href="{{ routes.root_url }}#surgical-sets" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
+          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}#tray-configurator" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
           <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Guide</a></li>
@@ -52,32 +52,12 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          {%- if shop.policies.size > 0 -%}
-            {%- for policy in shop.policies -%}
-              <li><a href="{{ policy.url }}" style="color: var(--color-steel-silver);">{{ policy.title }}</a></li>
-            {%- endfor -%}
-          {%- else -%}
-            {%- if shop.refund_policy != blank -%}
-              <li><a href="{{ shop.refund_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.refund_policy.title }}</a></li>
-            {%- else -%}
-              <li><a href="/policies/refund-policy" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
-            {%- endif -%}
-            {%- if shop.shipping_policy != blank -%}
-              <li><a href="{{ shop.shipping_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.shipping_policy.title }}</a></li>
-            {%- else -%}
-              <li><a href="/policies/shipping-policy" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
-            {%- endif -%}
-            {%- if shop.terms_of_service != blank -%}
-              <li><a href="{{ shop.terms_of_service.url }}" style="color: var(--color-steel-silver);">{{ shop.terms_of_service.title }}</a></li>
-            {%- else -%}
-              <li><a href="/policies/terms-of-service" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
-            {%- endif -%}
-            {%- if shop.privacy_policy != blank -%}
-              <li><a href="{{ shop.privacy_policy.url }}" style="color: var(--color-steel-silver);">{{ shop.privacy_policy.title }}</a></li>
-            {%- else -%}
-              <li><a href="/policies/privacy-policy" style="color: var(--color-steel-silver);">Privacy &amp; GDPR Compliance</a></li>
-            {%- endif -%}
-          {%- endif -%}
+          <li><a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
+          <li><a href="/pages/policies#refunds" style="color: var(--color-steel-silver);">Refund Policy &amp; Evaluations</a></li>
+          <li><a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
+          <li><a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
+          <li><a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}" style="color: var(--color-steel-silver);">Privacy Policy &amp; GDPR</a></li>
+          <li><a href="/pages/policies#compliance" style="color: var(--color-steel-silver);">Quality &amp; Regulatory Compliance</a></li>
           <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
         </ul>
       </div>
