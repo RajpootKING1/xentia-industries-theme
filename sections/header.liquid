@@ -20,6 +20,40 @@
 <!-- ========================================================================
      2. Architectural Header with 4-Wing Specialty Mega-Menu
      ======================================================================== -->
+{%- assign current_path = request.path | default: '' | downcase -%}
+{%- assign current_handle = page.handle | default: '' | downcase -%}
+{%- assign current_page_type = request.page_type | default: template.name | default: '' | downcase -%}
+
+{%- assign is_home_active = false -%}
+{%- assign is_products_active = false -%}
+{%- assign is_sets_active = false -%}
+{%- assign is_wholesale_active = false -%}
+{%- assign is_about_active = false -%}
+{%- assign is_contact_active = false -%}
+{%- assign is_faqs_active = false -%}
+{%- assign is_policies_active = false -%}
+{%- assign is_account_active = false -%}
+
+{%- if current_page_type == 'index' or current_path == '/' or current_path == routes.root_url -%}
+  {%- assign is_home_active = true -%}
+{%- elsif current_handle contains 'wholesale' or current_handle contains 'custom-order' or current_path contains 'wholesale' or current_path contains 'custom-order' -%}
+  {%- assign is_wholesale_active = true -%}
+{%- elsif current_handle contains 'surgical-set' or current_handle contains 'sets' or current_path contains 'surgical-set' -%}
+  {%- assign is_sets_active = true -%}
+{%- elsif current_handle contains 'about' or current_path contains 'about' -%}
+  {%- assign is_about_active = true -%}
+{%- elsif current_handle contains 'contact' or current_path contains 'contact' -%}
+  {%- assign is_contact_active = true -%}
+{%- elsif current_handle contains 'faq' or current_path contains 'faq' -%}
+  {%- assign is_faqs_active = true -%}
+{%- elsif current_handle contains 'polic' or current_path contains 'polic' -%}
+  {%- assign is_policies_active = true -%}
+{%- elsif current_page_type contains 'customer' or current_path contains 'account' or current_path contains 'login' or current_path contains 'register' -%}
+  {%- assign is_account_active = true -%}
+{%- elsif current_page_type == 'collection' or current_page_type == 'product' or current_page_type == 'list-collections' or current_handle contains 'product' or current_handle contains 'categor' or current_path contains '/collections' or current_path contains '/products' or current_path contains 'catalog' or current_path contains 'shop' -%}
+  {%- assign is_products_active = true -%}
+{%- endif -%}
+
 <header class="site-header" style="background: rgba(10, 10, 12, 0.94); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid rgba(212, 175, 55, 0.32); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.5);" role="banner">
   <div class="container flex items-center justify-between" style="height: 76px;">
     
@@ -30,23 +64,25 @@
 
     <!-- Desktop Main Navigation with 4-Wing Mega-Menu -->
     <nav class="hide-mobile" aria-label="Main Navigation">
-      <ul class="flex items-center gap-6" style="font-family: var(--font-display); font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); margin: 0; padding: 0; list-style: none;">
-        <li><a href="{{ routes.root_url }}" style="color: var(--color-gold-base);">HOME</a></li>
+      <ul class="flex items-center" style="font-family: var(--font-display); font-size: clamp(11.5px, 0.92vw, 13px); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wide); margin: 0; padding: 0; list-style: none; gap: clamp(12px, 1.3vw, 22px);">
+        <li>
+          <a href="{{ routes.root_url }}" class="site-nav-link site-nav-home {% if is_home_active %}is-active active{% endif %}" {% if is_home_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}>HOME</a>
+        </li>
         
         <!-- Products Link with Interactive 4-Wing Mega-Menu -->
         <li class="nav-item-has-mega" style="display: flex; align-items: center;">
           <a 
             href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" 
-            class="nav-products-link" 
-            style="color: var(--color-steel-silver); padding: 8px 2px 8px 0; text-transform: uppercase; text-decoration: none;"
+            class="nav-products-link site-nav-link site-nav-products {% if is_products_active %}is-active active{% endif %}" 
+            {% if is_products_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; padding: 8px 2px 8px 0; text-transform: uppercase; text-decoration: none; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); padding: 8px 2px 8px 0; text-transform: uppercase; text-decoration: none; white-space: nowrap;"{% endif %}
           >
-            PRODUCTS
+            PRODUCTS &amp; CATEGORIES
           </a>
           <button 
             type="button" 
             id="nav-products-trigger" 
             class="mega-menu-chevron-btn" 
-            style="background: none; border: none; font-family: inherit; color: var(--color-steel-silver); cursor: pointer; padding: 8px 2px; display: inline-flex; align-items: center;"
+            style="background: none; border: none; font-family: inherit; color: {% if is_products_active %}var(--color-gold-base){% else %}var(--color-steel-silver){% endif %}; cursor: pointer; padding: 8px 2px; display: inline-flex; align-items: center;"
             aria-haspopup="true" 
             aria-expanded="false" 
             aria-controls="products-mega-menu"
@@ -137,11 +173,41 @@
           </div>
         </li>
 
-        <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">SURGICAL SETS</a></li>
-        <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
-        <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">ABOUT</a></li>
-        <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">CONTACT</a></li>
-        <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ</a></li>
+        <li>
+          <a 
+            href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" 
+            class="site-nav-link site-nav-sets {% if is_sets_active %}is-active active{% endif %}"
+            {% if is_sets_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}
+          >SURGICAL SETS</a>
+        </li>
+        <li>
+          <a 
+            href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" 
+            class="site-nav-link site-nav-wholesale {% if is_wholesale_active %}is-active active{% endif %}"
+            {% if is_wholesale_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}
+          >WHOLESALE &amp; CUSTOM ORDERS</a>
+        </li>
+        <li>
+          <a 
+            href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" 
+            class="site-nav-link site-nav-about {% if is_about_active %}is-active active{% endif %}"
+            {% if is_about_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}
+          >ABOUT US</a>
+        </li>
+        <li>
+          <a 
+            href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" 
+            class="site-nav-link site-nav-contact {% if is_contact_active %}is-active active{% endif %}"
+            {% if is_contact_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}
+          >CONTACT US</a>
+        </li>
+        <li>
+          <a 
+            href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" 
+            class="site-nav-link site-nav-faqs {% if is_faqs_active %}is-active active{% endif %}"
+            {% if is_faqs_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700; white-space: nowrap;"{% else %}style="color: var(--color-steel-silver); white-space: nowrap;"{% endif %}
+          >FAQS</a>
+        </li>
       </ul>
     </nav>
 
@@ -188,15 +254,15 @@
     </div>
 
     <ul class="mobile-nav-links">
-      <li><a href="{{ routes.root_url }}" class="mobile-nav-link">HOME</a></li>
-      <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" class="mobile-nav-link" style="color: var(--color-gold-base); font-weight: 700;">PRODUCTS &amp; CATEGORIES</a></li>
-      <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" class="mobile-nav-link">SURGICAL SETS</a></li>
-      <li><a href="/pages/wholesale-custom-orders" class="mobile-nav-link" style="color: var(--color-gold-base);">CUSTOM OEM / RFQ</a></li>
-      <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" class="mobile-nav-link">ABOUT XENTIA</a></li>
-      <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="mobile-nav-link">CONTACT FACTORY</a></li>
-      <li><a href="{{ routes.account_url }}" class="mobile-nav-link">CUSTOMER ACCOUNT</a></li>
-      <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" class="mobile-nav-link">PROCUREMENT FAQ</a></li>
-      <li><a href="/pages/policies" class="mobile-nav-link">WARRANTY & POLICIES</a></li>
+      <li><a href="{{ routes.root_url }}" class="mobile-nav-link {% if is_home_active %}is-active active{% endif %}" {% if is_home_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>HOME</a></li>
+      <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" class="mobile-nav-link {% if is_products_active %}is-active active{% endif %}" {% if is_products_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>PRODUCTS &amp; CATEGORIES</a></li>
+      <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" class="mobile-nav-link {% if is_sets_active %}is-active active{% endif %}" {% if is_sets_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>SURGICAL SETS</a></li>
+      <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" class="mobile-nav-link {% if is_wholesale_active %}is-active active{% endif %}" {% if is_wholesale_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>WHOLESALE &amp; CUSTOM ORDERS</a></li>
+      <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" class="mobile-nav-link {% if is_about_active %}is-active active{% endif %}" {% if is_about_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>ABOUT US</a></li>
+      <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" class="mobile-nav-link {% if is_contact_active %}is-active active{% endif %}" {% if is_contact_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>CONTACT US</a></li>
+      <li><a href="{{ routes.account_url }}" class="mobile-nav-link {% if is_account_active %}is-active active{% endif %}" {% if is_account_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>CUSTOMER ACCOUNT</a></li>
+      <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" class="mobile-nav-link {% if is_faqs_active %}is-active active{% endif %}" {% if is_faqs_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>FAQS</a></li>
+      <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}" class="mobile-nav-link {% if is_policies_active %}is-active active{% endif %}" {% if is_policies_active %}aria-current="page" style="color: var(--color-gold-base); font-weight: 700;"{% endif %}>POLICIES</a></li>
     </ul>
   </div>
 

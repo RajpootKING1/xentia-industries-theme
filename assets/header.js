@@ -41,6 +41,11 @@ export class HeaderController {
     this._setupMobileDrawer();
     this._setupSearchShortcut();
     this._setupGlobalKeyboard();
+
+    // Setup dynamic active nav highlighting
+    this._highlightActiveNav();
+    window.addEventListener('popstate', () => this._highlightActiveNav());
+    window.addEventListener('hashchange', () => this._highlightActiveNav());
   }
 
   /**
@@ -228,6 +233,170 @@ export class HeaderController {
         }
       }
     });
+  }
+
+  /**
+   * Dynamically highlight active navigation links based on current window.location
+   * Synchronizes desktop navbar, mobile drawer, and mobile bottom app bar.
+   * @private
+   */
+  _highlightActiveNav() {
+    try {
+      const pathname = (window.location.pathname || '').toLowerCase();
+      const hash = (window.location.hash || '').toLowerCase();
+
+      // Determine active page key based on URL pathname and legacy hash anchors
+      let activeKey = '';
+      if (
+        pathname.includes('wholesale') ||
+        pathname.includes('custom-order') ||
+        pathname.includes('custom-orders') ||
+        hash === '#oem-showcase'
+      ) {
+        activeKey = 'wholesale';
+      } else if (
+        pathname.includes('surgical-set') ||
+        pathname.includes('surgical-sets') ||
+        hash === '#surgical-sets'
+      ) {
+        activeKey = 'sets';
+      } else if (pathname.includes('about')) {
+        activeKey = 'about';
+      } else if (pathname.includes('contact')) {
+        activeKey = 'contact';
+      } else if (pathname.includes('faq')) {
+        activeKey = 'faqs';
+      } else if (pathname.includes('polic')) {
+        activeKey = 'policies';
+      } else if (
+        pathname.includes('account') ||
+        pathname.includes('login') ||
+        pathname.includes('register')
+      ) {
+        activeKey = 'account';
+      } else if (
+        pathname.includes('/collection') ||
+        pathname.includes('/product') ||
+        pathname.includes('products-categories') ||
+        pathname.includes('catalog') ||
+        pathname.includes('shop')
+      ) {
+        activeKey = 'products';
+      } else if (
+        pathname === '/' ||
+        pathname === '' ||
+        pathname.endsWith('/index.html') ||
+        pathname.endsWith('/')
+      ) {
+        activeKey = 'home';
+      }
+
+      // 1. Desktop Main Navigation
+      const desktopNav = document.querySelector('.site-header nav');
+      if (desktopNav) {
+        const desktopLinks = desktopNav.querySelectorAll('.site-nav-link, a:not(.btn)');
+        desktopLinks.forEach(link => {
+          link.classList.remove('is-active', 'active');
+          link.removeAttribute('aria-current');
+          link.style.color = 'var(--color-steel-silver)';
+          link.style.fontWeight = 'var(--weight-semibold)';
+        });
+
+        let targetLink = null;
+        if (activeKey === 'wholesale') {
+          targetLink = desktopNav.querySelector('.site-nav-wholesale, a[href*="wholesale"], a[href*="custom-order"]');
+        } else if (activeKey === 'sets') {
+          targetLink = desktopNav.querySelector('.site-nav-sets, a[href*="surgical-sets"]');
+        } else if (activeKey === 'about') {
+          targetLink = desktopNav.querySelector('.site-nav-about, a[href*="about"]');
+        } else if (activeKey === 'contact') {
+          targetLink = desktopNav.querySelector('.site-nav-contact, a[href*="contact"]');
+        } else if (activeKey === 'faqs') {
+          targetLink = desktopNav.querySelector('.site-nav-faqs, a[href*="faq"]');
+        } else if (activeKey === 'products') {
+          targetLink = desktopNav.querySelector('.site-nav-products, .nav-products-link, a[href*="products"], a[href*="collections"]');
+        } else if (activeKey === 'home') {
+          targetLink = desktopNav.querySelector('.site-nav-home, a[href="/"], a[href$="index.html"]');
+        }
+
+        if (targetLink) {
+          targetLink.classList.add('is-active', 'active');
+          targetLink.setAttribute('aria-current', 'page');
+          targetLink.style.color = 'var(--color-gold-base)';
+          targetLink.style.fontWeight = '700';
+
+          // Highlight products chevron button if on products
+          const chevronBtn = document.getElementById('nav-products-trigger');
+          if (chevronBtn) {
+            chevronBtn.style.color = activeKey === 'products' ? 'var(--color-gold-base)' : 'var(--color-steel-silver)';
+          }
+        }
+      }
+
+      // 2. Mobile Nav Drawer Links
+      const mobileDrawer = document.getElementById('mobile-nav-drawer');
+      if (mobileDrawer) {
+        const mobileLinks = mobileDrawer.querySelectorAll('.mobile-nav-link');
+        mobileLinks.forEach(link => {
+          link.classList.remove('is-active', 'active');
+          link.removeAttribute('aria-current');
+          link.style.color = '';
+          link.style.fontWeight = '';
+        });
+
+        let targetMobileLink = null;
+        if (activeKey === 'wholesale') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="wholesale"], a[href*="custom-order"]');
+        } else if (activeKey === 'sets') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="surgical-sets"]');
+        } else if (activeKey === 'about') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="about"]');
+        } else if (activeKey === 'contact') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="contact"]');
+        } else if (activeKey === 'faqs') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="faq"]');
+        } else if (activeKey === 'policies') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="polic"]');
+        } else if (activeKey === 'account') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="account"], a[href*="login"]');
+        } else if (activeKey === 'products') {
+          targetMobileLink = mobileDrawer.querySelector('a[href*="products"], a[href*="collections"]');
+        } else if (activeKey === 'home') {
+          targetMobileLink = mobileDrawer.querySelector('a[href="/"], a[href$="index.html"]');
+        }
+
+        if (targetMobileLink) {
+          targetMobileLink.classList.add('is-active', 'active');
+          targetMobileLink.setAttribute('aria-current', 'page');
+          targetMobileLink.style.color = 'var(--color-gold-base)';
+          targetMobileLink.style.fontWeight = '700';
+        }
+      }
+
+      // 3. Mobile Bottom App Bar
+      const mobileAppBar = document.querySelector('.mobile-bottom-app-bar');
+      if (mobileAppBar) {
+        const appItems = mobileAppBar.querySelectorAll('.mobile-app-nav-item');
+        appItems.forEach(item => item.classList.remove('active', 'is-active'));
+
+        let targetAppItem = null;
+        if (activeKey === 'wholesale') {
+          targetAppItem = mobileAppBar.querySelector('a[href*="wholesale"], a.b2b-quote-action');
+        } else if (activeKey === 'products' || activeKey === 'sets') {
+          targetAppItem = mobileAppBar.querySelector('a[href*="product"], a[href*="collection"]');
+        } else if (activeKey === 'account') {
+          targetAppItem = mobileAppBar.querySelector('a[href*="account"]');
+        } else if (activeKey === 'home') {
+          targetAppItem = mobileAppBar.querySelector('a[href="/"], a[href$="index.html"]');
+        }
+
+        if (targetAppItem) {
+          targetAppItem.classList.add('active', 'is-active');
+        }
+      }
+    } catch (err) {
+      console.warn('[HeaderController] Error updating active navigation highlighting:', err);
+    }
   }
 }
 

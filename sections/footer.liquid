@@ -23,16 +23,18 @@
       </div>
 
       <!-- Column 2: Clinical Disciplines & Navigation -->
+      {%- assign f_path = request.path | default: '' | downcase -%}
+      {%- assign f_handle = page.handle | default: '' | downcase -%}
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">PAGES &amp; CATALOG</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" style="color: var(--color-gold-base); font-weight: 600;">Products &amp; Categories Showcase</a></li>
-          <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
-          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">Surgical Sets</a></li>
-          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
-          <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
-          <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
-          <li><a href="{{ routes.account_url }}" style="color: var(--color-steel-silver);">Customer Account Portal</a></li>
+          <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" {% if f_handle contains 'product' or f_handle contains 'categor' or f_path contains 'products-categories' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Products &amp; Categories</a></li>
+          <li><a href="{{ routes.all_products_collection_url }}" {% if f_path == routes.all_products_collection_url %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Browse All Products</a></li>
+          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" {% if f_handle contains 'surgical-set' or f_path contains 'surgical-set' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Surgical Sets</a></li>
+          <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" {% if f_handle contains 'wholesale' or f_handle contains 'custom-order' or f_path contains 'wholesale' or f_path contains 'custom-order' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Wholesale &amp; Custom Orders</a></li>
+          <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" {% if f_handle contains 'about' or f_path contains 'about' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>About Us</a></li>
+          <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" {% if f_handle contains 'contact' or f_path contains 'contact' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Contact Us</a></li>
+          <li><a href="{{ routes.account_url }}" {% if f_path contains 'account' or f_path contains 'login' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Customer Account</a></li>
         </ul>
       </div>
 
@@ -40,11 +42,11 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">B2B SOLUTIONS</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Wholesale &amp; Custom Orders</a></li>
+          <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" {% if f_handle contains 'wholesale' or f_path contains 'wholesale' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Wholesale &amp; Custom Orders</a></li>
           <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}#tray-configurator" style="color: var(--color-steel-silver);">Modular DIN Sterilization Trays</a></li>
-          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
-          <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
-          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ &amp; Procurement Guide</a></li>
+          <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" style="color: var(--color-steel-silver);">Custom OEM &amp; Private Labeling</a></li>
+          <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" style="color: var(--color-steel-silver);">MOPA Laser Logo Engraving</a></li>
+          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" {% if f_handle contains 'faq' or f_path contains 'faq' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>FAQs</a></li>
         </ul>
       </div>
 
@@ -52,12 +54,12 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}" style="color: var(--color-steel-silver);">Refund, Return &amp; Cancellation Policy</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}" {% if f_handle contains 'polic' or f_path contains 'polic' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>Refund, Return &amp; Cancellation Policy</a></li>
           <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
           <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
           <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#privacy" style="color: var(--color-steel-silver);">Privacy Policy &amp; GDPR</a></li>
           <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#compliance" style="color: var(--color-steel-silver);">Quality &amp; Regulatory Compliance</a></li>
-          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
+          <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" {% if f_handle contains 'faq' or f_path contains 'faq' %}style="color: var(--color-gold-base); font-weight: 700;"{% else %}style="color: var(--color-steel-silver);"{% endif %}>FAQs</a></li>
         </ul>
       </div>
     </div>
