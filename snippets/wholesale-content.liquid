@@ -1,0 +1,284 @@
+<!-- ========================================================================
+     Xentia Industries — Wholesale & Custom Orders B2B Portal Snippet
+     Full RFQ form with preselection support, material choices & direct WhatsApp
+     ======================================================================== -->
+<section class="section wholesale-page-section" style="padding: var(--space-12) 0 var(--space-20) 0;">
+  <div class="container" style="max-width: 960px;">
+    
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-trail" aria-label="Breadcrumb Navigation" style="margin-bottom: var(--space-6);">
+      <ol class="breadcrumb-list" style="display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0; margin: 0;">
+        <li><a href="{{ routes.root_url }}" style="color: var(--color-steel-medium);">Home</a></li>
+        <li aria-hidden="true" style="color: var(--color-steel-dark);">&rsaquo;</li>
+        <li style="color: var(--color-gold-base); font-weight: 600;" aria-current="page">Wholesale &amp; Custom Orders</li>
+      </ol>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="section-header text-center" style="margin-bottom: var(--space-10);">
+      <span class="badge-pill" style="margin-bottom: var(--space-3); display: inline-block;">SIALKOT FACTORY DIRECT &bull; ISO 13485:2016</span>
+      <h1 class="section-title" style="font-size: clamp(1.85rem, 4vw, 2.75rem); color: var(--color-steel-white); margin-bottom: var(--space-3);">
+        CUSTOM SURGICAL OEM &amp; <span class="section-title-highlight" style="color: var(--color-gold-base);">WHOLESALE QUOTATION</span>
+      </h1>
+      <p class="section-subtitle" style="max-width: 760px; margin: 0 auto; color: var(--color-steel-silver); font-size: var(--text-base); line-height: 1.6;">
+        Precision surgical instrumentation forged from German DIN 1.4021 stainless steel at our Sialkot manufacturing plant. Custom private labeling, MOPA fiber laser logo marking, modular DIN sterilization trays, and institutional container exports.
+      </p>
+
+      <!-- Trust Badges Strip -->
+      <div class="flex items-center justify-center flex-wrap gap-4" style="margin-top: var(--space-6); font-size: var(--text-xs); color: var(--color-steel-silver);">
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">German DIN 1.4021</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">MOPA Laser Marking</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">134&deg;C Autoclave Safe</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">ISO 13485:2016</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">Sample Evaluations</span>
+      </div>
+    </div>
+
+    <!-- Preselected Product/Set Banner (Dynamically shown via JS when query params exist) -->
+    <div id="preselected-banner" class="glass-card" style="display: none; padding: var(--space-4) var(--space-6); margin-bottom: var(--space-6); border: 1px solid var(--color-gold-base); border-radius: var(--radius-md); background: rgba(212, 175, 55, 0.08); justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--space-3);">
+      <div>
+        <div style="font-size: var(--text-xs); color: var(--color-gold-bright); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">PRESELECTED ITEM FOR QUOTATION:</div>
+        <h3 id="banner-product-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin: 2px 0;">Instrument</h3>
+        <div id="banner-product-type" style="font-size: var(--text-xs); color: var(--color-steel-silver);">Category</div>
+      </div>
+      <span class="badge badge-gold" style="font-size: 11px;">Fast-Track RFQ Priority</span>
+    </div>
+
+    <!-- RFQ Form Card -->
+    <div class="glass-card" style="padding: clamp(1.5rem, 4vw, 2.5rem); border: var(--border-hairline); border-radius: var(--radius-lg); background: rgba(14, 15, 19, 0.95); box-shadow: var(--shadow-xl);">
+      
+      {% form 'contact', id: 'wholesale-custom-order-form', class: 'contact-inquiry-form' %}
+        <input type="hidden" name="contact[tags]" value="b2b-rfq,wholesale,custom-orders">
+
+        {% if form.posted_successfully? %}
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: var(--radius-md); padding: var(--space-6); margin-bottom: var(--space-8); text-align: center;">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" style="margin: 0 auto var(--space-2) auto;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <h3 style="color: var(--color-steel-white); font-size: var(--text-xl); margin-bottom: var(--space-2);">RFQ Received Successfully</h3>
+            <p style="color: var(--color-steel-silver); font-size: var(--text-sm); line-height: 1.6; max-width: 600px; margin: 0 auto;">
+              Thank you for submitting your manufacturing specifications. Our technical engineering team in Sialkot, Pakistan will review your instrument requirements and provide a formal quotation within 24 business hours.
+            </p>
+          </div>
+        {% endif %}
+
+        {% if form.errors %}
+          <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); border-radius: var(--radius-md); padding: var(--space-4); margin-bottom: var(--space-6);">
+            <p style="color: #f87171; font-weight: 600; margin-bottom: var(--space-2);">Please correct the following errors:</p>
+            <ul style="color: var(--color-steel-silver); font-size: var(--text-xs); padding-left: 20px;">
+              {% for field in form.errors %}
+                <li>{{ field | capitalize }} {{ form.errors.messages[field] }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <!-- Section 1: Institutional & Contact Details -->
+        <h3 style="font-family: var(--font-heading); color: var(--color-steel-white); font-size: var(--text-lg); margin-bottom: var(--space-4); border-bottom: var(--border-hairline); padding-bottom: var(--space-2); display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--color-gold-base);">01.</span> INSTITUTION &amp; PROCUREMENT CONTACT
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-4);">
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Full Name &amp; Designation <span style="color: var(--color-gold-base);">*</span>
+            </label>
+            <input type="text" id="rfq-name" name="contact[name]" required class="form-input" placeholder="e.g. Dr. Sarah Jenkins / Chief of Surgery" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Hospital / Clinic / Enterprise Name <span style="color: var(--color-gold-base);">*</span>
+            </label>
+            <input type="text" id="rfq-org" name="contact[company]" required class="form-input" placeholder="e.g. Zurich Surgical Clinic / MedCorp Supplies" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-8);">
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Procurement Email <span style="color: var(--color-gold-base);">*</span>
+            </label>
+            <input type="email" id="rfq-email" name="contact[email]" required class="form-input" placeholder="procurement@hospital-group.com" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              WhatsApp / Direct Phone Desk <span style="color: var(--color-gold-base);">*</span>
+            </label>
+            <input type="tel" id="rfq-phone" name="contact[phone]" required class="form-input" placeholder="+1 (555) 019-2834 or +44 7911 123456" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+        </div>
+
+        <!-- Section 2: Instrument & Manufacturing Specifications -->
+        <h3 style="font-family: var(--font-heading); color: var(--color-steel-white); font-size: var(--text-lg); margin-bottom: var(--space-4); border-bottom: var(--border-hairline); padding-bottom: var(--space-2); display: flex; align-items: center; gap: 8px;">
+          <span style="color: var(--color-gold-base);">02.</span> INSTRUMENT REQUIREMENTS &amp; MANUFACTURING SPECS
+        </h3>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-4);">
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Target Instrument / Set Name
+            </label>
+            <input type="text" id="rfq-product" name="contact[target_product]" class="form-input" placeholder="e.g. Aufricht Nasal Retractor, General Surgery Set" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Estimated Production Quantity (Units)
+            </label>
+            <input type="number" id="rfq-qty" name="contact[estimated_quantity]" min="1" value="50" class="form-input" style="width: 100%; padding: 10px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-4);">
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Primary Surgical Discipline
+            </label>
+            <select name="contact[discipline]" id="rfq-discipline" class="form-select" style="width: 100%; padding: 10px 14px; background: #16171d; border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+              <option value="Plastic & Rhinoplasty">Plastic &amp; Rhinoplasty</option>
+              <option value="Orthopedic & Spine">Orthopedic &amp; Spine</option>
+              <option value="General Surgery">General Surgery &amp; Emergency</option>
+              <option value="ENT & Maxillofacial">ENT &amp; Maxillofacial</option>
+              <option value="Dental Surgery">Dental &amp; Oral Implantology</option>
+              <option value="Neurosurgery">Neurosurgery</option>
+              <option value="Ophthalmic Microsurgery">Ophthalmic &amp; Eye Surgery</option>
+              <option value="Cardiovascular & Thoracic">Cardiovascular &amp; Thoracic</option>
+              <option value="Gynecology & Obstetrics">Gynecology &amp; Obstetrics</option>
+              <option value="Urology">Urology Instruments</option>
+              <option value="Veterinary Surgery">Veterinary Surgery</option>
+              <option value="Turnkey Procedural Sets">Turnkey Surgical Sets (19 Sets)</option>
+              <option value="Custom OEM Tooling">Bespoke OEM Tooling / Blueprints</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Steel Metallurgy Grade
+            </label>
+            <select name="contact[steel_grade]" id="rfq-steel" class="form-select" style="width: 100%; padding: 10px 14px; background: #16171d; border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+              <option value="German DIN 1.4021 Stainless Steel">German DIN 1.4021 Stainless Steel (Recommended)</option>
+              <option value="AISI 420 High Carbon Martensitic">AISI 420 High Carbon Martensitic Steel</option>
+              <option value="AISI 410 Surgical Grade">AISI 410 Surgical Grade</option>
+              <option value="ASTM F899 Medical Standard">ASTM F899 Medical Standard Conforming</option>
+              <option value="Tungsten Carbide (TC) Inserts">Tungsten Carbide (TC) Hardened Inserts</option>
+              <option value="Grade 5 Medical Titanium">Medical Grade 5 Titanium</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-4); margin-bottom: var(--space-6);">
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Surface Finish &amp; Branding
+            </label>
+            <select name="contact[surface_finish]" id="rfq-finish" class="form-select" style="width: 100%; padding: 10px 14px; background: #16171d; border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+              <option value="Satin Matte Anti-Glare (Standard)">Satin Matte Anti-Glare (OR Standard)</option>
+              <option value="High Polish Mirror">High Polish Mirror Finish</option>
+              <option value="MOPA Laser Engraved Logo">MOPA Fiber Laser Logo &amp; UDI Markings</option>
+              <option value="Gold-Plated Ring Handles (TC)">Gold-Plated Ring Handles (TC Standard)</option>
+              <option value="Custom PVD Black Coating">PVD Black Ceramic Anti-Reflective Coating</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+              Packaging &amp; Sterilization System
+            </label>
+            <select name="contact[packaging]" class="form-select" style="width: 100%; padding: 10px 14px; background: #16171d; border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm);">
+              <option value="Modular DIN Sterilization Cassette">Modular DIN Sterilization Cassette with Silicone Mat</option>
+              <option value="Individual Autoclave Pouches">Individual Autoclave Pouch Packaging</option>
+              <option value="Bulk Protective Cleanroom Export">Bulk Protective Cleanroom Export Packaging</option>
+              <option value="Custom Private Label Box">Custom Branded Hospital / Retail Box</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: var(--space-6);">
+          <label class="form-label" style="display: block; font-size: var(--text-xs); color: var(--color-steel-silver); margin-bottom: 6px; font-weight: 600;">
+            Detailed Technical Specifications, SKUs, Dimensions or CAD Notes <span style="color: var(--color-gold-base);">*</span>
+          </label>
+          <textarea id="rfq-notes" name="contact[body]" rows="5" required class="form-textarea" placeholder="Specify instrument names, lengths, blade curvatures, jaw serrations, custom catalog numbers, private label logo details, or target delivery timeframe..." style="width: 100%; padding: 12px 14px; background: rgba(255,255,255,0.04); border: var(--border-hairline); border-radius: var(--radius-sm); color: var(--color-steel-white); font-size: var(--text-sm); line-height: 1.5; resize: vertical;"></textarea>
+        </div>
+
+        <div class="form-group" style="background: rgba(212,175,55,0.06); padding: var(--space-4); border-radius: var(--radius-sm); border: 1px dashed rgba(212,175,55,0.3); margin-bottom: var(--space-8);">
+          <label style="display: flex; align-items: flex-start; gap: 10px; font-size: var(--text-xs); color: var(--color-steel-silver); cursor: pointer; line-height: 1.5;">
+            <input type="checkbox" name="contact[request_sample]" value="yes" checked style="margin-top: 2px;">
+            <span><strong>Request Physical Evaluation Sample:</strong> We request an initial production sample for clinical evaluation and tolerance inspection prior to committing to volume run.</span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+          <button type="submit" class="btn btn-primary" style="flex: 2; min-width: 260px; padding: 14px 24px; font-weight: 700; letter-spacing: 0.05em;">
+            SUBMIT FORMAL B2B PRODUCTION REQUEST &rarr;
+          </button>
+          <a href="https://wa.me/923497400818?text=Hello%20Xentia%20Industries%20Export%20Desk%2C%20I%20am%20inquiring%20about%20a%20Custom%20OEM%20production%20order." target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="flex: 1; min-width: 200px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 20px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.97.529 1.961.809 2.802.809 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.589-5.766-5.774-5.766zm9.969 5.766c0 5.497-4.472 9.969-9.969 9.969-1.688 0-3.279-.425-4.67-1.168l-5.361 1.403 1.433-5.234c-.848-1.464-1.371-3.167-1.371-4.97 0-5.497 4.472-9.969 9.969-9.969 5.497 0 9.969 4.472 9.969 9.969z"/></svg>
+            <span>WHATSAPP DESK</span>
+          </a>
+        </div>
+
+      {% endform %}
+
+    </div>
+
+    <!-- Supplementary OEM Highlights Strip -->
+    <div style="margin-top: var(--space-12); display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6);">
+      <div class="glass-card" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h4 style="font-size: var(--text-sm); color: var(--color-gold-base); font-family: var(--font-accent); text-transform: uppercase; margin-bottom: var(--space-2);">PRIVATE LABEL BRANDING</h4>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin: 0;">
+          Ultra-fine MOPA fiber laser engraving for hospital logos, UDI GS1 barcodes, lot serial numbers, and custom depth gauge calibrations.
+        </p>
+      </div>
+      <div class="glass-card" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h4 style="font-size: var(--text-sm); color: var(--color-gold-base); font-family: var(--font-accent); text-transform: uppercase; margin-bottom: var(--space-2);">MODULAR DIN TRAYS</h4>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin: 0;">
+          Color-anodized aluminum cassettes conforming to DIN EN 285 &amp; ISO 11607 with medical-grade silicone damping mats and steam circulation perforations.
+        </p>
+      </div>
+      <div class="glass-card" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h4 style="font-size: var(--text-sm); color: var(--color-gold-base); font-family: var(--font-accent); text-transform: uppercase; margin-bottom: var(--space-2);">GLOBAL EXPORT LOGISTICS</h4>
+        <p style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin: 0;">
+          Worldwide shipments via DHL/FedEx Express Air or sea freight container bajo EXW, FOB, CIF, or DDP terms with complete SCCI Certificates of Origin.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Script to parse query parameters (e.g. ?product=... or ?set=...) and autofill form -->
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var params = new URLSearchParams(window.location.search);
+      var productTitle = params.get('title') || params.get('product') || params.get('name');
+      var productType = params.get('type') || params.get('category');
+      var productHandle = params.get('handle') || params.get('set');
+      var qty = params.get('quantity') || params.get('pieces');
+
+      if (productTitle || productHandle) {
+        var title = productTitle || (productHandle ? productHandle.replace(/[-_]/g, ' ').toUpperCase() : '');
+        var banner = document.getElementById('preselected-banner');
+        var bannerTitle = document.getElementById('banner-product-title');
+        var bannerType = document.getElementById('banner-product-type');
+        var inputProduct = document.getElementById('rfq-product');
+        var inputQty = document.getElementById('rfq-qty');
+        var notes = document.getElementById('rfq-notes');
+
+        if (banner && bannerTitle) {
+          banner.style.display = 'flex';
+          bannerTitle.textContent = title;
+          if (bannerType) bannerType.textContent = productType || 'Custom Surgical Instrument / Set';
+        }
+
+        if (inputProduct && !inputProduct.value) {
+          inputProduct.value = title;
+        }
+
+        if (qty && inputQty) {
+          inputQty.value = qty;
+        }
+
+        if (notes && !notes.value) {
+          notes.value = 'Quotation request for ' + title + '.\nItem Reference: ' + (productHandle || 'N/A') + '\nDiscipline: ' + (productType || 'Surgical');
+        }
+      }
+    });
+  })();
+</script>

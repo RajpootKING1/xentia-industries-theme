@@ -42,16 +42,18 @@
   {{ 'animations.css' | asset_url | stylesheet_tag }}
   {{ 'shopify-overrides.css' | asset_url | stylesheet_tag }}
 
-  <!-- Surgical Sets Hash Redirect -->
+  <!-- Legacy Hash Redirects (Surgical Sets & OEM Showcase) -->
   <script>
     (function() {
-      function checkSurgicalSetsHash() {
+      function checkLegacyHashRedirects() {
         if (window.location.hash === '#surgical-sets') {
           window.location.replace("{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}");
+        } else if (window.location.hash === '#oem-showcase') {
+          window.location.replace("{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}");
         }
       }
-      checkSurgicalSetsHash();
-      window.addEventListener('hashchange', checkSurgicalSetsHash);
+      checkLegacyHashRedirects();
+      window.addEventListener('hashchange', checkLegacyHashRedirects);
     })();
   </script>
 

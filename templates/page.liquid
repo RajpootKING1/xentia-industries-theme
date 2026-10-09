@@ -20,6 +20,10 @@
   <div class="page-policies">
     {% render 'policies-content' %}
   </div>
+{%- elsif page_handle_down contains 'wholesale' or page_handle_down contains 'custom-order' or page_handle_down contains 'custom-orders' or page_handle_down contains 'oem' or page_title_down contains 'wholesale' or page_title_down contains 'custom order' or page.template_suffix contains 'wholesale' or template.suffix contains 'wholesale' -%}
+  <div class="page-wholesale-custom-orders">
+    {% render 'wholesale-content' %}
+  </div>
 {%- elsif page_handle_down contains 'faq' or page_title_down contains 'faq' or page.template_suffix contains 'faq' or template.suffix contains 'faq' -%}
   <section class="faq-page-wrapper">
     {% render 'faq-content' %}

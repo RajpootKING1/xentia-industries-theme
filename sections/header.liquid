@@ -138,7 +138,7 @@
         </li>
 
         <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">SURGICAL SETS</a></li>
-        <li><a href="{{ routes.root_url }}#oem-showcase" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
+        <li><a href="{{ pages['wholesale-custom-orders'].url | default: pages['wholesale'].url | default: '/pages/wholesale-custom-orders' }}" style="color: var(--color-steel-silver);">CUSTOM OEM</a></li>
         <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">ABOUT</a></li>
         <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">CONTACT</a></li>
         <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">FAQ</a></li>
