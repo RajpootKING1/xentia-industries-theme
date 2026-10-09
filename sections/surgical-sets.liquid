@@ -1,82 +1,675 @@
-<section class="section surgical-sets-section" id="surgical-sets">
+<section class="section surgical-sets-section" id="surgical-sets" style="padding: var(--space-12) 0 var(--space-20) 0;">
   <div class="container">
-    <div class="section-header text-center">
-      <span class="badge-pill">PROCUREMENT PACKAGES</span>
-      <h2 class="section-title">PRE-CONFIGURED SURGICAL SETS & TRAYS</h2>
-      <p class="section-subtitle">
-        Turnkey operating room sets packed in German autoclavable sterilization containers with silicone positioning mats.
+    <div class="section-header text-center" style="margin-bottom: var(--space-10);">
+      <span class="badge-pill">TURNKEY HOSPITAL PACKAGES</span>
+      <h1 class="section-title" style="margin-top: var(--space-2);">19 PRE-CONFIGURED SURGICAL SETS &amp; TRAYS</h1>
+      <p class="section-subtitle" style="max-width: 800px; margin: 0 auto;">
+        Turnkey operating room sets forged from German DIN 1.4021 stainless steel, pre-configured in autoclavable DIN sterilization cassettes with medical-grade silicone positioning mats and precision MOPA laser identification.
       </p>
+      
+      <!-- Trust badges -->
+      <div class="flex items-center justify-center flex-wrap gap-4" style="margin-top: var(--space-6); font-size: var(--text-xs); color: var(--color-steel-silver);">
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">19 Procedural Sets</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">134&deg;C Steam Autoclave Safe</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">ISO 13485:2016 Certified</span>
+        <span class="badge" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: var(--color-steel-bright);">Custom Laser Engraving</span>
+      </div>
     </div>
 
-    <div class="surgical-sets-grid">
-      <!-- Set 1: Master Rhinoplasty -->
-      <div class="surgical-set-card">
-        <div class="set-card-header">
-          <span class="set-count-pill">34 PIECES</span>
-          <h3 class="set-title">Master Rhinoplasty Complete Set</h3>
-          <span class="set-standard">German DIN 1.4021 | TC Inlays</span>
-        </div>
-        <p class="set-desc">Full open & closed rhinoplasty instrumentation including Tebbetts retractors, Rubin morselizer, Cinelli osteotomes, and tungsten carbide iris shears.</p>
-        <ul class="set-highlights">
-          <li>&bull; Teflon coated autoclavable aluminum tray</li>
-          <li>&bull; Laser marked millimeter graduations</li>
-          <li>&bull; Lifetime metallurgical alignment guarantee</li>
-        </ul>
-        <div class="set-card-footer">
-          <div class="set-price-box">
-            <span class="set-price-label">Institutional Price</span>
-            <span class="set-price-val">$1,850.00</span>
-          </div>
-          <a href="/pages/wholesale-custom-orders?product=master-rhinoplasty-set" class="btn btn-primary btn-sm">REQUEST SET QUOTE</a>
-        </div>
-      </div>
+    <!-- Category Filter Bar -->
+    <div class="sets-filter-bar" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: var(--space-10);">
+      <button type="button" class="set-filter-pill is-active" data-cat="all">All Sets (19)</button>
+      <button type="button" class="set-filter-pill" data-cat="plastic">Plastic &amp; Aesthetic (5)</button>
+      <button type="button" class="set-filter-pill" data-cat="ortho-spine">Orthopedic &amp; Spine (5)</button>
+      <button type="button" class="set-filter-pill" data-cat="general">General &amp; Ward (3)</button>
+      <button type="button" class="set-filter-pill" data-cat="ent-dental">ENT &amp; Dental (3)</button>
+      <button type="button" class="set-filter-pill" data-cat="specialty">Veterinary &amp; Specialty (3)</button>
+    </div>
 
-      <!-- Set 2: FUE Megasession -->
-      <div class="surgical-set-card">
-        <div class="set-card-header">
-          <span class="set-count-pill">26 PIECES</span>
-          <h3 class="set-title">FUE Megasession Hair Transplant Set</h3>
-          <span class="set-standard">Japanese 440C | Titanium Nitride</span>
-        </div>
-        <p class="set-desc">Specialized micro-instrumentation for high-yield follicular unit extraction and manual implantation with ultra-fine graft handling forceps.</p>
-        <ul class="set-highlights">
-          <li>&bull; 6x Hybrid serrated punches (0.75 - 0.95mm)</li>
-          <li>&bull; Curved & straight titanium jewelers forceps</li>
-          <li>&bull; Autoclavable silicone graft holding dish</li>
-        </ul>
-        <div class="set-card-footer">
-          <div class="set-price-box">
-            <span class="set-price-label">Institutional Price</span>
-            <span class="set-price-val">$1,420.00</span>
+    <!-- Sets Grid (All 19 Official Sets) -->
+    <div id="surgical-sets-grid" class="surgical-sets-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: var(--space-6);">
+      
+      <!-- Set 1: General Surgery Set -->
+      <article class="surgical-set-card glass-card" data-category="general" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">24 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
           </div>
-          <a href="/pages/wholesale-custom-orders?product=fue-hair-transplant-set" class="btn btn-primary btn-sm">REQUEST SET QUOTE</a>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            General Surgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Full-theater ward and emergency surgery assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A comprehensive 24-piece general operating room set covering soft tissue dissection, hemostasis, retraction, and wound closure. Ideal for hospital ORs, outpatient theaters, and clinic ward procedures.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Mayo &amp; Metzenbaum Scissors (17cm &amp; 18cm)</li>
+              <li>Needle Holder Mayo-Hegar 20cm</li>
+              <li>Kocher Clamps &amp; Allis Tissue Forceps</li>
+              <li>Langenbeck &amp; Senn-Miller Retractors</li>
+            </ul>
+          </div>
         </div>
-      </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=General%20Surgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20General%20Surgery%20Set%20(24%20pieces)" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;" aria-label="WhatsApp desk inquiry">WHATSAPP</a>
+        </div>
+      </article>
 
-      <!-- Set 3: Maxillofacial Extraction -->
-      <div class="surgical-set-card">
-        <div class="set-card-header">
-          <span class="set-count-pill">42 PIECES</span>
-          <h3 class="set-title">Oral & Maxillofacial Master Tray</h3>
-          <span class="set-standard">DIN 1.4021 & TC Tips</span>
-        </div>
-        <p class="set-desc">Comprehensive oral surgery tray featuring English & American pattern extraction forceps, Cryer & Bein elevators, and TC bone rongeurs.</p>
-        <ul class="set-highlights">
-          <li>&bull; Heavy-duty wire basket container with filter lid</li>
-          <li>&bull; Matte satin anti-glare finish</li>
-          <li>&bull; 100% rust-resistant under 134&deg;C autoclave</li>
-        </ul>
-        <div class="set-card-footer">
-          <div class="set-price-box">
-            <span class="set-price-label">Institutional Price</span>
-            <span class="set-price-val">$2,100.00</span>
+      <!-- Set 2: Plastic Surgery Set -->
+      <article class="surgical-set-card glass-card" data-category="plastic" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">28 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
           </div>
-          <a href="/pages/wholesale-custom-orders?product=maxillofacial-master-tray" class="btn btn-primary btn-sm">REQUEST SET QUOTE</a>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Plastic Surgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Precision soft-tissue and aesthetic reconstruction assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 28-piece premium set for plastic and reconstructive procedures. Includes fine-tipped dissectors, delicate spring scissors, and micro-needle holders for aesthetic suturing.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Iris Curved &amp; Stevens Tenotomy Scissors</li>
+              <li>Bishop-Harmon 0.5mm tips &amp; Adson-Brown</li>
+              <li>Webster Micro Needle Holder 13cm</li>
+              <li>Joseph Skin Hooks &amp; Army-Navy Retractors</li>
+            </ul>
+          </div>
         </div>
-      </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Plastic%20Surgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Plastic%20Surgery%20Set%20(28%20pieces)" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 3: Rhinoplasty Specialist Set -->
+      <article class="surgical-set-card glass-card" data-category="plastic" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">32 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Rhinoplasty Specialist Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Complete open and closed rhinoplasty surgical assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 32-piece specialist set covering open and closed rhinoplasty. Includes Aufricht nasal retractors, osteotomes for dorsal reduction, rasps for contouring, and alar base instruments.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Aufricht Nasal Retractor &amp; Cottle Elevator</li>
+              <li>Joseph Nasal Scissors &amp; Foman Scissors</li>
+              <li>Nasal Osteotomes 3mm/6mm &amp; Rubin Osteotome</li>
+              <li>Double-Ended Nasal Rasps &amp; Surgical Mallet</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Rhinoplasty%20Specialist%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Rhinoplasty%20Specialist%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 4: ENT Surgery Set -->
+      <article class="surgical-set-card glass-card" data-category="ent-dental" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">26 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            ENT Surgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Ear, nose, and throat diagnostic and surgical assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 26-piece ENT set covering nasal specula, polypectomy, tonsillectomy, and ear procedures. Compatible with hospital ENT theaters and outpatient clinics.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Killian &amp; Thudicum Nasal Specula</li>
+              <li>Hartmann &amp; Wilde Ear Forceps</li>
+              <li>Bayonet Forceps 18cm &amp; Antrum Punch</li>
+              <li>Freer Periosteal Elevator &amp; Tongue Depressors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=ENT%20Surgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20ENT%20Surgery%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 5: Orthopedic Trauma Set -->
+      <article class="surgical-set-card glass-card" data-category="ortho-spine" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">38 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Orthopedic Trauma Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Fracture reduction, bone holding, and stabilization assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 38-piece orthopedic trauma set for fracture stabilization and bone reduction. Built from ASTM F899 martensitic steel with HRC 52–56 cryo-hardening for sustained impact load performance.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Serrated Reduction Forceps &amp; Lewin Clamps</li>
+              <li>Leksell &amp; Bone Rongeur Double-Action</li>
+              <li>Periosteal Elevator Cobb 23cm &amp; Mallet 400g</li>
+              <li>Hohmann &amp; Langenbeck Retractors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Orthopedic%20Trauma%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Orthopedic%20Trauma%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 6: Neurosurgery Set -->
+      <article class="surgical-set-card glass-card" data-category="ortho-spine" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">34 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Neurosurgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Cranial access and fine neural tissue surgery assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 34-piece neurosurgical set for craniotomies, laminectomies, and neural interventions. Each instrument is individually balanced for micro-tactile sensitivity with satin anti-glare finish.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Penfield Dissectors (1–5 complete series)</li>
+              <li>Kerrison Punches 2mm &amp; 3mm Up-Biting</li>
+              <li>Dura Scissors Curved &amp; Brain Spatulas</li>
+              <li>Gelpi &amp; Weitlaner Self-Retaining Retractors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Neurosurgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Neurosurgery%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 7: Ophthalmic Micro-Surgery Set -->
+      <article class="surgical-set-card glass-card" data-category="specialty" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">20 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/2 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Ophthalmic Micro-Surgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Precision micro-incision cataract and eyelid surgery assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 20-piece micro-surgery set for cataract extraction and corneal procedures. Built to &plusmn;0.01mm dimensional tolerance and inspected under 10x optical magnification.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Vannas Capsulotomy &amp; Castroviejo Scissors</li>
+              <li>Iris Micro-Forceps 0.12mm Teeth</li>
+              <li>Thornton Fixation Ring &amp; Jaffe Lid Speculum</li>
+              <li>Castroviejo Precision Ophthalmic Caliper</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Ophthalmic%20Micro-Surgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Ophthalmic%20Micro-Surgery%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 8: Dental Implantology Tray -->
+      <article class="surgical-set-card glass-card" data-category="ent-dental" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">22 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">MINI CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Dental Implantology Tray
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Immediate-load and delayed implant surgical placement assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 22-piece dental implantology instrument tray for single-stage and two-stage implant placements. Packaged in a compact Mini DIN cassette with silicone holding grommets.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Molt #9 Periosteal Elevator &amp; Straight #301</li>
+              <li>Tissue Punches 3mm/4mm &amp; Bone Spreaders</li>
+              <li>Surgical Mallet 200g &amp; Torque Adapters</li>
+              <li>Flap Retractors &amp; Delicate Suture Scissors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Dental%20Implantology%20Tray" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Dental%20Implantology%20Tray" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 9: Veterinary Orthopedic Set -->
+      <article class="surgical-set-card glass-card" data-category="specialty" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">30 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Veterinary Orthopedic Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Small and large animal fracture plating and fixation assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 30-piece veterinary orthopedic instrument set for small and large animal surgeries including fracture fixation, bone plating, and tendon repair across canine, feline, and equine patients.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Kern &amp; Reduction Bone-Holding Forceps</li>
+              <li>Stille-Luer &amp; Heavy-Duty Bone Rongeurs</li>
+              <li>Freer Periosteal Elevator &amp; Mallet 300g</li>
+              <li>Hohmann Small &amp; Gelpi Retractors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Veterinary%20Orthopedic%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Veterinary%20Orthopedic%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 10: Gynecology & Obstetrics Set -->
+      <article class="surgical-set-card glass-card" data-category="general" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">28 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Gynecology &amp; Obstetrics Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Diagnostic, D&amp;C, and minor surgical obstetric assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 28-piece gynecology set covering diagnostic examination, minor surgical procedures, D&amp;C, and obstetric care. Polished to high mirror finish for maximum decontamination safety.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Cusco &amp; Sims Vaginal Specula Set</li>
+              <li>Hegar Cervical Dilators (complete set)</li>
+              <li>Tenaculum &amp; Placenta Forceps</li>
+              <li>Uterine Sounds &amp; Endometrial Curettes</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Gynecology%20and%20Obstetrics%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Gynecology%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 11: Urology Set -->
+      <article class="surgical-set-card glass-card" data-category="specialty" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">22 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/2 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Urology Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Endoscopic and open urological procedure assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 22-piece urology instrument set for catheterization, circumcision, and minor bladder interventions. Anti-glare satin finish across all working tips.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Urethral Dilators Béniqué Set</li>
+              <li>Van Buren Sounds (sizes 18–26 Fr)</li>
+              <li>Kidney Stone Forceps &amp; Lowsley Retractor</li>
+              <li>Curved Catheter Guides &amp; Trocar Set</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Urology%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Urology%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 12: Maxillofacial Set -->
+      <article class="surgical-set-card glass-card" data-category="ent-dental" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">30 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Maxillofacial Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Jaw osteotomy, Le Fort, and facial fracture surgery assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 30-piece maxillofacial set for mandibular fractures, Le Fort osteotomies, orthognathic alignment, and temporomandibular joint reconstruction.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Dingman Mouth Gag with 3 Cheek Retractors</li>
+              <li>Obwegeser Periosteal Elevators (3 widths)</li>
+              <li>Rowe Zygoma Forceps &amp; Hayton-Williams</li>
+              <li>Kawamoto Osteotome Set &amp; Bending Pliers</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Maxillofacial%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Maxillofacial%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 13: Cardiovascular & Thoracic Set -->
+      <article class="surgical-set-card glass-card" data-category="specialty" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">40 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Cardiovascular &amp; Thoracic Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Open-heart sternotomy and major vascular clamping assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A premium 40-piece cardiovascular set for sternotomies, valve procedures, and CABG. Tested for micro-atraumatic vascular clamp tension and non-slip needle grip.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Finochietto Rib Spreader &amp; Cooley Retractor</li>
+              <li>DeBakey &amp; Satinsky Vascular Clamps</li>
+              <li>Bulldog Micro Clamps (straight &amp; curved)</li>
+              <li>Potts-Smith Angled Scissors &amp; DeBakey Forceps</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Cardiovascular%20and%20Thoracic%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Cardiovascular%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 14: Arthroscopy Set -->
+      <article class="surgical-set-card glass-card" data-category="ortho-spine" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">18 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/2 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Arthroscopy Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Minimally invasive joint inspection and meniscal repair assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            An 18-piece arthroscopic set for knee, shoulder, and hip procedures. Compatible with standard 4mm arthroscopes and portal trocar access systems.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Sharp &amp; Blunt Trocars 5mm</li>
+              <li>Arthroscopic Probe Hooks &amp; Meniscal Rasps</li>
+              <li>Basket Punches 2.7mm Curved</li>
+              <li>Suture Retrievers &amp; Outflow Cannulas</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Arthroscopy%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Arthroscopy%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 15: Spine Surgery Set -->
+      <article class="surgical-set-card glass-card" data-category="ortho-spine" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">36 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Spine Surgery Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Decompression, discectomy, and pedicle fusion assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 36-piece spinal surgery set for laminectomies, discectomies, and pedicle instrumentation. Hardened Kerrison tips endure heavy repetitive bone removal.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Kerrison Punches 2mm &amp; 3mm (thin-footplate)</li>
+              <li>Pituitary Rongeurs Straight &amp; Angled</li>
+              <li>Cobb Periosteal Elevators &amp; Penfield Probes</li>
+              <li>Taylor Spinal Retractor &amp; Caspar Distractor</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Spine%20Surgery%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Spine%20Surgery%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 16: Laparoscopic Set -->
+      <article class="surgical-set-card glass-card" data-category="general" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">16 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/2 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Laparoscopic Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Minimally invasive abdominal surgery cannula and grasper assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 16-piece laparoscopic set for cholecystectomies, appendectomies, and hernia repairs. Insulated shafts and 360-degree rotating handles for ergonomic control.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Veress Insufflation Needle 12cm</li>
+              <li>Trocars 5mm &amp; 10mm with Safety Shield</li>
+              <li>Maryland Dissectors &amp; Atraumatic Graspers</li>
+              <li>Laparoscopic Curved Scissors &amp; Suction Tube</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Laparoscopic%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Laparoscopic%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 17: BBL Body Contouring Set -->
+      <article class="surgical-set-card glass-card" data-category="plastic" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">24 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            BBL Body Contouring Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Brazilian butt lift infiltration and structured fat transfer assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 24-piece BBL set for tumescent infiltration, high-yield lipoaspirate harvesting, and gluteal micro-fat grafting. Optimized for cosmetic plastic surgeons.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Multi-Hole Infiltration Cannulas (3mm/4mm)</li>
+              <li>Coleman &amp; Mercedes Aspiration Cannulas</li>
+              <li>Blunt Micro-Injection Cannulas 1.2mm</li>
+              <li>Luer-Lock Quick-Connect Harvesting Adapters</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=BBL%20Body%20Contouring%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20BBL%20Body%20Contouring%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 18: Liposuction Infiltration Set -->
+      <article class="surgical-set-card glass-card" data-category="plastic" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">20 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Liposuction Infiltration Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Tumescent infiltration and body sculpting cannula assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A 20-piece liposuction set for traditional tumescent body sculpting. Includes aggressive debulking and fine feathering cannulas across abdominal and flank zones.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Tumescent Infiltration Cannulas 3mm/4mm</li>
+              <li>Mercedes Tri-Port Cannulas (30cm &amp; 35cm)</li>
+              <li>Cobra &amp; Spatula Tip Contouring Cannulas</li>
+              <li>Fine Finishing Cannulas 2mm &amp; Hub Connectors</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Liposuction%20Infiltration%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Liposuction%20Infiltration%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
+      <!-- Set 19: Mommy Makeover Combination Set -->
+      <article class="surgical-set-card glass-card" data-category="plastic" style="padding: var(--space-6); border: var(--border-hairline); border-radius: var(--radius-md); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); flex-wrap: wrap; gap: 6px;">
+            <span class="set-count-pill" style="font-size: 11px; background: rgba(212,175,55,0.15); color: var(--color-gold-bright); padding: 3px 8px; border-radius: var(--radius-pill); font-weight: 600;">46 PIECES</span>
+            <span style="font-size: 11px; color: var(--color-steel-muted); font-family: var(--font-mono);">DIN 1/1 CASSETTE</span>
+          </div>
+          <h3 class="set-title" style="font-size: var(--text-lg); color: var(--color-steel-white); margin-bottom: var(--space-2); font-family: var(--font-heading);">
+            Mommy Makeover Combination Set
+          </h3>
+          <p style="font-size: var(--text-xs); color: var(--color-gold-base); font-style: italic; margin-bottom: var(--space-3);">
+            Post-partum abdominoplasty, mastopexy, and contouring assembly
+          </p>
+          <p class="set-desc" style="font-size: var(--text-xs); color: var(--color-steel-silver); line-height: 1.6; margin-bottom: var(--space-4);">
+            A comprehensive 46-piece combined set covering tummy tuck (abdominoplasty), breast lift (mastopexy), and targeted body sculpting in a unified DIN 1/1 cassette layout.
+          </p>
+          <div style="margin-bottom: var(--space-4);">
+            <strong style="font-size: 11px; color: var(--color-steel-muted); text-transform: uppercase; letter-spacing: 0.5px;">Key Manifest Highlights:</strong>
+            <ul style="font-size: 11px; color: var(--color-steel-silver); padding-left: 16px; margin-top: 4px; line-height: 1.5;">
+              <li>Mayo &amp; Metzenbaum Long Dissection Shears</li>
+              <li>Kocher Clamps &amp; Allis Tissue Forceps (4 pairs)</li>
+              <li>Army-Navy &amp; Langenbeck Abdominal Retractors</li>
+              <li>Infiltration &amp; Liposuction Cannulas with Luer Hubs</li>
+            </ul>
+          </div>
+        </div>
+        <div style="border-top: var(--border-hairline); padding-top: var(--space-4); display: flex; gap: 8px;">
+          <a href="/pages/wholesale-custom-orders?product=Mommy%20Makeover%20Combination%20Set" class="btn btn-primary btn-sm" style="flex: 1; text-align: center; font-size: 11px;">REQUEST SET QUOTE</a>
+          <a href="https://wa.me/923497400818?text=Inquiring%20about%20Mommy%20Makeover%20Set" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" style="padding: 6px 10px; font-size: 11px;">WHATSAPP</a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
+
+<!-- Filter Interactivity Script -->
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var filterButtons = document.querySelectorAll('.sets-filter-bar .set-filter-pill');
+      var cards = document.querySelectorAll('#surgical-sets-grid .surgical-set-card');
+      
+      if (!filterButtons.length || !cards.length) return;
+
+      filterButtons.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var targetCat = btn.getAttribute('data-cat');
+          
+          filterButtons.forEach(function(b) { b.classList.remove('is-active'); });
+          btn.classList.add('is-active');
+
+          cards.forEach(function(card) {
+            var cardCat = card.getAttribute('data-category');
+            if (targetCat === 'all' || cardCat === targetCat) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+  })();
+</script>
 
 {% schema %}
 {

@@ -1,0 +1,83 @@
+<section class="policies-page-section" style="padding: var(--space-12) 0 var(--space-20) 0;">
+  <div class="container" style="max-width: 860px;">
+    <div class="section-header text-center" style="margin-bottom: var(--space-10);">
+      <span class="badge-pill">COMPLIANCE &amp; LEGAL</span>
+      <h1 class="section-title">FACTORY POLICIES &amp; COMPLIANCE</h1>
+      <p class="section-subtitle">
+        Standard terms of international procurement, refund, return &amp; cancellation policies, warranty obligations, export regulations, and medical data protection.
+      </p>
+      <div style="width: 60px; height: 2px; background: var(--color-gold-base); margin: var(--space-4) auto 0;"></div>
+    </div>
+
+    {%- if shop.policies.size > 0 -%}
+      {%- for p in shop.policies -%}
+        <div class="policy-card glass-card" id="{{ p.title | handleize }}" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md); background: rgba(14, 15, 19, 0.95);">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); border-bottom: var(--border-hairline); padding-bottom: var(--space-3);">
+            <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin: 0;">
+              {{ p.title | upcase }}
+            </h2>
+            <a href="{{ p.url }}" class="btn btn-secondary btn-sm" style="font-size: 11px; padding: 4px 10px;">
+              Official Policy URL &rarr;
+            </a>
+          </div>
+          <div class="rte" style="color: var(--color-steel-silver); line-height: 1.8; font-size: var(--text-base);">
+            {{ p.body }}
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Policy 1: Refund, Return & Cancellation Policy -->
+      <div class="policy-card glass-card" id="refunds-returns" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <a id="returns"></a>
+        <a id="refunds"></a>
+        <a id="cancellation"></a>
+        <a id="warranty"></a>
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          1. REFUND, RETURN &amp; CANCELLATION POLICY
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          Xentia Industries maintains a transparent, client-first policy governing product evaluations, warranty claims, returns, and order cancellations for institutional hospital networks, distributors, and private clinics.
+        </p>
+        <ul style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4); padding-left: 20px;">
+          <li style="margin-bottom: 8px;"><strong>30-Day Clinical Sample Evaluation &amp; 100% Refund:</strong> Institutional buyers may evaluate sample batches risk-free. If clinical performance or ergonomics do not match pre-production specifications, return within 30 days for a full refund or immediate precision re-machining.</li>
+          <li style="margin-bottom: 8px;"><strong>Lifetime / 3-Year Metallurgical Warranty &amp; Free Replacement:</strong> Every instrument is guaranteed against defects in materials and craftsmanship. Corrosion, pitting, stress fractures, or premature wear under standard surgical use and autoclave reprocessing (134&deg;C) qualify for immediate replacement free of charge.</li>
+          <li style="margin-bottom: 8px;"><strong>Order Cancellation Before Dispatch:</strong> Standard catalog orders cancelled prior to factory dispatch receive a 100% full refund credited to the original payment method within 5&ndash;7 business days. Custom laser-marked or OEM-tooled batches cancelled after production commencement are subject to raw materials cost deduction.</li>
+          <li style="margin-bottom: 8px;"><strong>Damaged or Non-Conforming Shipments:</strong> Any transit-damaged instruments reported within 7 days of delivery with courier photographic verification qualify for priority replacement without return delay.</li>
+        </ul>
+        <p style="color: var(--color-steel-muted); font-size: var(--text-xs);">
+          To initiate an RMA return, refund evaluation, or cancellation, contact our factory desk at <a href="mailto:info@xentiaindustries.com" style="color: var(--color-gold-base);">info@xentiaindustries.com</a> or WhatsApp <a href="https://wa.me/923497400818" style="color: var(--color-gold-base);">+92 349 7400818</a> with your Order / RFQ reference.
+        </p>
+      </div>
+
+      <!-- Policy 2: Shipping & Export -->
+      <div class="policy-card glass-card" id="shipping" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          2. INTERNATIONAL SHIPPING &amp; INCOTERMS 2020
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          Evaluation sample shipments are dispatched via tracked courier (DHL Express / FedEx International Priority) with average transit times of 4 to 7 business days worldwide. Commercial volume exports are offered under FOB (Karachi Port / Sialkot Dry Port), CIF, and DAP terms. All shipments include official commercial invoices, packing lists, Certificate of Origin (Chamber of Commerce Sialkot), and Mill Test Certificates.
+        </p>
+      </div>
+
+      <!-- Policy 3: Terms of Service -->
+      <div class="policy-card glass-card" id="terms" style="padding: var(--space-8); margin-bottom: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          3. INSTITUTIONAL TERMS OF SERVICE
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8; margin-bottom: var(--space-4);">
+          All quotation agreements, custom tooling commitments, and formal order confirmations are governed by the laws of Pakistan with international commercial arbitration standards. Quotations remain valid for 30 calendar days from the date of issue unless otherwise specified in writing.
+        </p>
+      </div>
+
+      <!-- Policy 4: Privacy & GDPR -->
+      <div class="policy-card glass-card" id="privacy" style="padding: var(--space-8); border: var(--border-hairline); border-radius: var(--radius-md);">
+        <h2 style="font-family: var(--font-heading); color: var(--color-gold-bright); font-size: var(--text-2xl); margin-bottom: var(--space-3);">
+          4. GDPR &amp; MEDICAL DATA PRIVACY
+        </h2>
+        <p style="color: var(--color-steel-silver); line-height: 1.8;">
+          Xentia Industries respects the confidentiality of all hospital procurement data, surgical blueprint designs, and institutional purchasing histories. In compliance with European GDPR standards, client contact data is utilized exclusively for order fulfillment, technical advisory, and logistics tracking. We do not sell or monetize medical buyer data.
+        </p>
+      </div>
+    {%- endif -%}
+  </div>
+</section>

@@ -28,7 +28,7 @@
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
           <li><a href="{{ pages['products-categories'].url | default: pages['products'].url | default: routes.all_products_collection_url }}" style="color: var(--color-gold-base); font-weight: 600;">Products &amp; Categories Showcase</a></li>
           <li><a href="{{ routes.all_products_collection_url }}" style="color: var(--color-steel-silver);">Browse All 50+ Products</a></li>
-          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">Surgical Sets (19 Sets)</a></li>
+          <li><a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" style="color: var(--color-steel-silver);">Surgical Sets</a></li>
           <li><a href="/pages/wholesale-custom-orders" style="color: var(--color-steel-silver);">B2B Custom Quotation Portal</a></li>
           <li><a href="{{ pages['about-us'].url | default: pages['about'].url | default: '/pages/about-us' }}" style="color: var(--color-steel-silver);">About Xentia Industries</a></li>
           <li><a href="{{ pages['contact-us'].url | default: pages['contact'].url | default: '/pages/contact-us' }}" style="color: var(--color-steel-silver);">Contact Sialkot Factory</a></li>
@@ -52,12 +52,11 @@
       <div>
         <h4 style="font-size: var(--text-sm); font-family: var(--font-accent); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--color-gold-base); margin-bottom: var(--space-4);">INSTITUTIONAL POLICIES</h4>
         <ul style="display: flex; flex-direction: column; gap: var(--space-2); font-size: var(--text-xs); list-style: none; padding: 0;">
-          <li><a href="{{ shop.refund_policy.url | default: '/policies/refund-policy' }}" style="color: var(--color-steel-silver);">Return &amp; Replacement Warranty</a></li>
-          <li><a href="/pages/policies#refunds" style="color: var(--color-steel-silver);">Refund Policy &amp; Evaluations</a></li>
-          <li><a href="{{ shop.shipping_policy.url | default: '/policies/shipping-policy' }}" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
-          <li><a href="{{ shop.terms_of_service.url | default: '/policies/terms-of-service' }}" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
-          <li><a href="{{ shop.privacy_policy.url | default: '/policies/privacy-policy' }}" style="color: var(--color-steel-silver);">Privacy Policy &amp; GDPR</a></li>
-          <li><a href="/pages/policies#compliance" style="color: var(--color-steel-silver);">Quality &amp; Regulatory Compliance</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}" style="color: var(--color-steel-silver);">Refund, Return &amp; Cancellation Policy</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#shipping" style="color: var(--color-steel-silver);">Shipping Policy (EXW/FOB/DDP)</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#terms" style="color: var(--color-steel-silver);">Terms &amp; Conditions of Supply</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#privacy" style="color: var(--color-steel-silver);">Privacy Policy &amp; GDPR</a></li>
+          <li><a href="{{ pages['policies'].url | default: '/pages/policies' }}#compliance" style="color: var(--color-steel-silver);">Quality &amp; Regulatory Compliance</a></li>
           <li><a href="{{ pages['faqs'].url | default: pages['faq'].url | default: '/pages/faqs' }}" style="color: var(--color-steel-silver);">Procurement FAQ</a></li>
         </ul>
       </div>

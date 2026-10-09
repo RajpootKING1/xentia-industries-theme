@@ -12,6 +12,14 @@
   <div class="products-catalog-page-wrapper">
     {% section 'catalog-categories' %}
   </div>
+{%- elsif page_handle_down contains 'surgical-sets' or page_handle_down contains 'surgical-set' or page_handle_down contains 'sets' or page_title_down contains 'surgical set' or page.template_suffix contains 'surgical-sets' or template.suffix contains 'surgical-sets' -%}
+  <div class="page-surgical-sets">
+    {% section 'surgical-sets' %}
+  </div>
+{%- elsif page_handle_down contains 'policy' or page_handle_down contains 'policies' or page_title_down contains 'policy' or page_title_down contains 'policies' or page.template_suffix contains 'policies' or template.suffix contains 'policies' -%}
+  <div class="page-policies">
+    {% render 'policies-content' %}
+  </div>
 {%- elsif page_handle_down contains 'faq' or page_title_down contains 'faq' or page.template_suffix contains 'faq' or template.suffix contains 'faq' -%}
   <section class="faq-page-wrapper">
     {% render 'faq-content' %}

@@ -42,6 +42,19 @@
   {{ 'animations.css' | asset_url | stylesheet_tag }}
   {{ 'shopify-overrides.css' | asset_url | stylesheet_tag }}
 
+  <!-- Surgical Sets Hash Redirect -->
+  <script>
+    (function() {
+      function checkSurgicalSetsHash() {
+        if (window.location.hash === '#surgical-sets') {
+          window.location.replace("{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}");
+        }
+      }
+      checkSurgicalSetsHash();
+      window.addEventListener('hashchange', checkSurgicalSetsHash);
+    })();
+  </script>
+
   {%- unless request.design_mode -%}
   <!-- Preloader Safety Failsafe -->
   <script>

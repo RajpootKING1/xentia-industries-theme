@@ -189,7 +189,7 @@
         </p>
       </div>
       <div class="flex items-center gap-4 flex-wrap">
-        <a href="{{ routes.root_url }}#surgical-sets" class="btn btn-primary">
+        <a href="{{ pages['surgical-sets'].url | default: '/pages/surgical-sets' }}" class="btn btn-primary">
           BROWSE 19 SURGICAL SETS
         </a>
         <a href="/pages/wholesale-custom-orders" class="btn btn-secondary">
